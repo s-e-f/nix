@@ -1,21 +1,25 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
 # https://github.com/nix-community/NixOS-WSL
-
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  nixvim = import (builtins.fetchGit {
+    url = "https://github.com/nix-community/nixvim";
+    ref = "nixos-23.11";
+  });
+in {
   imports = [
     # include NixOS-WSL modules
     <nixos-wsl/modules>
+    nixvim.nixosModules.nixvim
   ];
 
   programs.nix-ld.enable = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   wsl = {
     enable = true;
@@ -28,13 +32,13 @@
     docker-desktop.enable = false;
 
     extraBin = with pkgs; [
-      { src = "${coreutils}/bin/mkdir"; }
-      { src = "${coreutils}/bin/cat"; }
-      { src = "${coreutils}/bin/whoami"; }
-      { src = "${coreutils}/bin/ls"; }
-      { src = "${busybox}/bin/addgroup"; }
-      { src = "${su}/bin/groupadd"; }
-      { src = "${su}/bin/usermod"; }
+      {src = "${coreutils}/bin/mkdir";}
+      {src = "${coreutils}/bin/cat";}
+      {src = "${coreutils}/bin/whoami";}
+      {src = "${coreutils}/bin/ls";}
+      {src = "${busybox}/bin/addgroup";}
+      {src = "${su}/bin/groupadd";}
+      {src = "${su}/bin/usermod";}
     ];
   };
 
@@ -51,11 +55,65 @@
       docker = "/run/current-system/sw/bin/docker";
     };
   };
-  
+
   environment.systemPackages = with pkgs; [
     wget
     git
+    alejandra
+	fzf
+	ripgrep
+	bat
+
   ];
+
+  programs = {
+    starship = {
+      enable = true;
+    };
+    zsh = {
+      enable = true;
+      enableCompletion = true;
+      autosuggestions.enable = true;
+      shellAliases = {
+      };
+    };
+    nixvim = {
+      enable = true;
+      colorschemes.catppuccin = {
+        enable = true;
+        flavour = "mocha";
+        transparentBackground = true;
+      };
+	  globals = {
+	    mapleader = " ";
+	  };
+      options = {
+        number = true;
+        relativenumber = true;
+        scrolloff = 10;
+        tabstop = 4;
+        shiftwidth = 4;
+        softtabstop = 4;
+        smartindent = true;
+        autoindent = true;
+        smarttab = true;
+      };
+      plugins = {
+        telescope = {
+          enable = true;
+        };
+		lualine = {
+		  enable = true;
+		};
+		lsp = {
+		  enable = true;
+		  servers = {
+			nixd.enable = true;
+		  };
+		};
+      };
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
