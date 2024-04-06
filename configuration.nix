@@ -1,23 +1,17 @@
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
 # https://github.com/nix-community/NixOS-WSL
 {
-  config,
-  lib,
+  self,
   pkgs,
+  lib,
+  config,
   ...
-}: let
-  nixvim = import (builtins.fetchGit {
-    url = "https://github.com/nix-community/nixvim";
-    ref = "nixos-23.11";
-  });
-in {
-  imports = [
-    # include NixOS-WSL modules
-    <nixos-wsl/modules>
-    nixvim.nixosModules.nixvim
-  ];
+}:
 
+{
   programs.nix-ld.enable = true;
+
+  nixpkgs.config.allowUnfree = true;
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
@@ -60,10 +54,12 @@ in {
     wget
     git
     alejandra
-	fzf
-	ripgrep
-	bat
-
+    fzf
+    ripgrep
+    bat
+    rustup
+	surrealdb
+	surrealdb-migrations
   ];
 
   programs = {
@@ -84,9 +80,9 @@ in {
         flavour = "mocha";
         transparentBackground = true;
       };
-	  globals = {
-	    mapleader = " ";
-	  };
+      globals = {
+        mapleader = " ";
+      };
       options = {
         number = true;
         relativenumber = true;
@@ -97,20 +93,55 @@ in {
         smartindent = true;
         autoindent = true;
         smarttab = true;
+        cindent = true;
+        cinkeys = "0{,0},0),0],:,!^F,o,O,e";
+        list = true;
+        listchars = "lead:.,trail:+,tab:>-";
+        cursorline = true;
+        wrap = false;
+        termguicolors = true;
       };
       plugins = {
+        treesitter.enable = true;
         telescope = {
           enable = true;
+          extensions = {
+            fzf-native.enable = true;
+          };
+          defaults = {
+            file_ignore_patterns = [
+              "node_modules"
+            ];
+          };
+          keymaps = {
+            "<leader>ff" = {
+              action = "find_files, {}";
+              desc = "Find files";
+            };
+            "<leader>fb" = {
+              action = "buffers, {}";
+              desc = "Find buffers";
+            };
+            "<leader>fd" = {
+              action = "diagnostics, {}";
+              desc = "Find diagnostics";
+            };
+          };
         };
-		lualine = {
-		  enable = true;
-		};
-		lsp = {
-		  enable = true;
-		  servers = {
-			nixd.enable = true;
-		  };
-		};
+        lualine = {
+          enable = true;
+        };
+        lsp = {
+          enable = true;
+          servers = {
+            nixd.enable = true;
+            rust-analyzer = {
+              enable = true;
+              installRustc = false;
+              installCargo = false;
+            };
+          };
+        };
       };
     };
   };
