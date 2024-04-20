@@ -2,39 +2,51 @@
   description = "My NixOS root flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-wsl = {
-      url = "github:nix-community/NixOS-WSL";
+      url = "github:nix-community/NixOS-WSL/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-	nixvim = {
-		url = "github:nix-community/nixvim/nixos-23.11";
-		inputs.nixpkgs.follows = "nixpkgs";
-	};
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = args @ {
+  outputs = {
     self,
     nixpkgs,
+    nixos-wsl,
+    home-manager,
+    nixvim,
     ...
-  }: let
-    system = "x86_64-linux";
-
-    pkgs = import nixpkgs {
-      inherit system;
-
-      config = {
-        allowUnfree = true;
-      };
-    };
-  in {
+  } @ args: {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
-		system = system;
+        system = "x86_64-linux";
+        specialArgs = {inherit args;};
         modules = [
-		  ./configuration.nix
-          args.nixos-wsl.nixosModules.wsl
-		  args.nixvim.nixosModules.nixvim
+          nixos-wsl.nixosModules.default
+		  {
+			  wsl.enable = true;
+			  system.stateVersion = "24.05";
+		  }
+
+          ./wsl.nix
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.sef = import ./home.nix;
+              extraSpecialArgs = {inherit args;};
+            };
+          }
         ];
       };
     };
