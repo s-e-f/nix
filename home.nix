@@ -19,28 +19,28 @@
     alejandra
     bat
     btop
-	rustup
+    rustup
   ];
 
   services = {
-	  gpg-agent = {
-		  enableSshSupport = true;
-	  };
+    gpg-agent = {
+      enableSshSupport = true;
+    };
   };
 
   programs = {
     home-manager.enable = true;
-	ssh = {
-		enable = true;
-	};
-	gpg = {
-		enable = true;
-	};
-	git = {
-		enable = true;
-		userEmail = "39380372+s-e-f@users.noreply.github.com";
-		userName = "Sef";
-	};
+    ssh = {
+      enable = true;
+    };
+    gpg = {
+      enable = true;
+    };
+    git = {
+      enable = true;
+      userEmail = "39380372+s-e-f@users.noreply.github.com";
+      userName = "Sef";
+    };
     zsh = {
       enable = true;
       enableCompletion = true;
@@ -70,10 +70,10 @@
       enable = true;
       colorschemes.catppuccin = {
         enable = true;
-		settings = {
-			flavour = "mocha";
-			transparent_background = true;
-		};
+        settings = {
+          flavour = "mocha";
+          transparent_background = true;
+        };
       };
       globals = {
         mapleader = " ";
@@ -97,8 +97,18 @@
         wrap = false;
         termguicolors = true;
       };
+      keymaps = [
+        {
+          action = ":bd<CR>";
+          key = "<leader>x";
+        }
+      ];
       plugins = {
         treesitter.enable = true;
+		noice.enable = true;
+		oil.enable = true;
+		luasnip.enable = true;
+		autoclose.enable = true;
         telescope = {
           enable = true;
           extensions = {
@@ -144,8 +154,15 @@
               installRustc = false;
               installCargo = false;
             };
+			gopls.enable = true;
           };
         };
+		cmp = {
+			enable = true;
+		};
+		dap = {
+			enable = true;
+		};
       };
     };
   };
