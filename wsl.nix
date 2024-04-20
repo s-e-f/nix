@@ -41,10 +41,10 @@
 
   systemd.services.docker-desktop-proxy.script = pkgs.lib.mkForce ''${config.wsl.wslConf.automount.root}/wsl/docker-desktop/docker-desktop-user-distro proxy --docker-desktop-root ${config.wsl.wslConf.automount.root}/wsl/docker-desktop "C:\Program Files\Docker\Docker\resources"'';
 
-  programs.bash = {
-    shellAliases = {
-      docker = "/run/current-system/sw/bin/docker";
-    };
+  services = {
+	  openssh = {
+		  enable = true;
+	  };
   };
 
   environment.systemPackages = with pkgs; [

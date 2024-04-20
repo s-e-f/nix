@@ -31,10 +31,10 @@
         specialArgs = {inherit args;};
         modules = [
           nixos-wsl.nixosModules.default
-		  {
-			  wsl.enable = true;
-			  system.stateVersion = "24.05";
-		  }
+          {
+            wsl.enable = true;
+            system.stateVersion = "24.05";
+          }
 
           ./wsl.nix
 

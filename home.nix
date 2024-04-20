@@ -1,71 +1,88 @@
 {
   config,
   pkgs,
-  inputs,
+  args,
   ...
-}:
-{
+}: {
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
+    args.nixvim.homeManagerModules.nixvim
   ];
 
   home.username = "sef";
   home.homeDirectory = "/home/sef";
 
   home.packages = with pkgs; [
-	neofetch
-	ripgrep
-	fzf
-	jq
-	alejandra
-	bat
-	btop
+    neofetch
+    ripgrep
+    fzf
+    jq
+    alejandra
+    bat
+    btop
+	rustup
   ];
 
-  programs = {
-	home-manager.enable = true;
+  services = {
+	  gpg-agent = {
+		  enableSshSupport = true;
+	  };
+  };
 
-	git.enable = true;
-	zsh = {
+  programs = {
+    home-manager.enable = true;
+	ssh = {
 		enable = true;
-		enableCompletion = true;
-		enableVteIntegration = true;
-		autosuggestions.enable = true;
-		syntaxHighlighting.enable = true;
 	};
-	zellij ={
+	gpg = {
 		enable = true;
-		enableZshIntegration = true;
-		settings = {
-			theme = "catppuccin-mocha";
-		};
 	};
-	starship = {
+	git = {
 		enable = true;
-		enableZshIntegration = true;
-		settings = {
-			add_newline = false;
-			format = " $character";
-			right_format = "$all";
-			character.success_symbol = "[](bold green)";
-			character.error_symbol = "[](bold red)";
-		};
+		userEmail = "39380372+s-e-f@users.noreply.github.com";
+		userName = "Sef";
 	};
+    zsh = {
+      enable = true;
+      enableCompletion = true;
+      enableVteIntegration = true;
+      autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
+    };
+    zellij = {
+      enable = true;
+      enableZshIntegration = true;
+      settings = {
+        theme = "catppuccin-mocha";
+      };
+    };
+    starship = {
+      enable = true;
+      enableZshIntegration = true;
+      settings = {
+        add_newline = false;
+        format = " $character";
+        right_format = "$all";
+        character.success_symbol = "[](bold green)";
+        character.error_symbol = "[](bold red)";
+      };
+    };
     nixvim = {
       enable = true;
       colorschemes.catppuccin = {
         enable = true;
-        flavour = "mocha";
-        transparentBackground = true;
+		settings = {
+			flavour = "mocha";
+			transparent_background = true;
+		};
       };
       globals = {
         mapleader = " ";
       };
-      options = {
+      opts = {
         number = true;
         relativenumber = true;
         scrolloff = 10;
-		signcolumn = "yes";
+        signcolumn = "yes";
         tabstop = 4;
         shiftwidth = 4;
         softtabstop = 4;
@@ -87,23 +104,31 @@
           extensions = {
             fzf-native.enable = true;
           };
-          defaults = {
-            file_ignore_patterns = [
-              "node_modules"
-            ];
+          settings = {
+            defaults = {
+              file_ignore_patterns = [
+                "node_modules"
+              ];
+            };
           };
           keymaps = {
             "<leader>ff" = {
               action = "find_files, {}";
-              desc = "Find files";
+              options = {
+                desc = "Find files";
+              };
             };
             "<leader>fb" = {
               action = "buffers, {}";
-              desc = "Find buffers";
+              options = {
+                desc = "Find buffers";
+              };
             };
             "<leader>fd" = {
               action = "diagnostics, {}";
-              desc = "Find diagnostics";
+              options = {
+                desc = "Find diagnostics";
+              };
             };
           };
         };
