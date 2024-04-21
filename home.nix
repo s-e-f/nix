@@ -20,6 +20,8 @@
     bat
     btop
     rustup
+    surrealdb
+    nodejs_21
   ];
 
   services = {
@@ -105,10 +107,10 @@
       ];
       plugins = {
         treesitter.enable = true;
-		noice.enable = true;
-		oil.enable = true;
-		luasnip.enable = true;
-		autoclose.enable = true;
+        noice.enable = true;
+        oil.enable = true;
+        luasnip.enable = true;
+        autoclose.enable = true;
         telescope = {
           enable = true;
           extensions = {
@@ -148,21 +150,22 @@
         lsp = {
           enable = true;
           servers = {
+            astro.enable = true;
             nixd.enable = true;
             rust-analyzer = {
               enable = true;
               installRustc = false;
               installCargo = false;
             };
-			gopls.enable = true;
+            gopls.enable = true;
           };
         };
-		cmp = {
-			enable = true;
-		};
-		dap = {
-			enable = true;
-		};
+        cmp = {
+          enable = true;
+        };
+        dap = {
+          enable = true;
+        };
       };
     };
   };

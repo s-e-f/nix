@@ -4,33 +4,26 @@
   pkgs,
   config,
   ...
-}:
-
-{
+}: {
   programs.nix-ld.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-
+  nix = {
+    settings.experimental-features = ["nix-command" "flakes"];
+    gc = {
+      automatic = true;
+      options = "--delete-older-than 7d";
+    };
+  };
   wsl = {
+    enable = true;
     defaultUser = "sef";
     wslConf.automount.root = "/mnt";
     wslConf.interop.appendWindowsPath = false;
     wslConf.network.generateHosts = false;
     startMenuLaunchers = true;
-
     docker-desktop.enable = false;
-
-    extraBin = with pkgs; [
-      {src = "${coreutils}/bin/mkdir";}
-      {src = "${coreutils}/bin/cat";}
-      {src = "${coreutils}/bin/whoami";}
-      {src = "${coreutils}/bin/ls";}
-      {src = "${busybox}/bin/addgroup";}
-      {src = "${su}/bin/groupadd";}
-      {src = "${su}/bin/usermod";}
-    ];
   };
 
   virtualisation.docker = {
@@ -42,31 +35,25 @@
   systemd.services.docker-desktop-proxy.script = pkgs.lib.mkForce ''${config.wsl.wslConf.automount.root}/wsl/docker-desktop/docker-desktop-user-distro proxy --docker-desktop-root ${config.wsl.wslConf.automount.root}/wsl/docker-desktop "C:\Program Files\Docker\Docker\resources"'';
 
   services = {
-	  openssh = {
-		  enable = true;
-	  };
+    openssh = {
+      enable = true;
+    };
   };
 
   environment.systemPackages = with pkgs; [
     wget
-    rustup
-	surrealdb
-	surrealdb-migrations
   ];
 
   programs = {
     zsh = {
       enable = true;
-	  shellAliases = {
-		docker ="/run/current-system/sw/bin/docker";
-	  };
     };
   };
 
   users.defaultUserShell = pkgs.zsh;
   users.users.sef = {
-	  isNormalUser = true;
-	  description = "Sef";
-	  extraGroups = ["networkmanager" "wheel" "docker"];
+    isNormalUser = true;
+    description = "Sef";
+    extraGroups = ["networkmanager" "wheel" "docker"];
   };
 }
