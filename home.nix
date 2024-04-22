@@ -3,7 +3,12 @@
   pkgs,
   args,
   ...
-}: {
+}: 
+let
+  public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPrpRHuSQiGmjn1pn9KyyoGaRxAdLisUQ0BJZHi8TRaT";
+  email = "39380372+s-e-f@users.noreply.github.com";
+in
+{
   imports = [
     args.nixvim.homeManagerModules.nixvim
   ];
@@ -30,6 +35,13 @@
       enableSshSupport = true;
     };
   };
+
+  home.file.".config/git/allowed_signers".text = ''
+	  ${email} ${public_key}
+	  '';
+  home.file.".ssh/id_ed25519.pub".text = ''
+      ${public_key}
+	  '';
 
   programs = {
     home-manager.enable = true;
@@ -58,12 +70,16 @@
     };
     git = {
       enable = true;
-      userEmail = "39380372+s-e-f@users.noreply.github.com";
+      userEmail = email;
       userName = "Sef";
 	  extraConfig = {
-		gpg.format = "ssh";
+		  gpg = {
+			format = "ssh";
+			ssh.allowedSignersFile = "/home/sef/.config/git/allowed_signers";
+		  };
 		user.signingkey = "/home/sef/.ssh/id_ed25519.pub";
 		commit.gpgsign = true;
+		tag.gpgsign = true;
 	  };
 	  aliases = {
 		  st = "status -sb";
