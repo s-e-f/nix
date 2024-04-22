@@ -21,8 +21,8 @@
     rustup
     surrealdb
     nodejs_21
-	eza
-	nix-prefetch-github
+    eza
+    nix-prefetch-github
   ];
 
   services = {
@@ -33,23 +33,23 @@
 
   programs = {
     home-manager.enable = true;
-	bat = {
-	  enable = true;
-	  themes = {
-		  catppuccin-mocha = {
-			  src = pkgs.fetchFromGitHub {
-				  owner = "catppuccin";
-				  repo = "bat";
-				  rev = "b8134f01b0ac176f1cf2a7043a5abf5a1a29457b";
-				  sha256 = "sha256-gzf0/Ltw8mGMsEFBTUuN33MSFtUP4xhdxfoZFntaycQ=";
-			  };
-			  file = "themes/Catppuccin Mocha.tmTheme";
-		  };
-	  };
-	  config = {
-	    theme = "catppuccin-mocha";
-	  };
-	};
+    bat = {
+      enable = true;
+      themes = {
+        catppuccin-mocha = {
+          src = pkgs.fetchFromGitHub {
+            owner = "catppuccin";
+            repo = "bat";
+            rev = "b8134f01b0ac176f1cf2a7043a5abf5a1a29457b";
+            sha256 = "sha256-gzf0/Ltw8mGMsEFBTUuN33MSFtUP4xhdxfoZFntaycQ=";
+          };
+          file = "themes/Catppuccin Mocha.tmTheme";
+        };
+      };
+      config = {
+        theme = "catppuccin-mocha";
+      };
+    };
     ssh = {
       enable = true;
     };
@@ -67,10 +67,10 @@
       enableVteIntegration = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
-	  shellAliases = {
-		l = "eza -l --icons --no-permissions --no-time --smart-group -a --git --total-size";
-		npg = "nix-prefetch-github --nix";
-	  };
+      shellAliases = {
+        l = "eza -l --icons --no-permissions --no-time --smart-group -a --git --total-size";
+        npg = "nix-prefetch-github --nix";
+      };
     };
     zellij = {
       enable = true;
@@ -107,8 +107,8 @@
         relativenumber = true;
         scrolloff = 10;
         signcolumn = "yes";
-		ignorecase = true;
-		smartcase = true;
+        ignorecase = true;
+        smartcase = true;
         tabstop = 4;
         shiftwidth = 4;
         softtabstop = 4;
