@@ -80,6 +80,7 @@ in
 		user.signingkey = "/home/sef/.ssh/id_ed25519.pub";
 		commit.gpgsign = true;
 		tag.gpgsign = true;
+		log.showSignature = true;
 	  };
 	  aliases = {
 		  st = "status -sb";
