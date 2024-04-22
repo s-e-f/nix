@@ -3,12 +3,10 @@
   pkgs,
   args,
   ...
-}: 
-let
+}: let
   public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPrpRHuSQiGmjn1pn9KyyoGaRxAdLisUQ0BJZHi8TRaT";
   email = "39380372+s-e-f@users.noreply.github.com";
-in
-{
+in {
   imports = [
     args.nixvim.homeManagerModules.nixvim
   ];
@@ -37,11 +35,11 @@ in
   };
 
   home.file.".config/git/allowed_signers".text = ''
-	  ${email} ${public_key}
-	  '';
+    ${email} ${public_key}
+  '';
   home.file.".ssh/id_ed25519.pub".text = ''
-      ${public_key}
-	  '';
+    ${public_key}
+  '';
 
   programs = {
     home-manager.enable = true;
@@ -72,19 +70,19 @@ in
       enable = true;
       userEmail = email;
       userName = "Sef";
-	  extraConfig = {
-		  gpg = {
-			format = "ssh";
-			ssh.allowedSignersFile = "/home/sef/.config/git/allowed_signers";
-		  };
-		user.signingkey = "/home/sef/.ssh/id_ed25519.pub";
-		commit.gpgsign = true;
-		tag.gpgsign = true;
-		log.showSignature = true;
-	  };
-	  aliases = {
-		  st = "status -sb";
-	  };
+      extraConfig = {
+        gpg = {
+          format = "ssh";
+          ssh.allowedSignersFile = "/home/sef/.config/git/allowed_signers";
+        };
+        user.signingkey = "/home/sef/.ssh/id_ed25519.pub";
+        commit.gpgsign = true;
+        tag.gpgsign = true;
+        log.showSignature = true;
+      };
+      aliases = {
+        st = "status -sb";
+      };
     };
     zsh = {
       enable = true;
@@ -94,9 +92,10 @@ in
       syntaxHighlighting.enable = true;
       shellAliases = {
         l = "eza -l --icons --no-permissions --no-time --smart-group -a --git --total-size";
-		ls = "eza";
+        ls = "eza";
         npg = "nix-prefetch-github --nix";
-		cat = "bat";
+        cat = "bat";
+        nix-format = "alejandra *.nix";
       };
     };
     zellij = {
