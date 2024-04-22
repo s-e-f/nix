@@ -60,6 +60,14 @@
       enable = true;
       userEmail = "39380372+s-e-f@users.noreply.github.com";
       userName = "Sef";
+	  extraConfig = {
+		gpg.format = "ssh";
+		user.signingkey = "/home/sef/.ssh/id_ed25519.pub";
+		commit.gpgsign = true;
+	  };
+	  aliases = {
+		  st = "status -sb";
+	  };
     };
     zsh = {
       enable = true;
@@ -69,7 +77,9 @@
       syntaxHighlighting.enable = true;
       shellAliases = {
         l = "eza -l --icons --no-permissions --no-time --smart-group -a --git --total-size";
+		ls = "eza";
         npg = "nix-prefetch-github --nix";
+		cat = "bat";
       };
     };
     zellij = {
