@@ -84,6 +84,7 @@ in {
         st = "status -sb";
       };
     };
+	go.enable = true;
     zsh = {
       enable = true;
       enableCompletion = true;
@@ -131,6 +132,8 @@ in {
       opts = {
         number = true;
         relativenumber = true;
+		updatetime = 100;
+		fileencoding = "utf-8";
         scrolloff = 10;
         signcolumn = "yes";
         ignorecase = true;
@@ -210,12 +213,13 @@ in {
             gopls.enable = true;
           };
         };
-        cmp = {
-          enable = true;
-        };
-        dap = {
-          enable = true;
-        };
+		cmp.enable = true;
+		cmp-buffer.enable = true;
+		cmp-cmdline.enable = true;
+		cmp-path.enable = true;
+		cmp-nvim-lsp.enable = true;
+		cmp-vsnip.enable = true;
+		dap.enable = true;
       };
     };
   };
