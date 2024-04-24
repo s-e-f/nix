@@ -41,10 +41,6 @@
   programs = {
     zsh = {
       enable = true;
-      shellAliases = {
-        ssh-add = "/mnt/c/Windows/System32/OpenSSH/ssh-add.exe";
-        ssh = "/mnt/c/Windows/System32/OpenSSH/ssh.exe";
-      };
     };
   };
 

@@ -14,10 +14,8 @@ in {
   home = {
     username = "sef";
     homeDirectory = "/home/sef";
-    sessionVariables = {
-      GIT_SSH = "/mnt/c/Windows/System32/OpenSSH/ssh.exe";
-    };
     packages = with pkgs; [
+      socat
       neofetch
       ripgrep
       fzf
@@ -60,10 +58,10 @@ in {
       userName = "Sef";
       extraConfig = {
         gpg = {
-          format = "ssh";
-          ssh.allowedSignersFile = "/home/sef/.config/git/allowed_signers";
-          ssh.program = "/mnt/c/Users/SeverinFitriyadi/AppData/Local/1Password/app/8/op-ssh-sign.exe";
-        };
+			format = "ssh";
+			allowedSignersFile = "/home/sef/.config/git/allowed_signers";
+			ssh.program = "/mnt/c/Users/SeverinFitriyadi/AppData/Local/1Password/app/8/op-ssh-sign-wsl";
+		};
         user.signingkey = public_key;
         commit.gpgsign = true;
         tag.gpgsign = true;
