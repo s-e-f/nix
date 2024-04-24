@@ -28,7 +28,7 @@ in {
       eza
       nix-prefetch-github
     ];
-    file.".config/git/allowed_signers".text = ''
+    file.".ssh/allowed_signers".text = ''
       ${email} ${public_key}
     '';
   };
@@ -59,7 +59,7 @@ in {
       extraConfig = {
         gpg = {
 			format = "ssh";
-			allowedSignersFile = "/home/sef/.config/git/allowed_signers";
+			ssh.allowedSignersFile = "~/.ssh/allowed_signers";
 			ssh.program = "/mnt/c/Users/SeverinFitriyadi/AppData/Local/1Password/app/8/op-ssh-sign-wsl";
 		};
         user.signingkey = public_key;
