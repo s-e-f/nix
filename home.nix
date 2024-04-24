@@ -11,35 +11,29 @@ in {
     args.nixvim.homeManagerModules.nixvim
   ];
 
-  home.username = "sef";
-  home.homeDirectory = "/home/sef";
-
-  home.packages = with pkgs; [
-    neofetch
-    ripgrep
-    fzf
-    jq
-    alejandra
-    btop
-    rustup
-    surrealdb
-    nodejs_21
-    eza
-    nix-prefetch-github
-  ];
-
-  services = {
-    gpg-agent = {
-      enableSshSupport = true;
+  home = {
+    username = "sef";
+    homeDirectory = "/home/sef";
+    sessionVariables = {
+      GIT_SSH = "/mnt/c/Windows/System32/OpenSSH/ssh.exe";
     };
+    packages = with pkgs; [
+      neofetch
+      ripgrep
+      fzf
+      jq
+      alejandra
+      btop
+      rustup
+      surrealdb
+      nodejs_21
+      eza
+      nix-prefetch-github
+    ];
+    file.".config/git/allowed_signers".text = ''
+      ${email} ${public_key}
+    '';
   };
-
-  home.file.".config/git/allowed_signers".text = ''
-    ${email} ${public_key}
-  '';
-  home.file.".ssh/id_ed25519.pub".text = ''
-    ${public_key}
-  '';
 
   programs = {
     home-manager.enable = true;
@@ -60,12 +54,6 @@ in {
         theme = "catppuccin-mocha";
       };
     };
-    ssh = {
-      enable = true;
-    };
-    gpg = {
-      enable = true;
-    };
     git = {
       enable = true;
       userEmail = email;
@@ -74,8 +62,9 @@ in {
         gpg = {
           format = "ssh";
           ssh.allowedSignersFile = "/home/sef/.config/git/allowed_signers";
+          ssh.program = "/mnt/c/Users/SeverinFitriyadi/AppData/Local/1Password/app/8/op-ssh-sign.exe";
         };
-        user.signingkey = "/home/sef/.ssh/id_ed25519.pub";
+        user.signingkey = public_key;
         commit.gpgsign = true;
         tag.gpgsign = true;
         log.showSignature = true;
@@ -84,7 +73,7 @@ in {
         st = "status -sb";
       };
     };
-	go.enable = true;
+    go.enable = true;
     zsh = {
       enable = true;
       enableCompletion = true;
@@ -132,8 +121,8 @@ in {
       opts = {
         number = true;
         relativenumber = true;
-		updatetime = 100;
-		fileencoding = "utf-8";
+        updatetime = 100;
+        fileencoding = "utf-8";
         scrolloff = 10;
         signcolumn = "yes";
         ignorecase = true;
@@ -213,13 +202,13 @@ in {
             gopls.enable = true;
           };
         };
-		cmp.enable = true;
-		cmp-buffer.enable = true;
-		cmp-cmdline.enable = true;
-		cmp-path.enable = true;
-		cmp-nvim-lsp.enable = true;
-		cmp-vsnip.enable = true;
-		dap.enable = true;
+        cmp.enable = true;
+        cmp-buffer.enable = true;
+        cmp-cmdline.enable = true;
+        cmp-path.enable = true;
+        cmp-nvim-lsp.enable = true;
+        cmp-vsnip.enable = true;
+        dap.enable = true;
       };
     };
   };
