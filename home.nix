@@ -78,13 +78,16 @@ in
       enableVteIntegration = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
+      initExtraFirst = ''
+        		  export WINDOWS_USER=$(cmd.exe /c echo %USERNAME%)
+        		  '';
       shellAliases = {
         l = "eza -l --icons --no-permissions --no-time --smart-group -a --git";
         ls = "eza";
         npg = "nix-prefetch-github --nix";
         cat = "bat";
         nix-format = "alejandra *.nix";
-        op = "/mnt/c/Users/SeverinFitriyadi/AppData/Local/Microsoft/WinGet/Links/op.exe";
+        op = "/mnt/c/Users/$WINDOWS_USER/AppData/Local/Microsoft/WinGet/Links/op.exe";
         v = "nvim";
       };
     };
