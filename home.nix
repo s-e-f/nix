@@ -79,7 +79,7 @@ in
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       initExtraFirst = ''
-        		  export WINDOWS_USER=$(cmd.exe /c echo %USERNAME%)
+        		  export WINDOWS_USER=$(cmd.exe /c echo %USERNAME% 2>/dev/null)
         		  '';
       shellAliases = {
         l = "eza -l --icons --no-permissions --no-time --smart-group -a --git";
