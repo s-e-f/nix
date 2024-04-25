@@ -1,12 +1,13 @@
-{
-  config,
-  pkgs,
-  args,
-  ...
-}: let
-  public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPrpRHuSQiGmjn1pn9KyyoGaRxAdLisUQ0BJZHi8TRaT";
+{ config
+, pkgs
+, args
+, ...
+}:
+let
+  public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEWzfajaOsrjRi9VBZ1eZHndHr/8HoIZT6szzySUVHAF";
   email = "39380372+s-e-f@users.noreply.github.com";
-in {
+in
+{
   imports = [
     args.nixvim.homeManagerModules.nixvim
   ];
@@ -15,7 +16,6 @@ in {
     username = "sef";
     homeDirectory = "/home/sef";
     packages = with pkgs; [
-      socat
       neofetch
       ripgrep
       fzf
@@ -27,6 +27,7 @@ in {
       nodejs_21
       eza
       nix-prefetch-github
+      dos2unix
     ];
     file.".ssh/allowed_signers".text = ''
       ${email} ${public_key}
@@ -58,10 +59,9 @@ in {
       userName = "Sef";
       extraConfig = {
         gpg = {
-			format = "ssh";
-			ssh.allowedSignersFile = "~/.ssh/allowed_signers";
-			ssh.program = "/mnt/c/Users/SeverinFitriyadi/AppData/Local/1Password/app/8/op-ssh-sign-wsl";
-		};
+          format = "ssh";
+          ssh.allowedSignersFile = "~/.ssh/allowed_signers";
+        };
         user.signingkey = public_key;
         commit.gpgsign = true;
         tag.gpgsign = true;
@@ -79,11 +79,13 @@ in {
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       shellAliases = {
-        l = "eza -l --icons --no-permissions --no-time --smart-group -a --git --total-size";
+        l = "eza -l --icons --no-permissions --no-time --smart-group -a --git";
         ls = "eza";
         npg = "nix-prefetch-github --nix";
         cat = "bat";
         nix-format = "alejandra *.nix";
+        op = "/mnt/c/Users/SeverinFitriyadi/AppData/Local/Microsoft/WinGet/Links/op.exe";
+        v = "nvim";
       };
     };
     zellij = {
@@ -91,6 +93,8 @@ in {
       enableZshIntegration = true;
       settings = {
         theme = "catppuccin-mocha";
+        pane_frames = false;
+        copy_on_select = false;
       };
     };
     starship = {
@@ -147,10 +151,21 @@ in {
       ];
       plugins = {
         treesitter.enable = true;
-        noice.enable = true;
         oil.enable = true;
         luasnip.enable = true;
         autoclose.enable = true;
+        trouble.enable = true;
+        noice = {
+          enable = true;
+          lsp = {
+            override = {
+              "vim.lsp.util.convert_input_to_markdown_lines" = true;
+              "vim.lsp.util.stylize_markdown" = true;
+              "cmp.entry.get_documentation" = true;
+            };
+            hover.enabled = true;
+          };
+        };
         telescope = {
           enable = true;
           extensions = {
@@ -184,11 +199,23 @@ in {
             };
           };
         };
-        lualine = {
-          enable = true;
-        };
+        lualine.enable = true;
         lsp = {
           enable = true;
+          keymaps = {
+            diagnostic = {
+              "<leader>j" = "goto_next";
+              "<leader>k" = "goto_prev";
+            };
+            lspBuf = {
+              K = "hover";
+              gD = "references";
+              gd = "definition";
+              gi = "implementation";
+              gt = "type_definition";
+              "<leader>lc" = "code_action";
+            };
+          };
           servers = {
             astro.enable = true;
             nixd.enable = true;
@@ -200,12 +227,64 @@ in {
             gopls.enable = true;
           };
         };
-        cmp.enable = true;
-        cmp-buffer.enable = true;
-        cmp-cmdline.enable = true;
-        cmp-path.enable = true;
-        cmp-nvim-lsp.enable = true;
-        cmp-vsnip.enable = true;
+        lsp-format.enable = true;
+        none-ls = {
+          enable = true;
+          enableLspFormat = true;
+          sources = {
+            code_actions = { };
+
+            completion = {
+              luasnip.enable = true;
+              spell.enable = true;
+              vsnip.enable = true;
+            };
+
+            diagnostics = {
+              actionlint.enable = true;
+              ansiblelint.enable = true;
+              checkmake.enable = true;
+              deadnix.enable = true;
+              dotenv_linter.enable = true;
+              golangci_lint.enable = true;
+              hadolint.enable = true;
+              proselint.enable = true;
+              selene.enable = true;
+              sqlfluff.enable = true;
+              statix.enable = true;
+              stylelint.enable = true;
+              tidy.enable = true;
+              yamllint.enable = true;
+            };
+
+            formatting = {
+              cbfmt.enable = true;
+              markdownlint.enable = true;
+              gofumpt.enable = true;
+              nixpkgs_fmt.enable = true;
+              prettier = {
+                enable = true;
+                disableTsServerFormatter = true;
+              };
+              sqlfluff.enable = true;
+              stylua.enable = true;
+              tidy.enable = true;
+            };
+          };
+        };
+        cmp = {
+          enable = true;
+          settings = {
+            snippet.expand = "function(args) require('luasnip').lsp_expand(args.body) end";
+            sources = [
+              { name = "path"; }
+              { name = "nvim_lsp"; }
+              { name = "cmp_tabby"; }
+              { name = "luasnip"; }
+              { name = "neorg"; }
+            ];
+          };
+        };
         dap.enable = true;
       };
     };

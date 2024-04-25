@@ -17,38 +17,36 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nixos-wsl,
-    home-manager,
-    nixvim,
-    ...
-  } @ args: {
-    nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {inherit args;};
-        modules = [
-          nixos-wsl.nixosModules.default
-          {
-            wsl.enable = true;
-            system.stateVersion = "24.05";
-          }
+  outputs =
+    { nixpkgs
+    , nixos-wsl
+    , home-manager
+    , ...
+    } @ args: {
+      nixosConfigurations = {
+        nixos = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit args; };
+          modules = [
+            nixos-wsl.nixosModules.default
+            {
+              wsl.enable = true;
+              system.stateVersion = "24.05";
+            }
 
-          ./wsl.nix
+            ./wsl.nix
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.sef = import ./home.nix;
-              extraSpecialArgs = {inherit args;};
-            };
-          }
-        ];
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.sef = import ./home.nix;
+                extraSpecialArgs = { inherit args; };
+              };
+            }
+          ];
+        };
       };
     };
-  };
 }

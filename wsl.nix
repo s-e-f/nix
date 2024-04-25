@@ -1,16 +1,15 @@
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
 # https://github.com/nix-community/NixOS-WSL
-{
-  pkgs,
-  config,
-  ...
+{ pkgs
+, config
+, ...
 }: {
   programs.nix-ld.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
   nix = {
-    settings.experimental-features = ["nix-command" "flakes"];
+    settings.experimental-features = [ "nix-command" "flakes" ];
     gc = {
       automatic = true;
       options = "--delete-older-than 7d";
@@ -19,9 +18,11 @@
   wsl = {
     enable = true;
     defaultUser = "sef";
-    wslConf.automount.root = "/mnt";
-    wslConf.interop.appendWindowsPath = false;
-    wslConf.network.generateHosts = false;
+    wslConf = {
+      automount.root = "/mnt";
+      interop.appendWindowsPath = true;
+      network.generateHosts = false;
+    };
     startMenuLaunchers = true;
     docker-desktop.enable = false;
   };
@@ -48,6 +49,6 @@
   users.users.sef = {
     isNormalUser = true;
     description = "Sef";
-    extraGroups = ["networkmanager" "wheel" "docker"];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 }
