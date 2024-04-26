@@ -1,6 +1,6 @@
 // If you'd like to override the default keybindings completely, be sure to change "keybinds" to "keybinds clear-defaults=true"
 keybinds {
-	unbind "Ctrl n" "Ctrl o"
+	unbind "Ctrl n" "Ctrl o" "Ctrl p"
     normal {
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
@@ -22,7 +22,7 @@ keybinds {
         bind "-" { Resize "Decrease"; }
     }
     pane {
-        bind "Ctrl p" { SwitchToMode "Normal"; }
+        bind "Alt p" { SwitchToMode "Normal"; }
         bind "h" "Left" { MoveFocus "Left"; }
         bind "l" "Right" { MoveFocus "Right"; }
         bind "j" "Down" { MoveFocus "Down"; }
@@ -164,7 +164,7 @@ keybinds {
         bind "Enter" "Esc" { SwitchToMode "Normal"; }
     }
     shared_except "pane" "locked" {
-        bind "Ctrl p" { SwitchToMode "Pane"; }
+        bind "Alt p" { SwitchToMode "Pane"; }
     }
     shared_except "resize" "locked" {
         bind "Alt r" { SwitchToMode "Resize"; }

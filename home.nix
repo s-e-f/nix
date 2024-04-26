@@ -324,6 +324,13 @@ in
               { name = "luasnip"; }
               { name = "neorg"; }
             ];
+            mapping = {
+              "<C-n>" = "cmp.mapping.select_next_item()";
+              "<C-p>" = "cmp.mapping.select_prev_item()";
+              "<C-e>" = "cmp.mapping.abort()";
+              "<C-Space>" = "cmp.mapping.complete()";
+              "<CR>" = "cmp.mapping.confirm({ select = false })";
+            };
             window = {
               completion = {
                 __raw = "cmp.config.window.bordered()";
