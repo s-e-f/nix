@@ -17,17 +17,13 @@ in
     homeDirectory = "/home/sef";
     packages = with pkgs; [
       neofetch
-      ripgrep
-      fzf
-      jq
       alejandra
-      btop
       rustup
       surrealdb
       nodejs_21
-      eza
       nix-prefetch-github
       dos2unix
+      dotnet-sdk_8
     ];
     file.".ssh/allowed_signers".text = ''
       ${email} ${public_key}
@@ -39,7 +35,7 @@ in
     bat = {
       enable = true;
       themes = {
-        catppuccin-mocha = {
+        "Catppuccin Mocha" = {
           src = pkgs.fetchFromGitHub {
             owner = "catppuccin";
             repo = "bat";
@@ -50,22 +46,61 @@ in
         };
       };
       config = {
-        theme = "catppuccin-mocha";
+        theme = "Catppuccin Mocha";
       };
+    };
+    fzf = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+    ripgrep.enable = true;
+    jq.enable = true;
+    btop.enable = true;
+    eza = {
+      enable = true;
+      extraOptions = [
+        "-l"
+        "--icons"
+        "--no-permissions"
+        "--no-time"
+        "--smart-group"
+        "-a"
+        "--git"
+      ];
     };
     git = {
       enable = true;
       userEmail = email;
       userName = "Sef";
+      delta = {
+        enable = true;
+        options = {
+          features = "catppuccin-mocha";
+          "side-by-side" = true;
+        };
+      };
       extraConfig = {
+        commit.gpgsign = true;
+        diff.colorMoved = "default";
         gpg = {
           format = "ssh";
           ssh.allowedSignersFile = "~/.ssh/allowed_signers";
         };
-        user.signingkey = public_key;
-        commit.gpgsign = true;
-        tag.gpgsign = true;
+        include.path =
+          let
+            src = pkgs.fetchFromGitHub
+              {
+                owner = "catppuccin";
+                repo = "delta";
+                rev = "765eb17d0268bf07c20ca439771153f8bc79444f";
+                hash = "sha256-GA0n9obZlD0Y2rAbGMjcdJ5I0ij1NEPBFC7rv7J49QI=";
+              };
+          in
+          "${src}/catppuccin.gitconfig";
         log.showSignature = true;
+        merge.conflictstyle = "diff3";
+        tag.gpgsign = true;
+        user.signingkey = public_key;
       };
       aliases = {
         st = "status -sb";
@@ -74,16 +109,20 @@ in
     go.enable = true;
     zsh = {
       enable = true;
+      oh-my-zsh = {
+        enable = true;
+        plugins = [
+          "ssh-agent"
+        ];
+      };
       enableCompletion = true;
       enableVteIntegration = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       initExtraFirst = ''
-        		  export WINDOWS_USER=$(cmd.exe /c echo %USERNAME% 2>/dev/null | dos2unix)
-        		  '';
+        export WINDOWS_USER=$(cmd.exe /c echo %USERNAME% 2>/dev/null | dos2unix)
+      '';
       shellAliases = {
-        l = "eza -l --icons --no-permissions --no-time --smart-group -a --git";
-        ls = "eza";
         npg = "nix-prefetch-github --nix";
         cat = "bat";
         nix-format = "alejandra *.nix";
@@ -97,7 +136,6 @@ in
       settings = {
         theme = "catppuccin-mocha";
         pane_frames = false;
-        copy_on_select = false;
       };
     };
     starship = {
@@ -222,6 +260,7 @@ in
           servers = {
             astro.enable = true;
             nixd.enable = true;
+            omnisharp.enable = true;
             rust-analyzer = {
               enable = true;
               installRustc = false;
@@ -262,6 +301,7 @@ in
 
             formatting = {
               cbfmt.enable = true;
+              csharpier.enable = true;
               markdownlint.enable = true;
               gofumpt.enable = true;
               nixpkgs_fmt.enable = true;
