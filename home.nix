@@ -24,10 +24,12 @@ in
       dos2unix
       dotnet-sdk_8
       nodejs_22
+
     ];
     file.".ssh/allowed_signers".text = ''
       ${email} ${public_key}
     '';
+    file.".config/zellij/config.kdl".text = builtins.readFile ./config.kdl;
   };
 
   programs = {
@@ -133,10 +135,6 @@ in
     zellij = {
       enable = true;
       enableZshIntegration = true;
-      settings = {
-        theme = "catppuccin-mocha";
-        pane_frames = false;
-      };
     };
     starship = {
       enable = true;
@@ -326,6 +324,12 @@ in
               { name = "luasnip"; }
               { name = "neorg"; }
             ];
+            window = {
+              completion = {
+                __raw = "cmp.config.window.bordered()";
+              };
+              documentation = { __raw = "cmp.config.window.bordered()"; };
+            };
           };
         };
         dap.enable = true;
