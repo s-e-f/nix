@@ -20,10 +20,10 @@ in
       alejandra
       rustup
       surrealdb
-      nodejs_21
       nix-prefetch-github
       dos2unix
       dotnet-sdk_8
+	  nodejs_22
     ];
     file.".ssh/allowed_signers".text = ''
       ${email} ${public_key}
