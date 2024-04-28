@@ -24,7 +24,7 @@ in
       dos2unix
       dotnet-sdk_8
       nodejs_22
-
+      flyctl
     ];
     file.".ssh/allowed_signers".text = ''
       ${email} ${public_key}
@@ -88,6 +88,7 @@ in
           format = "ssh";
           ssh.allowedSignersFile = "~/.ssh/allowed_signers";
         };
+        init.defaultBranch = "main";
         include.path =
           let
             src = pkgs.fetchFromGitHub
