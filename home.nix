@@ -91,13 +91,14 @@ in
         init.defaultBranch = "main";
         include.path =
           let
-            src = pkgs.fetchFromGitHub
-              {
-                owner = "catppuccin";
-                repo = "delta";
-                rev = "765eb17d0268bf07c20ca439771153f8bc79444f";
-                hash = "sha256-GA0n9obZlD0Y2rAbGMjcdJ5I0ij1NEPBFC7rv7J49QI=";
-              };
+            src =
+              pkgs.fetchFromGitHub
+                {
+                  owner = "catppuccin";
+                  repo = "delta";
+                  rev = "765eb17d0268bf07c20ca439771153f8bc79444f";
+                  hash = "sha256-GA0n9obZlD0Y2rAbGMjcdJ5I0ij1NEPBFC7rv7J49QI=";
+                };
           in
           "${src}/catppuccin.gitconfig";
         log.showSignature = true;
@@ -131,6 +132,8 @@ in
         nix-format = "alejandra *.nix";
         op = "/mnt/c/Users/$WINDOWS_USER/AppData/Local/Microsoft/WinGet/Links/op.exe";
         v = "nvim";
+        vi = "nvim";
+        vim = "nvim";
       };
     };
     zellij = {
