@@ -25,6 +25,9 @@ in
       dotnet-sdk_8
       nodejs_22
       flyctl
+      gnumake
+      zip
+      tlrc
     ];
     file.".ssh/allowed_signers".text = ''
       ${email} ${public_key}
@@ -51,11 +54,18 @@ in
         theme = "Catppuccin Mocha";
       };
     };
+    thefuck.enable = true;
     fzf = {
       enable = true;
       enableZshIntegration = true;
     };
     ripgrep.enable = true;
+    zoxide = {
+      enable = true;
+      options = [
+
+      ];
+    };
     jq.enable = true;
     btop.enable = true;
     eza = {
@@ -110,7 +120,14 @@ in
         st = "status -sb";
       };
     };
-    go.enable = true;
+    go = {
+      enable = true;
+      goBin = ".local/bin.go";
+    };
+
+    awscli = {
+      enable = true;
+    };
     zsh = {
       enable = true;
       oh-my-zsh = {
@@ -129,6 +146,7 @@ in
       shellAliases = {
         npg = "nix-prefetch-github --nix";
         cat = "bat";
+        cd = "z";
         nix-format = "alejandra *.nix";
         op = "/mnt/c/Users/$WINDOWS_USER/AppData/Local/Microsoft/WinGet/Links/op.exe";
         v = "nvim";

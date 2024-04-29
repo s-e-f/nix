@@ -1,12 +1,12 @@
 // If you'd like to override the default keybindings completely, be sure to change "keybinds" to "keybinds clear-defaults=true"
 keybinds {
-	unbind "Ctrl n" "Ctrl o" "Ctrl p"
+	unbind "Ctrl n" "Ctrl o" "Ctrl p" "Ctrl g" "Ctrl h" "Ctrl t" "Ctrl s" "Ctrl b" "Ctrl q"
     normal {
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
     }
     locked {
-        bind "Ctrl g" { SwitchToMode "Normal"; }
+        bind "Alt l" { SwitchToMode "Normal"; }
     }
     resize {
         bind "Alt r" { SwitchToMode "Normal"; }
@@ -39,7 +39,7 @@ keybinds {
         bind "c" { SwitchToMode "RenamePane"; PaneNameInput 0;}
     }
     move {
-        bind "Ctrl h" { SwitchToMode "Normal"; }
+        bind "Alt m" { SwitchToMode "Normal"; }
         bind "n" "Tab" { MovePane; }
         bind "p" { MovePaneBackwards; }
         bind "h" "Left" { MovePane "Left"; }
@@ -48,7 +48,7 @@ keybinds {
         bind "l" "Right" { MovePane "Right"; }
     }
     tab {
-        bind "Ctrl t" { SwitchToMode "Normal"; }
+        bind "Alt t" { SwitchToMode "Normal"; }
         bind "r" { SwitchToMode "RenameTab"; TabNameInput 0; }
         bind "h" "Left" "Up" "k" { GoToPreviousTab; }
         bind "l" "Right" "Down" "j" { GoToNextTab; }
@@ -70,26 +70,26 @@ keybinds {
         bind "Tab" { ToggleTab; }
     }
     scroll {
-        bind "Ctrl s" { SwitchToMode "Normal"; }
+        bind "Alt o" { SwitchToMode "Normal"; }
         bind "e" { EditScrollback; SwitchToMode "Normal"; }
         bind "s" { SwitchToMode "EnterSearch"; SearchInput 0; }
-        bind "Ctrl c" { ScrollToBottom; SwitchToMode "Normal"; }
+        bind "O" { ScrollToBottom; SwitchToMode "Normal"; }
         bind "j" "Down" { ScrollDown; }
         bind "k" "Up" { ScrollUp; }
-        bind "Ctrl f" "PageDown" "Right" "l" { PageScrollDown; }
-        bind "Ctrl b" "PageUp" "Left" "h" { PageScrollUp; }
+        bind "Ctrl d" "PageDown" "Right" "l" { PageScrollDown; }
+        bind "Ctrl u" "PageUp" "Left" "h" { PageScrollUp; }
         bind "d" { HalfPageScrollDown; }
         bind "u" { HalfPageScrollUp; }
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
     }
     search {
-        bind "Ctrl s" { SwitchToMode "Normal"; }
-        bind "Ctrl c" { ScrollToBottom; SwitchToMode "Normal"; }
+        bind "Alt o" { SwitchToMode "Normal"; }
+        bind "O" { ScrollToBottom; SwitchToMode "Normal"; }
         bind "j" "Down" { ScrollDown; }
         bind "k" "Up" { ScrollUp; }
-        bind "Ctrl f" "PageDown" "Right" "l" { PageScrollDown; }
-        bind "Ctrl b" "PageUp" "Left" "h" { PageScrollUp; }
+        bind "Ctrl d" "PageDown" "Right" "l" { PageScrollDown; }
+        bind "Ctrl u" "PageUp" "Left" "h" { PageScrollUp; }
         bind "d" { HalfPageScrollDown; }
         bind "u" { HalfPageScrollUp; }
         bind "n" { Search "down"; }
@@ -112,9 +112,9 @@ keybinds {
     }
     session {
         bind "Alt w" { SwitchToMode "Normal"; }
-        bind "Ctrl s" { SwitchToMode "Scroll"; }
+        bind "Alt o" { SwitchToMode "Scroll"; }
         bind "d" { Detach; }
-        bind "w" {
+        bind "m" {
             LaunchOrFocusPlugin "session-manager" {
                 floating true
                 move_to_focused_tab true
@@ -124,7 +124,7 @@ keybinds {
     }
     tmux {
         bind "[" { SwitchToMode "Scroll"; }
-        bind "Ctrl b" { Write 2; SwitchToMode "Normal"; }
+        bind "Alt u" { Write 2; SwitchToMode "Normal"; }
         bind "\"" { NewPane "Down"; SwitchToMode "Normal"; }
         bind "%" { NewPane "Right"; SwitchToMode "Normal"; }
         bind "z" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
@@ -146,8 +146,8 @@ keybinds {
         bind "x" { CloseFocus; SwitchToMode "Normal"; }
     }
     shared_except "locked" {
-        bind "Ctrl g" { SwitchToMode "Locked"; }
-        bind "Ctrl q" { Quit; }
+        bind "Alt l" { SwitchToMode "Locked"; }
+        bind "Alt q" { Quit; }
         bind "Alt n" { NewPane; }
         bind "Alt i" { MoveTab "Left"; }
         bind "Alt s" { MoveTab "Right"; }
@@ -170,19 +170,19 @@ keybinds {
         bind "Alt r" { SwitchToMode "Resize"; }
     }
     shared_except "scroll" "locked" {
-        bind "Ctrl s" { SwitchToMode "Scroll"; }
+        bind "Alt o" { SwitchToMode "Scroll"; }
     }
     shared_except "session" "locked" {
-        bind "Alt s" { SwitchToMode "Session"; }
+        bind "Alt w" { SwitchToMode "Session"; }
     }
     shared_except "tab" "locked" {
-        bind "Ctrl t" { SwitchToMode "Tab"; }
+        bind "Alt t" { SwitchToMode "Tab"; }
     }
     shared_except "move" "locked" {
-        bind "Ctrl h" { SwitchToMode "Move"; }
+        bind "Alt m" { SwitchToMode "Move"; }
     }
     shared_except "tmux" "locked" {
-        bind "Ctrl b" { SwitchToMode "Tmux"; }
+        bind "Alt u" { SwitchToMode "Tmux"; }
     }
 }
 
