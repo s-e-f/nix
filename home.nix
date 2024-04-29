@@ -18,7 +18,6 @@ in
     packages = with pkgs; [
       neofetch
       alejandra
-      rustup
       surrealdb
       nix-prefetch-github
       dos2unix
