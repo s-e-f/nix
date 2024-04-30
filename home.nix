@@ -219,6 +219,7 @@ in
         luasnip.enable = true;
         autoclose.enable = true;
         trouble.enable = true;
+        gitsigns.enable = true;
         noice = {
           enable = true;
           lsp = {
