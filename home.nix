@@ -170,13 +170,17 @@ in
     };
     nixvim = {
       enable = true;
-      colorschemes.catppuccin = {
-        enable = true;
-        settings = {
-          flavour = "mocha";
-          transparent_background = true;
-        };
-      };
+      extraPlugins = [ pkgs.vimPlugins.cyberdream-nvim ];
+      extraConfigLua = ''
+        require("cyberdream").setup({
+          transparent = true,
+          italic_comments = true,
+          hide_fillchars = true,
+          borderless_telescope = true,
+          terminal_colors = true,
+        })
+        vim.cmd("colorscheme cyberdream")
+      '';
       globals = {
         mapleader = " ";
       };
