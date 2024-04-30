@@ -27,6 +27,7 @@ in
       gnumake
       zip
       tlrc
+      delve
     ];
     file.".ssh/allowed_signers".text = ''
       ${email} ${public_key}
@@ -39,18 +40,18 @@ in
     bat = {
       enable = true;
       themes = {
-        "Catppuccin Mocha" = {
+        cyberdream = {
           src = pkgs.fetchFromGitHub {
-            owner = "catppuccin";
-            repo = "bat";
-            rev = "b8134f01b0ac176f1cf2a7043a5abf5a1a29457b";
-            sha256 = "sha256-gzf0/Ltw8mGMsEFBTUuN33MSFtUP4xhdxfoZFntaycQ=";
+            owner = "scottmckendry";
+            repo = "cyberdream.nvim";
+            rev = "d777f1bfb0e6e1d74b3f243d8e4999b6b931ae19";
+            hash = "sha256-GdnSUU4GUIrnPsh2HMH3baWZpThAixWFCkKY9kkRWXg=";
           };
-          file = "themes/Catppuccin Mocha.tmTheme";
+          file = "extras/cyberdream.tmTheme";
         };
       };
       config = {
-        theme = "Catppuccin Mocha";
+        theme = "cyberdream";
       };
     };
     thefuck.enable = true;
@@ -86,7 +87,7 @@ in
       delta = {
         enable = true;
         options = {
-          features = "catppuccin-mocha";
+          features = "cyberdream";
           "side-by-side" = true;
         };
       };
@@ -98,18 +99,7 @@ in
           ssh.allowedSignersFile = "~/.ssh/allowed_signers";
         };
         init.defaultBranch = "main";
-        include.path =
-          let
-            src =
-              pkgs.fetchFromGitHub
-                {
-                  owner = "catppuccin";
-                  repo = "delta";
-                  rev = "765eb17d0268bf07c20ca439771153f8bc79444f";
-                  hash = "sha256-GA0n9obZlD0Y2rAbGMjcdJ5I0ij1NEPBFC7rv7J49QI=";
-                };
-          in
-          "${src}/catppuccin.gitconfig";
+        include.path = "/home/sef/themes/cyberdream.nvim/extras/cyberdream.gitconfig";
         log.showSignature = true;
         merge.conflictstyle = "diff3";
         tag.gpgsign = true;
@@ -365,7 +355,14 @@ in
             };
           };
         };
-        dap.enable = true;
+        dap = {
+          enable = true;
+          extensions = {
+            dap-go.enable = true;
+            dap-ui.enable = true;
+            dap-virtual-text.enable = true;
+          };
+        };
       };
     };
   };
