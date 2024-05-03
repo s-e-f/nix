@@ -261,6 +261,7 @@ in
             diagnostic = {
               "<leader>j" = "goto_next";
               "<leader>k" = "goto_prev";
+              "<leader>le" = "open_float";
             };
             lspBuf = {
               K = "hover";
