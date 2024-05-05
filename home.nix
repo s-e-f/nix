@@ -28,6 +28,7 @@ in
       zip
       tlrc
       delve
+      gleam
     ];
     file.".ssh/allowed_signers".text = ''
       ${email} ${public_key}
