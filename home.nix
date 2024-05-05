@@ -44,10 +44,10 @@ in
           src = pkgs.fetchFromGitHub {
             owner = "scottmckendry";
             repo = "cyberdream.nvim";
-            rev = "d777f1bfb0e6e1d74b3f243d8e4999b6b931ae19";
-            hash = "sha256-GdnSUU4GUIrnPsh2HMH3baWZpThAixWFCkKY9kkRWXg=";
+            rev = "80669e2a6124ec3d88769e55f692f5aac21ac53b";
+            hash = "sha256-OEwB481E/bfyQXUn4Cl7mUC427hXOFCTdsEXoy/5mis=";
           };
-          file = "extras/cyberdream.tmTheme";
+          file = "extras/textmate/cyberdream.tmTheme";
         };
       };
       config = {
