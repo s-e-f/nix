@@ -161,16 +161,15 @@ in
     };
     nixvim = {
       enable = true;
-      extraPlugins = [ pkgs.vimPlugins.cyberdream-nvim ];
+      colorschemes.cyberdream = {
+        enable = true;
+        settings = {
+          transparent = true;
+        };
+      };
+      clipboard.register = "unnamedplus";
       extraConfigLua = ''
-        require("cyberdream").setup({
-          transparent = true,
-          italic_comments = true,
-          hide_fillchars = true,
-          borderless_telescope = true,
-          terminal_colors = true,
-        })
-        vim.cmd("colorscheme cyberdream")
+        vim.api.nvim_set_hl(0, 'CursorLine', { underline = true })
       '';
       globals = {
         mapleader = " ";
@@ -187,6 +186,7 @@ in
         tabstop = 4;
         shiftwidth = 4;
         softtabstop = 4;
+        expandtab = true;
         smartindent = true;
         autoindent = true;
         smarttab = true;
@@ -253,6 +253,10 @@ in
                 desc = "Find diagnostics";
               };
             };
+            "<leader>fg" = {
+              action = "live_grep, {}";
+              options.desc = "Live grep";
+            };
           };
         };
         lualine.enable = true;
@@ -274,6 +278,7 @@ in
             };
           };
           servers = {
+            tsserver.enable = true;
             astro.enable = true;
             nixd.enable = true;
             omnisharp.enable = true;
