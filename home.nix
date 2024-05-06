@@ -29,6 +29,7 @@ in
       tlrc
       delve
       gleam
+      erlang
     ];
     file.".ssh/allowed_signers".text = ''
       ${email} ${public_key}
@@ -278,6 +279,7 @@ in
             };
           };
           servers = {
+            gleam.enable = true;
             tsserver.enable = true;
             astro.enable = true;
             nixd.enable = true;
