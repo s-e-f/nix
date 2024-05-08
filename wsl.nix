@@ -6,7 +6,7 @@
 }: {
   programs.nix-ld = {
     enable = true;
-    libraries = with pkgs; [ ];
+    libraries = [ ];
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -24,16 +24,12 @@
       network.generateHosts = false;
     };
     startMenuLaunchers = true;
-    docker-desktop.enable = false;
+    docker-desktop.enable = true;
   };
 
-  virtualisation.docker = {
-    enable = true;
-    enableOnBoot = true;
-    autoPrune.enable = true;
-  };
-
-  systemd.services.docker-desktop-proxy.script = pkgs.lib.mkForce ''${config.wsl.wslConf.automount.root}/wsl/docker-desktop/docker-desktop-user-distro proxy --docker-desktop-root ${config.wsl.wslConf.automount.root}/wsl/docker-desktop "C:\Program Files\Docker\Docker\resources"'';
+  systemd.services.docker-desktop-proxy.script = pkgs.lib.mkForce ''
+    sudo ${config.wsl.wslConf.automount.root}/wsl/docker-desktop/docker-desktop-user-distro proxy --distro-name NixOS "C:\Program Files\Docker\Docker\resources"
+  '';
 
   environment.systemPackages = with pkgs; [
     wget

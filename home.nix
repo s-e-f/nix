@@ -30,7 +30,11 @@ in
       delve
       gleam
       erlang
+      zig
     ];
+    sessionVariables = {
+      EDITOR = "nvim";
+    };
     file.".ssh/allowed_signers".text = ''
       ${email} ${public_key}
     '';
@@ -106,6 +110,10 @@ in
         merge.conflictstyle = "diff3";
         tag.gpgsign = true;
         user.signingkey = public_key;
+        status = {
+          showUntrackedFiles = "all";
+          relativePaths = false;
+        };
       };
       aliases = {
         st = "status -sb";
@@ -279,6 +287,7 @@ in
             };
           };
           servers = {
+            zls.enable = true;
             gleam.enable = true;
             tsserver.enable = true;
             astro.enable = true;
