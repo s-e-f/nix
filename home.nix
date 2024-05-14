@@ -17,7 +17,6 @@ in
     homeDirectory = "/home/sef";
     packages = with pkgs; [
       neofetch
-      alejandra
       surrealdb
       nix-prefetch-github
       dos2unix
@@ -50,8 +49,8 @@ in
           src = pkgs.fetchFromGitHub {
             owner = "scottmckendry";
             repo = "cyberdream.nvim";
-            rev = "80669e2a6124ec3d88769e55f692f5aac21ac53b";
-            hash = "sha256-OEwB481E/bfyQXUn4Cl7mUC427hXOFCTdsEXoy/5mis=";
+            rev = "c3eff4c5df805bb9451129151509d5624295f416";
+            hash = "sha256-VgTGXRoiCmvXjr/9d5YTouvYH7ItISAgSzdxMCO/3jA=";
           };
           file = "extras/textmate/cyberdream.tmTheme";
         };
@@ -146,7 +145,6 @@ in
         npg = "nix-prefetch-github --nix";
         cat = "bat";
         cd = "z";
-        nix-format = "alejandra *.nix";
         op = "/mnt/c/Users/$WINDOWS_USER/AppData/Local/Microsoft/WinGet/Links/op.exe";
         v = "nvim";
         vi = "nvim";
@@ -176,7 +174,6 @@ in
           transparent = true;
         };
       };
-      clipboard.register = "unnamedplus";
       extraConfigLua = ''
         vim.api.nvim_set_hl(0, 'CursorLine', { underline = true })
       '';

@@ -24,12 +24,16 @@
       network.generateHosts = false;
     };
     startMenuLaunchers = true;
-    docker-desktop.enable = true;
+    #docker-desktop.enable = true;
   };
 
-  systemd.services.docker-desktop-proxy.script = pkgs.lib.mkForce ''
-    sudo ${config.wsl.wslConf.automount.root}/wsl/docker-desktop/docker-desktop-user-distro proxy --distro-name NixOS "C:\Program Files\Docker\Docker\resources"
-  '';
+  virtualisation.docker.enable = true;
+
+  #systemd.services.docker-desktop-proxy = {
+  #script = pkgs.lib.mkForce ''
+  #sudo ${config.wsl.wslConf.automount.root}/wsl/docker-desktop/docker-desktop-user-distro proxy --distro-name NixOS "C:\Program Files\Docker\Docker\resources"
+  #'';
+  #};
 
   environment.systemPackages = with pkgs; [
     wget
