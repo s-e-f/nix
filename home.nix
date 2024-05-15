@@ -199,7 +199,7 @@ in
         cindent = true;
         cinkeys = "0{,0},0),0],:,!^F,o,O,e";
         list = true;
-        listchars = "lead:.,trail:+,tab:>-";
+        listchars = "trail:+,tab:>-";
         cursorline = true;
         wrap = false;
         termguicolors = true;
