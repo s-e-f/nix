@@ -122,7 +122,7 @@ in
       enable = true;
       goBin = ".local/bin.go";
     };
-
+    fd.enable = true;
     awscli = {
       enable = true;
     };
@@ -228,6 +228,10 @@ in
             hover.enabled = true;
           };
         };
+        notify = {
+          enable = true;
+          fps = 144;
+        };
         telescope = {
           enable = true;
           extensions = {
@@ -299,6 +303,9 @@ in
           };
         };
         lsp-format.enable = true;
+        cmp-vsnip.enable = true;
+        cmp_luasnip.enable = true;
+        cmp-spell.enable = true;
         none-ls = {
           enable = true;
           enableLspFormat = true;
