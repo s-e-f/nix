@@ -203,11 +203,42 @@ in
         cursorline = true;
         wrap = false;
         termguicolors = true;
+        completeopt = "menu,menuone,noselect";
       };
       keymaps = [
         {
           action = ":bd<CR>";
           key = "<leader>x";
+        }
+        {
+          action.__raw = ''
+            function()
+              local ls = require "luasnip"
+              if ls.expand_or_jumpable() then
+                  ls.expand_or_jump()
+              end
+            end
+          '';
+          key = "<C-k>";
+          options = {
+            silent = true;
+          };
+          mode = [ "i" "s" ];
+        }
+        {
+          action.__raw = ''
+            function()
+                local ls = require "luasnip"
+                if ls.jumpable(-1) then
+                    ls.jump(-1)
+                end
+            end
+          '';
+          key = "<C-j>";
+          options = {
+            silent = true;
+          };
+          mode = [ "i" "s" ];
         }
       ];
       plugins = {
@@ -270,6 +301,10 @@ in
           };
         };
         lualine.enable = true;
+        lspkind = {
+          enable = true;
+          cmp.enable = true;
+        };
         lsp = {
           enable = true;
           keymaps = {
@@ -303,9 +338,7 @@ in
           };
         };
         lsp-format.enable = true;
-        cmp-vsnip.enable = true;
         cmp_luasnip.enable = true;
-        cmp-spell.enable = true;
         none-ls = {
           enable = true;
           enableLspFormat = true;
@@ -314,8 +347,6 @@ in
 
             completion = {
               luasnip.enable = true;
-              spell.enable = true;
-              vsnip.enable = true;
             };
 
             diagnostics = {
@@ -356,18 +387,15 @@ in
           settings = {
             snippet.expand = "function(args) require('luasnip').lsp_expand(args.body) end";
             sources = [
-              { name = "path"; }
               { name = "nvim_lsp"; }
-              { name = "cmp_tabby"; }
-              { name = "luasnip"; }
-              { name = "neorg"; }
+              { name = "path"; }
+              { name = "buffer"; }
             ];
             mapping = {
               "<C-n>" = "cmp.mapping.select_next_item()";
               "<C-p>" = "cmp.mapping.select_prev_item()";
               "<C-e>" = "cmp.mapping.abort()";
-              "<C-Space>" = "cmp.mapping.complete()";
-              "<CR>" = "cmp.mapping.confirm({ select = false })";
+              "<C-y>" = "cmp.mapping(cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Insert, select = true }, { \"i\", \"c\" })";
             };
             window = {
               completion = {
