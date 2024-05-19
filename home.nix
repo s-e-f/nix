@@ -17,7 +17,7 @@ in
     homeDirectory = "/home/sef";
     packages = with pkgs; [
       neofetch
-      surrealdb
+      turso-cli
       nix-prefetch-github
       dos2unix
       dotnet-sdk_8
