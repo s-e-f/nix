@@ -18,10 +18,10 @@ in
     packages = with pkgs; [
       neofetch
       turso-cli
+      sqld
       nix-prefetch-github
       dos2unix
       dotnet-sdk_8
-      nodejs_22
       flyctl
       gnumake
       zip
@@ -29,7 +29,11 @@ in
       delve
       gleam
       erlang
+      rebar3
       zig
+      bun
+      deno
+      nodejs_22
     ];
     sessionVariables = {
       EDITOR = "nvim";
