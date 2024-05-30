@@ -21,19 +21,19 @@ in
       sqld
       nix-prefetch-github
       dos2unix
-      dotnet-sdk_8
+      dotnetCorePackages.sdk_9_0
       flyctl
       gnumake
       zip
       tlrc
       delve
-      gleam
       erlang
       rebar3
       zig
       bun
       deno
       nodejs_22
+      surrealdb
     ];
     sessionVariables = {
       EDITOR = "nvim";
@@ -144,6 +144,9 @@ in
       syntaxHighlighting.enable = true;
       initExtraFirst = ''
         export WINDOWS_USER=$(cmd.exe /c echo %USERNAME% 2>/dev/null | dos2unix)
+      '';
+      initExtra = ''
+        export PATH="$PATH:/home/sef/.cargo/bin"
       '';
       shellAliases = {
         npg = "nix-prefetch-github --nix";
@@ -281,25 +284,19 @@ in
           };
           keymaps = {
             "<leader>ff" = {
-              action = "find_files, {}";
-              options = {
-                desc = "Find files";
-              };
+              action = "find_files";
+              options.desc = "Find files";
             };
             "<leader>fb" = {
-              action = "buffers, {}";
-              options = {
-                desc = "Find buffers";
-              };
+              action = "buffers";
+              options.desc = "Find buffers";
             };
             "<leader>fd" = {
-              action = "diagnostics, {}";
-              options = {
-                desc = "Find diagnostics";
-              };
+              action = "diagnostics";
+              options.desc = "Find diagnostics";
             };
             "<leader>fg" = {
-              action = "live_grep, {}";
+              action = "live_grep";
               options.desc = "Live grep";
             };
           };
@@ -324,12 +321,28 @@ in
               gi = "implementation";
               gt = "type_definition";
               "<leader>lc" = "code_action";
+              "<leader>lr" = "rename";
             };
           };
           servers = {
             zls.enable = true;
-            gleam.enable = true;
+            gleam =
+              {
+                enable = true;
+                package = null; # gleam is installed manually from source
+              };
             tsserver.enable = true;
+            eslint = {
+              enable = true;
+              onAttach = {
+                function = ''
+                  vim.api.nvim_create_autocmd("BufWritePre", {
+                    buffer = bufnr,
+                    command = "EslintFixAll",
+                  })
+                '';
+              };
+            };
             astro.enable = true;
             nixd.enable = true;
             omnisharp.enable = true;
@@ -341,7 +354,15 @@ in
             gopls.enable = true;
           };
         };
-        lsp-format.enable = true;
+        lsp-format = {
+          enable = true;
+          setup = {
+            javascript.exclude = [ "tsserver" ];
+            javascriptreact.exclude = [ "tsserver" ];
+            typescript.exclude = [ "tsserver" ];
+            typescriptreact.exclude = [ "tsserver" ];
+          };
+        };
         cmp_luasnip.enable = true;
         none-ls = {
           enable = true;
@@ -371,15 +392,9 @@ in
             };
 
             formatting = {
-              cbfmt.enable = true;
-              csharpier.enable = true;
               markdownlint.enable = true;
               gofumpt.enable = true;
               nixpkgs_fmt.enable = true;
-              prettier = {
-                enable = true;
-                disableTsServerFormatter = true;
-              };
               sqlfluff.enable = true;
               stylua.enable = true;
               tidy.enable = true;
