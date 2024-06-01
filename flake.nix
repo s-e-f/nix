@@ -37,6 +37,8 @@
 
               ./wsl.nix
 
+              ./dotnet-ascii-fix.nix
+
               home-manager.nixosModules.home-manager
               {
                 home-manager = {
