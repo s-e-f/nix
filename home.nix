@@ -38,9 +38,9 @@ in
     sessionVariables = {
       EDITOR = "nvim";
     };
-    file.".ssh/allowed_signers".text = ''
-      ${email} ${public_key}
-    '';
+    # file.".ssh/allowed_signers".text = ''
+    #   ${email} ${public_key}
+    # '';
     file.".config/zellij/config.kdl".text = builtins.readFile ./config.kdl;
   };
 
