@@ -101,11 +101,13 @@ in
         };
       };
       extraConfig = {
+        core.sshCommand = "ssh.exe";
         commit.gpgsign = true;
         diff.colorMoved = "default";
         gpg = {
           format = "ssh";
           ssh.allowedSignersFile = "~/.ssh/allowed_signers";
+          ssh.program = "op-ssh-sign-wsl";
         };
         init.defaultBranch = "main";
         include.path = "/home/sef/themes/cyberdream.nvim/extras/cyberdream.gitconfig";
@@ -134,9 +136,6 @@ in
       enable = true;
       oh-my-zsh = {
         enable = true;
-        plugins = [
-          "ssh-agent"
-        ];
       };
       enableCompletion = true;
       enableVteIntegration = true;
@@ -152,7 +151,6 @@ in
         npg = "nix-prefetch-github --nix";
         cat = "bat";
         cd = "z";
-        op = "/mnt/c/Users/$WINDOWS_USER/AppData/Local/Microsoft/WinGet/Links/op.exe";
         v = "nvim";
         vi = "nvim";
         vim = "nvim";
@@ -252,6 +250,7 @@ in
         treesitter.enable = true;
         oil.enable = true;
         luasnip.enable = true;
+        surround.enable = true;
         autoclose.enable = true;
         trouble.enable = true;
         gitsigns.enable = true;
