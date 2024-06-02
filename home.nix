@@ -34,6 +34,7 @@ in
       deno
       nodejs_22
       surrealdb
+      gleam
     ];
     sessionVariables = {
       EDITOR = "nvim";
@@ -328,11 +329,7 @@ in
           };
           servers = {
             zls.enable = true;
-            gleam =
-              {
-                enable = true;
-                package = null; # gleam is installed manually from source
-              };
+            gleam.enable = true;
             tsserver.enable = true;
             eslint = {
               enable = true;
