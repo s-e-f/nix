@@ -122,6 +122,8 @@ in
       };
       aliases = {
         st = "status -sb";
+        prbi = "pull --rebase=interactive";
+        prb = "pull --rebase";
       };
     };
     go = {
@@ -188,6 +190,7 @@ in
       opts = {
         number = true;
         relativenumber = true;
+        clipboard = "unnamedplus";
         updatetime = 100;
         fileencoding = "utf-8";
         scrolloff = 10;
