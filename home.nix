@@ -262,21 +262,6 @@ in
         autoclose.enable = true;
         trouble.enable = true;
         gitsigns.enable = true;
-        noice = {
-          enable = true;
-          lsp = {
-            override = {
-              "vim.lsp.util.convert_input_to_markdown_lines" = true;
-              "vim.lsp.util.stylize_markdown" = true;
-              "cmp.entry.get_documentation" = true;
-            };
-            hover.enabled = true;
-          };
-        };
-        notify = {
-          enable = true;
-          fps = 144;
-        };
         telescope = {
           enable = true;
           extensions = {
