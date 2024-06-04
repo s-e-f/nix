@@ -216,6 +216,10 @@ in
       };
       keymaps = [
         {
+          action = ":Oil<CR>";
+          key = "-";
+        }
+        {
           action = ":bd<CR>";
           key = "<leader>x";
         }
