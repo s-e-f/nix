@@ -169,7 +169,12 @@ in
     };
     nixvim = {
       enable = true;
-      colorschemes.cyberdream.enable = true;
+      colorschemes.cyberdream = {
+        enable = true;
+        settings = {
+          transparent = true;
+        };
+      };
       globals = {
         mapleader = " ";
       };
@@ -213,6 +218,7 @@ in
         wrap = false;
         termguicolors = true;
         completeopt = "menu,menuone,noselect";
+        conceallevel = 2;
       };
       keymaps = [
         {
@@ -262,6 +268,23 @@ in
         autoclose.enable = true;
         trouble.enable = true;
         gitsigns.enable = true;
+        obsidian = {
+          enable = true;
+          settings = {
+            # TODO: I guess its time to start looking into multi-system nix config...
+            #       The below paths are for my desktop
+            workspaces = [
+              {
+                name = "Personal";
+                path = "/mnt/c/Users/sef/Documents/obsidian-vaults/Personal";
+              }
+              {
+                name = "BoyaWave";
+                path = "/mnt/c/Users/sef/Documents/obsidian-vaults/BoyaWave";
+              }
+            ];
+          };
+        };
         telescope = {
           enable = true;
           extensions = {
