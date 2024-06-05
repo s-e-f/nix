@@ -39,9 +39,6 @@ in
     sessionVariables = {
       EDITOR = "nvim";
     };
-    # file.".ssh/allowed_signers".text = ''
-    #   ${email} ${public_key}
-    # '';
     file.".config/zellij/config.kdl".text = builtins.readFile ./config.kdl;
   };
 
@@ -54,8 +51,8 @@ in
           src = pkgs.fetchFromGitHub {
             owner = "scottmckendry";
             repo = "cyberdream.nvim";
-            rev = "c3eff4c5df805bb9451129151509d5624295f416";
-            hash = "sha256-VgTGXRoiCmvXjr/9d5YTouvYH7ItISAgSzdxMCO/3jA=";
+            rev = "90150e2966ddbe9f74465960efde4ee5dba6d9a4";
+            hash = "sha256-l0MOiwcdKYN/0vzYa5rQ39Q+6uh9ecbV2TJpXivVoEs=";
           };
           file = "extras/textmate/cyberdream.tmTheme";
         };
@@ -64,7 +61,6 @@ in
         theme = "cyberdream";
       };
     };
-    thefuck.enable = true;
     fzf = {
       enable = true;
       enableZshIntegration = true;
@@ -144,9 +140,6 @@ in
       enableVteIntegration = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
-      initExtraFirst = ''
-        export WINDOWS_USER=$(cmd.exe /c echo %USERNAME% 2>/dev/null | dos2unix)
-      '';
       initExtra = ''
         export PATH="$PATH:/home/sef/.cargo/bin"
       '';
@@ -176,18 +169,25 @@ in
     };
     nixvim = {
       enable = true;
-      colorschemes.cyberdream = {
-        enable = true;
-        settings = {
-          transparent = true;
-        };
-      };
-      extraConfigLua = ''
-        vim.api.nvim_set_hl(0, 'CursorLine', { underline = true })
-      '';
+      colorschemes.cyberdream.enable = true;
       globals = {
         mapleader = " ";
       };
+      autoCmd = [
+        {
+          event = [ "BufEnter" ];
+          pattern = [ "*.lua" "*.nix" "*.js" "*.ts" "*.gleam" "*.csproj" "*.xml" "*.json" ];
+          callback = {
+            __raw = ''
+              function()
+                vim.opt.shiftwidth = 2
+                vim.opt.tabstop = 2
+                vim.opt.softtabstop = 2
+              end
+            '';
+          };
+        }
+      ];
       opts = {
         number = true;
         relativenumber = true;
