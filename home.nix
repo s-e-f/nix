@@ -247,10 +247,10 @@ in
         {
           action.__raw = ''
             function()
-                local ls = require "luasnip"
-                if ls.jumpable(-1) then
-                    ls.jump(-1)
-                end
+              local ls = require "luasnip"
+              if ls.jumpable(-1) then
+                  ls.jump(-1)
+              end
             end
           '';
           key = "<C-j>";
@@ -302,6 +302,14 @@ in
               action = "find_files";
               options.desc = "Find files";
             };
+            "gD" = {
+              action = "lsp_references";
+              options.desc = "Find references";
+            };
+            "<leader>fa" = {
+              action = "git_files";
+              options.desc = "Find tracked files";
+            };
             "<leader>fb" = {
               action = "buffers";
               options.desc = "Find buffers";
@@ -331,7 +339,8 @@ in
             };
             lspBuf = {
               K = "hover";
-              gD = "references";
+              # gD is bound through Telescope
+              # gD = "references";
               gd = "definition";
               gi = "implementation";
               gt = "type_definition";
