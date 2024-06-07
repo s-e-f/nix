@@ -4,6 +4,8 @@
 , config
 , ...
 }: {
+  time.timeZone = "Europe/Amsterdam";
+
   programs.nix-ld = {
     enable = true;
     libraries = [ ];

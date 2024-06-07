@@ -1,6 +1,7 @@
 { config
 , pkgs
 , args
+, obsidian_vaults
 , ...
 }:
 let
@@ -271,16 +272,10 @@ in
         obsidian = {
           enable = true;
           settings = {
-            # TODO: I guess its time to start looking into multi-system nix config...
-            #       The below paths are for my desktop
             workspaces = [
               {
-                name = "Personal";
-                path = "/mnt/c/Users/sef/Documents/obsidian-vaults/Personal";
-              }
-              {
-                name = "BoyaWave";
-                path = "/mnt/c/Users/sef/Documents/obsidian-vaults/BoyaWave";
+                name = "Workspace";
+                path = "${obsidian_vaults}";
               }
             ];
           };
