@@ -22,20 +22,12 @@ in
       sqld
       nix-prefetch-github
       dos2unix
-      dotnetCorePackages.sdk_9_0
       flyctl
-      gnumake
       zip
       tlrc
-      delve
       erlang
       rebar3
-      zig
-      bun
-      deno
-      nodejs_22
       surrealdb
-      gleam
     ];
     sessionVariables = {
       EDITOR = "nvim";
@@ -45,6 +37,11 @@ in
 
   programs = {
     home-manager.enable = true;
+    direnv = {
+      enable = true;
+      enableZshIntegration = true;
+      nix-direnv.enable = true;
+    };
     bat = {
       enable = true;
       themes = {
@@ -123,10 +120,6 @@ in
         prbi = "pull --rebase=interactive";
         prb = "pull --rebase";
       };
-    };
-    go = {
-      enable = true;
-      goBin = ".local/bin.go";
     };
     fd.enable = true;
     awscli = {
