@@ -340,17 +340,7 @@ in
             zls.enable = true;
             gleam.enable = true;
             tsserver.enable = true;
-            eslint = {
-              enable = true;
-              onAttach = {
-                function = ''
-                  vim.api.nvim_create_autocmd("BufWritePre", {
-                    buffer = bufnr,
-                    command = "EslintFixAll",
-                  })
-                '';
-              };
-            };
+            eslint.enable = true;
             astro.enable = true;
             nixd.enable = true;
             omnisharp.enable = true;
@@ -401,6 +391,10 @@ in
 
             formatting = {
               markdownlint.enable = true;
+              prettier = {
+                enable = true;
+                disableTsServerFormatter = true;
+              };
               gofumpt.enable = true;
               nixpkgs_fmt.enable = true;
               sqlfluff.enable = true;
