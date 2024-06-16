@@ -1,7 +1,6 @@
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
 # https://github.com/nix-community/NixOS-WSL
 { pkgs
-, config
 , ...
 }: {
   time.timeZone = "Europe/Amsterdam";
@@ -28,6 +27,10 @@
     startMenuLaunchers = true;
     #docker-desktop.enable = true;
   };
+
+  security.pki.certificates = [
+    (builtins.readFile ./dev.pem)
+  ];
 
   virtualisation.docker.enable = true;
 
