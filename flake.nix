@@ -9,7 +9,7 @@
     };
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -37,8 +37,6 @@
 
               ./wsl.nix
 
-              ./dotnet-ascii-fix.nix
-
               home-manager.nixosModules.home-manager
               {
                 home-manager = {
@@ -65,8 +63,6 @@
               }
 
               ./wsl.nix
-
-              ./dotnet-ascii-fix.nix
 
               home-manager.nixosModules.home-manager
               {
