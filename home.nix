@@ -186,6 +186,11 @@ in
             '';
           };
         }
+        {
+          event = [ "BufWritePre" ];
+          pattern = [ "*.ts" "*.js" "*.tsx" "*.jsx" ];
+          command = "EslintFixAll";
+        }
       ];
       opts = {
         number = true;
@@ -354,12 +359,7 @@ in
         };
         lsp-format = {
           enable = true;
-          setup = {
-            javascript.exclude = [ "tsserver" ];
-            javascriptreact.exclude = [ "tsserver" ];
-            typescript.exclude = [ "tsserver" ];
-            typescriptreact.exclude = [ "tsserver" ];
-          };
+          lspServersToEnable = [ ];
         };
         cmp_luasnip.enable = true;
         none-ls = {
@@ -391,10 +391,6 @@ in
 
             formatting = {
               markdownlint.enable = true;
-              prettier = {
-                enable = true;
-                disableTsServerFormatter = true;
-              };
               gofumpt.enable = true;
               nixpkgs_fmt.enable = true;
               sqlfluff.enable = true;
