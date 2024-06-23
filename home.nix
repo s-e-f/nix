@@ -28,6 +28,7 @@ in
       erlang
       rebar3
       surrealdb
+      git-lfs
     ];
     sessionVariables = {
       EDITOR = "nvim";
@@ -360,7 +361,7 @@ in
         };
         lsp-format = {
           enable = true;
-          lspServersToEnable = [ ];
+          lspServersToEnable = [ "astro" ];
         };
         cmp_luasnip.enable = true;
         none-ls = {
