@@ -266,6 +266,7 @@ in
         surround.enable = true;
         autoclose.enable = true;
         trouble.enable = true;
+        ts-autotag.enable = true;
         gitsigns.enable = true;
         obsidian = {
           enable = true;
