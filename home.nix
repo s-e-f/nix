@@ -190,7 +190,15 @@ in
         {
           event = [ "BufWritePre" ];
           pattern = [ "*.ts" "*.js" "*.tsx" "*.jsx" ];
-          command = "EslintFixAll";
+          callback = {
+            __raw = ''
+              function()
+                if vim.fn.exists(':EslintFixAll') > 0 then
+                  vim.cmd('EslintFixAll')
+                end
+              end
+            '';
+          };
         }
       ];
       opts = {
@@ -357,6 +365,7 @@ in
               installCargo = false;
             };
             gopls.enable = true;
+            biome.enable = true;
           };
         };
         lsp-format = {
@@ -398,6 +407,7 @@ in
               sqlfluff.enable = true;
               stylua.enable = true;
               tidy.enable = true;
+              biome.enable = true;
             };
           };
         };
