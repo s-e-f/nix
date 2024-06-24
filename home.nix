@@ -176,7 +176,7 @@ in
       autoCmd = [
         {
           event = [ "BufEnter" ];
-          pattern = [ "*.lua" "*.nix" "*.js" "*.ts" "*.gleam" "*.csproj" "*.xml" "*.json" "*.yaml" "*.yml" ];
+          pattern = [ "*.lua" "*.nix" "*.astro" "*.gleam" "*.csproj" "*.xml" "*.json" "*.yaml" "*.yml" ];
           callback = {
             __raw = ''
               function()
