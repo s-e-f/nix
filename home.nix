@@ -370,47 +370,9 @@ in
         };
         lsp-format = {
           enable = true;
-          lspServersToEnable = [ "astro" ];
+          lspServersToEnable = [ "astro" "biome" ];
         };
         cmp_luasnip.enable = true;
-        none-ls = {
-          enable = true;
-          enableLspFormat = true;
-          sources = {
-            code_actions = { };
-
-            completion = {
-              luasnip.enable = true;
-            };
-
-            diagnostics = {
-              actionlint.enable = true;
-              ansiblelint.enable = true;
-              checkmake.enable = true;
-              deadnix.enable = true;
-              dotenv_linter.enable = true;
-              golangci_lint.enable = true;
-              hadolint.enable = true;
-              proselint.enable = true;
-              selene.enable = true;
-              sqlfluff.enable = true;
-              statix.enable = true;
-              stylelint.enable = true;
-              tidy.enable = true;
-              yamllint.enable = true;
-            };
-
-            formatting = {
-              markdownlint.enable = true;
-              gofumpt.enable = true;
-              nixpkgs_fmt.enable = true;
-              sqlfluff.enable = true;
-              stylua.enable = true;
-              tidy.enable = true;
-              biome.enable = true;
-            };
-          };
-        };
         cmp = {
           enable = true;
           settings = {
