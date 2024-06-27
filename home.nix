@@ -32,6 +32,7 @@ in
     ];
     sessionVariables = {
       EDITOR = "nvim";
+      MSBUILDTERMINALLOGGER = "auto";
     };
     file.".config/zellij/config.kdl".text = builtins.readFile ./config.kdl;
   };
