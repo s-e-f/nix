@@ -355,7 +355,14 @@ in
           servers = {
             zls.enable = true;
             gleam.enable = true;
-            tsserver.enable = true;
+            tsserver = {
+              enable = true;
+              settings = {
+                completions = {
+                  completeFunctionCalls = true;
+                };
+              };
+            };
             eslint.enable = true;
             astro.enable = true;
             nixd.enable = true;
