@@ -371,7 +371,7 @@ in
         };
         lsp-format = {
           enable = true;
-          lspServersToEnable = [ "astro" "biome" ];
+          lspServersToEnable = [ "astro" "biome" "omnisharp" ];
         };
         cmp_luasnip.enable = true;
         cmp = {
