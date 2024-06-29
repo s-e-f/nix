@@ -196,6 +196,8 @@ in
               function()
                 if vim.fn.exists(':EslintFixAll') > 0 then
                   vim.cmd('EslintFixAll')
+                else
+                  vim.lsp.buf.format()
                 end
               end
             '';
@@ -375,10 +377,6 @@ in
             gopls.enable = true;
             biome.enable = true;
           };
-        };
-        lsp-format = {
-          enable = true;
-          lspServersToEnable = [ "astro" "biome" "omnisharp" ];
         };
         cmp-nvim-lsp.enable = true;
         cmp-nvim-lsp-document-symbol.enable = true;
