@@ -29,6 +29,7 @@ in
       rebar3
       surrealdb
       git-lfs
+      usql
     ];
     sessionVariables = {
       EDITOR = "nvim";
