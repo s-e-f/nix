@@ -28,7 +28,6 @@ in
       erlang
       rebar3
       surrealdb
-      git-lfs
       usql
     ];
     sessionVariables = {
@@ -89,6 +88,7 @@ in
     };
     git = {
       enable = true;
+      lfs.enable = true;
       userEmail = email;
       userName = "Sef";
       delta = {
