@@ -1,7 +1,4 @@
-{ config
-, pkgs
-, args
-, obsidian_vaults
+{ pkgs
 , ...
 }:
 let
@@ -9,10 +6,6 @@ let
   email = "39380372+s-e-f@users.noreply.github.com";
 in
 {
-  imports = [
-    args.nixvim.homeManagerModules.nixvim
-  ];
-
   home = {
     username = "sef";
     homeDirectory = "/home/sef";
@@ -29,16 +22,34 @@ in
       rebar3
       surrealdb
       usql
+      lua-language-server
+      nil
+      zig # Used as the c compiler for neovim
+      tree-sitter
+
+      # Required to compile fzf-native for nvim
+      gnumake
+      gcc
     ];
     sessionVariables = {
       EDITOR = "nvim";
       MSBUILDTERMINALLOGGER = "auto";
+      NIL_PATH = "${pkgs.nil}/bin/nil";
     };
     file.".config/zellij/config.kdl".text = builtins.readFile ./zellij/config.kdl;
+    file.".config/nvim" = {
+      source = ./nvim;
+      recursive = true;
+    };
   };
 
   programs = {
     home-manager.enable = true;
+    neovim = {
+      enable = true;
+      viAlias = true;
+      vimAlias = true;
+    };
     direnv = {
       enable = true;
       enableZshIntegration = true;
@@ -162,258 +173,6 @@ in
         right_format = "$all";
         character.success_symbol = "[](bold green)";
         character.error_symbol = "[](bold red)";
-      };
-    };
-    nixvim = {
-      enable = true;
-      colorschemes.cyberdream = {
-        enable = true;
-        settings = {
-          transparent = true;
-        };
-      };
-      globals = {
-        mapleader = " ";
-      };
-      autoCmd = [
-        {
-          event = [ "BufEnter" ];
-          pattern = [ "*.lua" "*.nix" "*.astro" "*.gleam" "*.csproj" "*.xml" "*.json" "*.yaml" "*.yml" ];
-          callback = {
-            __raw = ''
-              function()
-                vim.opt.shiftwidth = 2
-                vim.opt.tabstop = 2
-                vim.opt.softtabstop = 2
-              end
-            '';
-          };
-        }
-        {
-          event = [ "BufWritePre" ];
-          pattern = [ "*.ts" "*.js" "*.tsx" "*.jsx" ];
-          callback = {
-            __raw = ''
-              function()
-                if vim.fn.exists(':EslintFixAll') > 0 then
-                  vim.cmd('EslintFixAll')
-                else
-                  vim.lsp.buf.format()
-                end
-              end
-            '';
-          };
-        }
-      ];
-      opts = {
-        number = true;
-        relativenumber = true;
-        clipboard = "unnamedplus";
-        updatetime = 100;
-        fileencoding = "utf-8";
-        scrolloff = 10;
-        signcolumn = "yes";
-        ignorecase = true;
-        smartcase = true;
-        tabstop = 4;
-        shiftwidth = 4;
-        softtabstop = 4;
-        expandtab = true;
-        smartindent = true;
-        autoindent = true;
-        smarttab = true;
-        cindent = true;
-        cinkeys = "0{,0},0),0],:,!^F,o,O,e";
-        list = true;
-        listchars = "trail:+,tab:>-";
-        cursorline = true;
-        wrap = false;
-        termguicolors = true;
-        completeopt = "menu,menuone,noselect";
-        conceallevel = 2;
-      };
-      keymaps = [
-        {
-          action = ":Oil<CR>";
-          key = "-";
-        }
-        {
-          action = ":bd<CR>";
-          key = "<leader>x";
-        }
-        {
-          action.__raw = ''
-            function()
-              local ls = require "luasnip"
-              if ls.expand_or_jumpable() then
-                  ls.expand_or_jump()
-              end
-            end
-          '';
-          key = "<C-k>";
-          options = {
-            silent = true;
-          };
-          mode = [ "i" "s" ];
-        }
-        {
-          action.__raw = ''
-            function()
-              local ls = require "luasnip"
-              if ls.jumpable(-1) then
-                  ls.jump(-1)
-              end
-            end
-          '';
-          key = "<C-j>";
-          options = {
-            silent = true;
-          };
-          mode = [ "i" "s" ];
-        }
-      ];
-      plugins = {
-        treesitter.enable = true;
-        oil.enable = true;
-        luasnip.enable = true;
-        surround.enable = true;
-        autoclose.enable = true;
-        trouble.enable = true;
-        ts-autotag.enable = true;
-        gitsigns.enable = true;
-        obsidian = {
-          enable = true;
-          settings = {
-            workspaces = [
-              {
-                name = "Workspace";
-                path = "${obsidian_vaults}";
-              }
-            ];
-          };
-        };
-        telescope = {
-          enable = true;
-          extensions = {
-            fzf-native.enable = true;
-          };
-          settings = {
-            defaults = {
-              file_ignore_patterns = [
-                "node_modules"
-              ];
-            };
-          };
-          keymaps = {
-            "<leader>ff" = {
-              action = "find_files";
-              options.desc = "Find files";
-            };
-            "gD" = {
-              action = "lsp_references";
-              options.desc = "Find references";
-            };
-            "<leader>fa" = {
-              action = "git_files";
-              options.desc = "Find tracked files";
-            };
-            "<leader>fb" = {
-              action = "buffers";
-              options.desc = "Find buffers";
-            };
-            "<leader>fd" = {
-              action = "diagnostics";
-              options.desc = "Find diagnostics";
-            };
-            "<leader>fg" = {
-              action = "live_grep";
-              options.desc = "Live grep";
-            };
-          };
-        };
-        lualine.enable = true;
-        lspkind = {
-          enable = true;
-          cmp.enable = true;
-        };
-        lsp = {
-          enable = true;
-          keymaps = {
-            diagnostic = {
-              "<leader>j" = "goto_next";
-              "<leader>k" = "goto_prev";
-              "<leader>le" = "open_float";
-            };
-            lspBuf = {
-              K = "hover";
-              # gD is bound through Telescope
-              # gD = "references";
-              gd = "definition";
-              gi = "implementation";
-              gt = "type_definition";
-              "<leader>lc" = "code_action";
-              "<leader>lr" = "rename";
-            };
-          };
-          servers = {
-            zls.enable = true;
-            gleam.enable = true;
-            tsserver = {
-              enable = true;
-              settings = {
-                completions = {
-                  completeFunctionCalls = true;
-                };
-              };
-            };
-            eslint.enable = true;
-            astro.enable = true;
-            nixd.enable = true;
-            omnisharp.enable = true;
-            rust-analyzer = {
-              enable = true;
-              installRustc = false;
-              installCargo = false;
-            };
-            gopls.enable = true;
-            biome.enable = true;
-          };
-        };
-        cmp-nvim-lsp.enable = true;
-        cmp-nvim-lsp-document-symbol.enable = true;
-        cmp-nvim-lsp-signature-help.enable = true;
-        cmp_luasnip.enable = true;
-        cmp = {
-          enable = true;
-          settings = {
-            snippet.expand = "function(args) require('luasnip').lsp_expand(args.body) end";
-            sources = [
-              { name = "nvim_lsp"; }
-              { name = "path"; }
-              { name = "buffer"; }
-            ];
-            mapping = {
-              "<C-n>" = "cmp.mapping.select_next_item()";
-              "<C-p>" = "cmp.mapping.select_prev_item()";
-              "<C-e>" = "cmp.mapping.abort()";
-              "<C-y>" = "cmp.mapping(cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Insert, select = true }, { \"i\", \"c\" })";
-            };
-            window = {
-              completion = {
-                __raw = "cmp.config.window.bordered()";
-              };
-              documentation = { __raw = "cmp.config.window.bordered()"; };
-            };
-          };
-        };
-        dap = {
-          enable = true;
-          extensions = {
-            dap-go.enable = true;
-            dap-ui.enable = true;
-            dap-virtual-text.enable = true;
-          };
-        };
       };
     };
   };

@@ -28,10 +28,6 @@
     #docker-desktop.enable = true;
   };
 
-  security.pki.certificates = [
-    (builtins.readFile ./dev.pem)
-  ];
-
   virtualisation.docker.enable = true;
 
   #systemd.services.docker-desktop-proxy = {
