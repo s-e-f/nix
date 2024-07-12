@@ -34,7 +34,7 @@ in
       EDITOR = "nvim";
       MSBUILDTERMINALLOGGER = "auto";
     };
-    file.".config/zellij/config.kdl".text = builtins.readFile ./config.kdl;
+    file.".config/zellij/config.kdl".text = builtins.readFile ./zellij/config.kdl;
   };
 
   programs = {
