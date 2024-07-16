@@ -57,20 +57,16 @@ in
     };
     bat = {
       enable = true;
-      themes = {
-        cyberdream = {
-          src = pkgs.fetchFromGitHub {
-            owner = "scottmckendry";
-            repo = "cyberdream.nvim";
-            rev = "90150e2966ddbe9f74465960efde4ee5dba6d9a4";
-            hash = "sha256-l0MOiwcdKYN/0vzYa5rQ39Q+6uh9ecbV2TJpXivVoEs=";
-          };
-          file = "extras/textmate/cyberdream.tmTheme";
+      themes.kanagawa = {
+        src = pkgs.fetchFromGitHub {
+          owner = "rebelot";
+          repo = "kanagawa.nvim";
+          rev = "e5f7b8a804360f0a48e40d0083a97193ee4fcc87";
+          hash = "sha256-FnwqqF/jtCgfmjIIR70xx8kL5oAqonrbDEGNw0sixoA=";
         };
+        file = "extras/kanagawa.tmTheme";
       };
-      config = {
-        theme = "cyberdream";
-      };
+      config.theme = "kanagawa";
     };
     fzf = {
       enable = true;
@@ -105,7 +101,7 @@ in
       delta = {
         enable = true;
         options = {
-          features = "cyberdream";
+          features = "kanagawa";
           "side-by-side" = true;
         };
       };
@@ -119,7 +115,6 @@ in
           ssh.program = "op-ssh-sign-wsl";
         };
         init.defaultBranch = "main";
-        include.path = "/home/sef/themes/cyberdream.nvim/extras/cyberdream.gitconfig";
         log.showSignature = true;
         merge.conflictstyle = "diff3";
         tag.gpgsign = true;
@@ -128,6 +123,7 @@ in
           showUntrackedFiles = "all";
           relativePaths = false;
         };
+        delta.syntax-theme = "kanagawa";
       };
       aliases = {
         st = "status -sb";
