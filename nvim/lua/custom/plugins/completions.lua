@@ -42,6 +42,13 @@ return {
         },
       })
 
+      cmp.setup.filetype({ "sql" }, {
+        sources = {
+          { name = "vim-dadbod-completion" },
+          { name = "buffer" },
+        }
+      })
+
       local luasnip = require('luasnip')
       luasnip.config.set_config({
         history = false,

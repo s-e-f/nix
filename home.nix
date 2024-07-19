@@ -30,6 +30,9 @@ in
       # Required to compile fzf-native for nvim
       gnumake
       gcc
+
+      # SQL Server
+      sqlcmd
     ];
     sessionVariables = {
       EDITOR = "nvim";
