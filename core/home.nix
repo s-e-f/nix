@@ -48,6 +48,14 @@ in
 
   programs = {
     home-manager.enable = true;
+    ssh = {
+      enable = true;
+      matchBlocks."*" = {
+        extraOptions = {
+          IdentityAgent = "~/.1password/agent.sock";
+        };
+      };
+    };
     neovim = {
       enable = true;
       viAlias = true;
@@ -109,13 +117,13 @@ in
         };
       };
       extraConfig = {
-        core.sshCommand = "ssh.exe";
+        core.sshCommand = "ssh";
         commit.gpgsign = true;
         diff.colorMoved = "default";
         gpg = {
           format = "ssh";
           ssh.allowedSignersFile = "~/.ssh/allowed_signers";
-          ssh.program = "op-ssh-sign-wsl";
+          ssh.program = "${pkgs._1password-gui}/bin/op-ssh-sign";
         };
         init.defaultBranch = "main";
         log.showSignature = true;

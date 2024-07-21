@@ -5,8 +5,6 @@ vim.opt.relativenumber = true
 
 vim.opt.showmode = false
 
-vim.opt.clipboard = 'unnamedplus'
-
 vim.opt.breakindent = true
 
 vim.opt.undofile = true

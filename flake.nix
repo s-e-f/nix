@@ -7,26 +7,30 @@
       url = "github:nix-community/NixOS-WSL/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # nixvim = {
-    #   url = "github:nix-community/nixvim";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    kanagawa = {
+      type = "github";
+      owner = "s-e-f";
+      repo = "kanagawa.nvim";
+      flake = false;
+    };
+    rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
   };
 
   outputs =
     { nixpkgs
     , nixos-wsl
     , home-manager
+    , kanagawa
     , ...
-    } @ args: {
+    } @ inputs: {
       nixosConfigurations = {
-        desktop = nixpkgs.lib.nixosSystem {
+        wsl = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit args; };
+          specialArgs = { inherit inputs; };
           modules =
             [
               nixos-wsl.nixosModules.default
@@ -35,49 +39,41 @@
                 system.stateVersion = "24.05";
               }
 
-              ./wsl.nix
+              ./wsl/configuration.nix
 
               home-manager.nixosModules.home-manager
               {
                 home-manager = {
                   useGlobalPkgs = true;
                   useUserPackages = true;
-                  users.sef = import ./home.nix;
+                  users.sef = import ./wsl/home.nix;
                   extraSpecialArgs = {
-                    inherit args;
-                    obsidian_vaults = "/mnt/c/Users/sef/Documents/obsidian-vaults";
+                    inherit inputs;
                   };
                 };
               }
             ];
         };
-        laptop = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit args; };
-          modules =
-            [
-              nixos-wsl.nixosModules.default
-              {
-                wsl.enable = true;
-                system.stateVersion = "24.05";
-              }
-
-              ./wsl.nix
+    nixos = nixpkgs.lib.nixosSystem {
+	  system = "x86_64-linux";
+	  specialArgs = { inherit inputs; };
+	  modules =
+	    [
+	      ./nixos/configuration.nix
 
               home-manager.nixosModules.home-manager
               {
                 home-manager = {
                   useGlobalPkgs = true;
                   useUserPackages = true;
-                  users.sef = import ./home.nix;
+                  users.sef = import ./nixos/home.nix;
                   extraSpecialArgs = {
-                    inherit args;
-                    obsidian_vaults = "/mnt/c/Users/SeverinFitriyadi/Documents/obsidian-vaults";
+                    inherit inputs;
                   };
                 };
               }
-            ];
-        };
+	    ];
+	};
       };
     };
 }
