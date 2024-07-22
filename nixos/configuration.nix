@@ -24,8 +24,16 @@
       wl-clipboard
       inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
       rose-pine-cursor
+      lxqt.lxqt-policykit
     ];
   };
+
+  security.polkit.enable = true;
+  programs.gnupg.agent.enable = true;
+  security.pam.services."1password".enableGnomeKeyring = true;
+  security.pam.services.login.enableGnomeKeyring = true;
+
+  services.gnome.gnome-keyring.enable = true;
 
   boot = {
     loader = {
@@ -60,16 +68,28 @@
   services = {
     printing.enable = true;
     hypridle.enable = true;
+    openssh.enable = true;
+  };
+
+  security.rtkit.enable = true;
+
+  services = {
+    fprintd = {
+      enable = true;
+      tod = {
+        enable = true;
+        driver = pkgs.libfprint-2-tod1-goodix-550a;
+      };
+    };
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
   };
 
   hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
 
   users.users.sef = {
     isNormalUser = true;
@@ -78,11 +98,15 @@
   };
 
   programs = {
+    ssh.startAgent = true;
     hyprland.enable = true;
     hyprlock.enable = true;
     waybar.enable = true;
     zsh.enable = true;
-    _1password-gui.enable = true;
+    _1password-gui = {
+      enable = true;
+      polkitPolicyOwners = ["sef"];
+    };
     _1password.enable = true;
     nh = {
       enable = true;
