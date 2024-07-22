@@ -5,7 +5,7 @@
 let
   cursor = {
     package = pkgs.rose-pine-cursor;
-    name = "rose-pine";
+    name = "BreezeX-RosePine-Linux";
     size = 26;
   };
 in {
@@ -37,17 +37,14 @@ in {
   };
 
   gtk = {
-    cursorTheme.package = pkgs.rose-pine-cursor;
-    cursorTheme.name = "rose-pine";
-    cursorTheme.size = 26;
+    enable = true;
+    cursorTheme = {} // cursor;
   };
 
   home = {
     pointerCursor = {
-      package = pkgs.rose-pine-cursor;
-      name = "rose-pine";
-      size = 26;
-    };
+      gtk.enable = true;
+    } // cursor;
   };
 
   home.file.".config/hypr" = {
