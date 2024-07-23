@@ -25,6 +25,11 @@
       inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
       rose-pine-cursor
       lxqt.lxqt-policykit
+      spice
+      spice-gtk
+      spice-protocol
+      win-virtio
+      win-spice
     ];
   };
 
@@ -65,7 +70,20 @@
     };
   };
 
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu = {
+        package = pkgs.qemu_kvm;
+        ovmf.enable = true;
+        swtpm.enable = true;
+      };
+    };
+    spiceUSBRedirection.enable = true;
+  };
+
   services = {
+    spice-vdagentd.enable = true;
     printing.enable = true;
     hypridle.enable = true;
     openssh.enable = true;
@@ -95,7 +113,7 @@
   users.users.sef = {
     isNormalUser = true;
     description = "Sef";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "input" "libvirtd" ];
   };
 
   programs = {
