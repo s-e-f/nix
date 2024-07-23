@@ -90,6 +90,7 @@
   };
 
   hardware.pulseaudio.enable = false;
+  hardware.bluetooth.enable = true;
 
   users.users.sef = {
     isNormalUser = true;
