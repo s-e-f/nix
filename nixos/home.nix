@@ -36,9 +36,28 @@ in {
     firefox.enable = true;
   };
 
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
+  };
+
   gtk = {
     enable = true;
     cursorTheme = {} // cursor;
+    theme = {
+      package = pkgs.kanagawa-gtk-theme;
+      name = "Kanagawa-BL";
+    };
+    iconTheme = {
+      package = pkgs.kanagawa-icon-theme;
+      name = "oomox-Kanagawa";
+    };
+  };
+
+  qt = {
+    enable = true;
+    platformTheme = "gtk";
   };
 
   home = {
