@@ -1,18 +1,21 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: FontAwesome, 'Fira Code NerdFont', Roboto, Helvetica, Arial, sans-serif;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
     font-size: 13px;
     min-height: 0;
 }
 
 window#waybar {
-    background: rgba(24, 22, 22, 0.9);
+    background-color: transparent;
     color: #c5c9c5;
-    border-radius: 4px;
 }
 window#waybar>box {
-    padding: 4px;
+    background: rgba(24, 22, 22, 0.9);
+    border-radius: 0px;
+    padding: 6px;
+    margin: 0px 0px 6px 0px;
+    box-shadow: 0px 0px 2px 1px rgba(26, 26, 26, 238);
 }
 
 tooltip {

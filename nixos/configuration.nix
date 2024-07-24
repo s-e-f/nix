@@ -137,6 +137,7 @@
 
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = ["FiraCode"];})
+    font-awesome
   ];
 
   nixpkgs.config.allowUnfree = true;
