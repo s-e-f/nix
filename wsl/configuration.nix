@@ -1,8 +1,7 @@
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
 # https://github.com/nix-community/NixOS-WSL
-{ pkgs
-, ...
-}: {
+{ pkgs, ... }:
+{
   time.timeZone = "Europe/Amsterdam";
 
   programs.nix-ld = {
@@ -13,7 +12,10 @@
   nixpkgs.config.allowUnfree = true;
 
   nix = {
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
 
   wsl = {
@@ -36,9 +38,7 @@
   #'';
   #};
 
-  environment.systemPackages = with pkgs; [
-    wget
-  ];
+  environment.systemPackages = with pkgs; [ wget ];
 
   programs = {
     zsh = {
@@ -56,6 +56,10 @@
   users.users.sef = {
     isNormalUser = true;
     description = "Sef";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+    ];
   };
 }

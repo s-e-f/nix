@@ -1,14 +1,19 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [
-      /etc/nixos/hardware-configuration.nix
-    ];
+  imports = [ /etc/nixos/hardware-configuration.nix ];
 
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
     };
   };
 
@@ -113,7 +118,12 @@
   users.users.sef = {
     isNormalUser = true;
     description = "Sef";
-    extraGroups = [ "networkmanager" "wheel" "input" "libvirtd" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "input"
+      "libvirtd"
+    ];
   };
 
   programs = {
@@ -124,7 +134,7 @@
     zsh.enable = true;
     _1password-gui = {
       enable = true;
-      polkitPolicyOwners = ["sef"];
+      polkitPolicyOwners = [ "sef" ];
     };
     _1password.enable = true;
     nh = {
@@ -136,7 +146,7 @@
   };
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = ["FiraCode"];})
+    (nerdfonts.override { fonts = [ "FiraCode" ]; })
     font-awesome
   ];
 

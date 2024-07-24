@@ -1,36 +1,46 @@
-{ pkgs
-, inputs
-, ...
-}: 
+{ pkgs, inputs, ... }:
 let
   cursor = {
     package = pkgs.rose-pine-cursor;
     name = "BreezeX-RosePine-Linux";
     size = 26;
   };
-in {
-  imports = [
-    ./../core/home.nix
-  ];
+in
+{
+  imports = [ ./../core/home.nix ];
 
   programs = {
     alacritty = {
       enable = true;
       settings = {
-        import = [
-          "${inputs.kanagawa}/extras/alacritty_kanagawa_dragon.toml"
-        ];
+        import = [ "${inputs.kanagawa}/extras/alacritty_kanagawa_dragon.toml" ];
         window.opacity = 0.9;
         env = {
           TERM = "xterm-256color";
         };
-        font = let fontFamily = "FiraCode Nerd Font"; in {
-          normal = { family = "${fontFamily}"; style = "Regular"; };
-          bold = { family = "${fontFamily}"; style = "Bold"; };
-          italic = { family = "${fontFamily}"; style = "Italic"; };
-          bold_italic = { family = "${fontFamily}"; style = "Bold Italic"; };
-          size = 12.0;
-        };
+        font =
+          let
+            fontFamily = "FiraCode Nerd Font";
+          in
+          {
+            normal = {
+              family = "${fontFamily}";
+              style = "Regular";
+            };
+            bold = {
+              family = "${fontFamily}";
+              style = "Bold";
+            };
+            italic = {
+              family = "${fontFamily}";
+              style = "Italic";
+            };
+            bold_italic = {
+              family = "${fontFamily}";
+              style = "Bold Italic";
+            };
+            size = 12.0;
+          };
       };
     };
     firefox.enable = true;
@@ -44,7 +54,7 @@ in {
 
   gtk = {
     enable = true;
-    cursorTheme = {} // cursor;
+    cursorTheme = { } // cursor;
     theme = {
       package = pkgs.kanagawa-gtk-theme;
       name = "Kanagawa-BL";

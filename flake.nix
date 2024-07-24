@@ -18,62 +18,85 @@
       flake = false;
     };
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs =
-    { nixpkgs
-    , nixos-wsl
-    , home-manager
-    , kanagawa
-    , ...
-    } @ inputs: {
+    {
+      nixpkgs,
+      nixos-wsl,
+      home-manager,
+      kanagawa,
+      flake-utils,
+      ...
+    }@inputs:
+    {
       nixosConfigurations = {
+
         wsl = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules =
-            [
-              nixos-wsl.nixosModules.default
-              {
-                wsl.enable = true;
-                system.stateVersion = "24.05";
-              }
+          specialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            nixos-wsl.nixosModules.default
+            {
+              wsl.enable = true;
+              system.stateVersion = "24.05";
+            }
 
-              ./wsl/configuration.nix
+            ./wsl/configuration.nix
 
-              home-manager.nixosModules.home-manager
-              {
-                home-manager = {
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                  users.sef = import ./wsl/home.nix;
-                  extraSpecialArgs = {
-                    inherit inputs;
-                  };
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.sef = import ./wsl/home.nix;
+                extraSpecialArgs = {
+                  inherit inputs;
                 };
-              }
-            ];
+              };
+            }
+          ];
         };
-    nixos = nixpkgs.lib.nixosSystem {
-	  system = "x86_64-linux";
-	  specialArgs = { inherit inputs; };
-	  modules =
-	    [
-	      ./nixos/configuration.nix
 
-              home-manager.nixosModules.home-manager
-              {
-                home-manager = {
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                  users.sef = import ./nixos/home.nix;
-                  extraSpecialArgs = {
-                    inherit inputs;
-                  };
+        nixos = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            ./nixos/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.sef = import ./nixos/home.nix;
+                extraSpecialArgs = {
+                  inherit inputs;
                 };
-              }
-	    ];
-	};
+              };
+            }
+          ];
+        };
+
       };
-    };
+    }
+    // flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+      {
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [
+            vscode-langservers-extracted
+            nil
+            nixfmt-rfc-style
+          ];
+        };
+      }
+    );
 }

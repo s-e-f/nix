@@ -66,6 +66,11 @@ return {
       omnisharp = {},
       nil_ls = {
         cmd = { vim.env.NIL_PATH or 'nil' },
+        settings = {
+          ['nil'] = {
+            formatting = { command = { "nixfmt" } }
+          }
+        }
       }
     }
 
