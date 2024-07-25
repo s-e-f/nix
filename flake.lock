@@ -166,6 +166,21 @@
         "type": "github"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1721914019,
+        "narHash": "sha256-GxUnSVtfPCLHIJJ6OiwQUaFIPL0xMaH0wf+TuxS6Cwg=",
+        "owner": "nix-community",
+        "repo": "nur",
+        "rev": "a6a34c95c22e8cddd6049a470fb843989d08ee86",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nur",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -173,6 +188,7 @@
         "kanagawa": "kanagawa",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
+        "nur": "nur",
         "rose-pine-hyprcursor": "rose-pine-hyprcursor"
       }
     },

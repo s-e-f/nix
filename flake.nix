@@ -19,19 +19,52 @@
     };
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
     flake-utils.url = "github:numtide/flake-utils";
+    nur.url = "github:nix-community/nur";
   };
 
   outputs =
     {
+      self,
       nixpkgs,
       nixos-wsl,
       home-manager,
       kanagawa,
       flake-utils,
+      nur,
       ...
     }@inputs:
     {
       nixosConfigurations = {
+
+        nixos = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            ./nixos/configuration.nix
+            nur.nixosModules.nur
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.sef = import ./nixos/home.nix;
+                backupFileExtension = "backup";
+                extraSpecialArgs = {
+                  inherit inputs;
+                };
+              };
+            }
+            {
+              nixpkgs = {
+                overlays = [ nur.overlay ];
+                config.allowUnfreePredicate = _: true;
+                config.allowUnfree = true;
+              };
+            }
+          ];
+        };
 
         wsl = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -60,28 +93,6 @@
             }
           ];
         };
-
-        nixos = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs;
-          };
-          modules = [
-            ./nixos/configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.sef = import ./nixos/home.nix;
-                extraSpecialArgs = {
-                  inherit inputs;
-                };
-              };
-            }
-          ];
-        };
-
       };
     }
     // flake-utils.lib.eachDefaultSystem (

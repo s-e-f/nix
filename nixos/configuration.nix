@@ -8,6 +8,9 @@
 {
   imports = [ /etc/nixos/hardware-configuration.nix ];
 
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate = (_: true);
+
   nix = {
     settings = {
       experimental-features = [
@@ -35,6 +38,7 @@
       spice-protocol
       win-virtio
       win-spice
+      pavucontrol
     ];
   };
 
@@ -44,6 +48,7 @@
   security.pam.services.login.enableGnomeKeyring = true;
 
   services.gnome.gnome-keyring.enable = true;
+  services.gnome.gnome-browser-connector.enable = true;
 
   boot = {
     loader = {
@@ -109,6 +114,8 @@
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
+      wireplumber.enable = true;
+      jack.enable = true;
     };
   };
 
@@ -148,9 +155,9 @@
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
     font-awesome
+    fira-sans
+    roboto
   ];
-
-  nixpkgs.config.allowUnfree = true;
 
   users.defaultUserShell = pkgs.zsh;
 

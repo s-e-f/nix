@@ -9,6 +9,17 @@ in
 {
   imports = [ ./../core/home.nix ];
 
+  home.packages = with pkgs; [ kitty ];
+  home.file.".config/kitty/kitty.conf".text = ''
+    include ${inputs.kanagawa}/extras/kanagawa.conf
+    background_opacity 0.9
+    background_blur 1
+    font_family FiraCode Nerd Font Mono
+    bold_font auto
+    italic_font auto
+    bold_italic_font auto
+  '';
+
   programs = {
     alacritty = {
       enable = true;
@@ -43,7 +54,44 @@ in
           };
       };
     };
-    firefox.enable = true;
+    firefox = {
+      enable = true;
+      enableGnomeExtensions = true;
+      profiles =
+        with pkgs.nur.repos.rycee.firefox-addons;
+        let
+          default-extensions = [ onepassword-password-manager ];
+          default-settings = { };
+        in
+        {
+          sef = {
+            id = 0;
+            settings = { } // default-settings;
+            extensions = [ ] ++ default-extensions;
+          };
+          boyawave = {
+            id = 1;
+            settings = { } // default-settings;
+            extensions = [ ] ++ default-extensions;
+          };
+          vintus = {
+            id = 2;
+            settings = { } // default-settings;
+            extensions = [ ] ++ default-extensions;
+          };
+          ns = {
+            id = 3;
+            settings = { } // default-settings;
+            extensions = [ ] ++ default-extensions;
+          };
+          bakker = {
+            id = 4;
+            settings = { } // default-settings;
+            extensions = [ ] ++ default-extensions;
+          };
+        };
+    };
+    zsh.enable = true;
   };
 
   dconf.settings = {
@@ -61,7 +109,7 @@ in
     };
     iconTheme = {
       package = pkgs.kanagawa-icon-theme;
-      name = "oomox-Kanagawa";
+      name = "Kanagawa";
     };
   };
 
