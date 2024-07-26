@@ -8,8 +8,11 @@
 {
   imports = [ /etc/nixos/hardware-configuration.nix ];
 
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowUnfreePredicate = (_: true);
+  nixpkgs = {
+    overlays = [ inputs.nur.overlay ];
+    config.allowUnfree = true;
+    config.allowUnfreePredicate = (_: true);
+  };
 
   nix = {
     settings = {
@@ -148,7 +151,7 @@
       enable = true;
       clean.enable = true;
       clean.extraArgs = "--keep-since 4d --keep 3";
-      flake = "/home/sef/.config/.nix/";
+      flake = "/home/sef/.config/nix";
     };
   };
 

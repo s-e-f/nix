@@ -33,65 +33,28 @@
       nur,
       ...
     }@inputs:
+    let
+      system = "x86_64-linux";
+    in
     {
       nixosConfigurations = {
-
         nixos = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
             inherit inputs;
           };
           modules = [
-            ./nixos/configuration.nix
+            ./nixos
             nur.nixosModules.nur
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.sef = import ./nixos/home.nix;
-                backupFileExtension = "backup";
-                extraSpecialArgs = {
-                  inherit inputs;
-                };
-              };
-            }
-            {
-              nixpkgs = {
-                overlays = [ nur.overlay ];
-                config.allowUnfreePredicate = _: true;
-                config.allowUnfree = true;
-              };
-            }
           ];
         };
+      };
 
-        wsl = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs;
-          };
-          modules = [
-            nixos-wsl.nixosModules.default
-            {
-              wsl.enable = true;
-              system.stateVersion = "24.05";
-            }
-
-            ./wsl/configuration.nix
-
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.sef = import ./wsl/home.nix;
-                extraSpecialArgs = {
-                  inherit inputs;
-                };
-              };
-            }
-          ];
+      homeConfigurations.sef = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        modules = [ ./sef ];
+        extraSpecialArgs = {
+          inherit inputs;
         };
       };
     }
