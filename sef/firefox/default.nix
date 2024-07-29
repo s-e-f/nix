@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  username,
+  ...
+}:
 {
   programs.firefox = {
     enable = true;
@@ -6,7 +11,10 @@
     profiles =
       with pkgs.nur.repos.rycee.firefox-addons;
       let
-        default-extensions = [ onepassword-password-manager ];
+        default-extensions = [
+          onepassword-password-manager
+          ublock-origin
+        ];
         default-settings = { };
       in
       {
@@ -38,6 +46,6 @@
       };
   };
   home.sessionVariables = {
-    BROWSER = "firefox -P sef";
+    BROWSER = "firefox -P ${username}";
   };
 }

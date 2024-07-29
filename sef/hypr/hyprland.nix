@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  username,
+  ...
+}:
 {
 
   wayland.windowManager.hyprland.enable = true;
@@ -92,7 +97,7 @@
       "SUPER, M, exit"
       "SUPER, T, exec, kitty"
       "SUPER, B, workspace, 2"
-      "SUPER_ALT, 1, exec, firefox -P sef"
+      "SUPER_ALT, 1, exec, firefox -P ${username}"
       "SUPER_ALT, 2, exec, firefox -P boyawave"
       "SUPER_ALT, 3, exec, firefox -P vintus"
       "SUPER_ALT, 4, exec, firefox -P ns"

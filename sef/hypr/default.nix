@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  username,
+  ...
+}:
 let
   cursor = {
     package = pkgs.rose-pine-cursor;
@@ -8,7 +13,7 @@ let
 in
 {
   imports = [
-    ./hyprland.nix
+    (import ./hyprland.nix { inherit pkgs inputs username; })
     ./hypridle.nix
     ./hyprlock.nix
     ./hyprpaper.nix

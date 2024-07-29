@@ -1,8 +1,11 @@
 { pkgs, inputs, ... }:
+let
+  username = "sef";
+in
 {
   home = {
-    username = "sef";
-    homeDirectory = "/home/sef";
+    inherit username;
+    homeDirectory = "/home/${username}";
     stateVersion = "23.11";
   };
 
@@ -16,8 +19,8 @@
     ./1password
     ./nvim
     ./kitty
-    ./firefox
-    ./hypr
+    (import ./firefox { inherit pkgs inputs username; })
+    (import ./hypr { inherit pkgs inputs username; })
     ./zellij
     ./starship
     ./zsh
