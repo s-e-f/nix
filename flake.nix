@@ -20,6 +20,7 @@
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
     flake-utils.url = "github:numtide/flake-utils";
     nur.url = "github:nix-community/nur";
+    zjstatus.url = "github:dj95/zjstatus";
   };
 
   outputs =

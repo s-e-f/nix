@@ -11,7 +11,10 @@ in
 
   programs.home-manager.enable = true;
 
-  nixpkgs.overlays = [ inputs.nur.overlay ];
+  nixpkgs.overlays = [
+    inputs.nur.overlay
+    (final: prev: { zjstatus = inputs.zjstatus.packages.${prev.system}.default; })
+  ];
   nixpkgs.config.allowUnfree = true;
 
   imports = [
