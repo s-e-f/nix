@@ -12,7 +12,7 @@
           plugin location="file:${pkgs.zjstatus}/bin/zjstatus.wasm" {
             format_left " #[fg=green]{session} {mode} {swap_layout}"
             format_center "{tabs}"
-            format_right "{command_git_branch} {datetime}"
+            format_right "{command_git_branch} "
             format_space ""
 
             border_enabled "false"
@@ -39,7 +39,7 @@
 
             tab_normal "#[fg=white]{name}"
             tab_active "#[fg=blue,bold]{name}"
-            tab_separator " DOT"
+            tab_separator "  "
 
             command_git_branch_command "git rev-parse --abbrev-ref HEAD"
             command_git_branch_format "#[fg=blue] {stdout} "
