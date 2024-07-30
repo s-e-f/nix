@@ -24,19 +24,15 @@
     ];
     "hyprland/workspaces" = {
       format = "{icon}";
+      move-to-monitor = true;
       format-icons = {
-        "1" = "<span face=\"Font Awesome 6 Free\"> </span>";
-        "2" = "<span face=\"Font Awesome 6 Free\"> </span>";
-        "default" = "<span face=\"Font Awesome 6 Free\"> </span>";
+        "terminal" = "<span face=\"Font Awesome 6 Free Solid\"> </span>";
+        "browser" = "<span face=\"Font Awesome 6 Free Solid\"> </span>";
+        "vault" = "<span face=\"Font Awesome 6 Free Solid\"> </span>";
+        "default" = "<span face=\"Font Awesome 6 Free Solid\"> </span>";
       };
       persistent-workspaces = {
-        "*" = [
-          1
-          2
-          3
-          4
-          5
-        ];
+        "*" = 3;
       };
     };
     "hyprland/window" = {

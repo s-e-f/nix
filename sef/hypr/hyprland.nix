@@ -82,42 +82,43 @@
       "HYPRCURSOR_SIZE,26"
       "MOZ_ENABLE_WAYLAND,1"
     ];
+    workspace = [
+      "1, defaultName:terminal"
+      "2, defaultName:browser"
+      "3, defaultName:vault"
+    ];
     monitor = [
       "desc:Huawei Technologies Co. Inc. MateView, highres@highrr, auto, 1.6"
       "desc:LG Electronics LG HDR WQHD 111NTTQA0897, 3440x1440@84.98, auto, 1"
+      "desc:Lenovo Group Limited L32p-30 U511L2F2, highres@highrr, auto, 1.5"
+      "desc:Lenovo Group Limited L32p-30 U512058T, highres@highrr, auto, 1.5"
       ", highres@highrr, auto, 1"
     ];
     windowrulev2 = [
-      "workspace 2, class:(firefox)"
+      "workspace name:browser, class:(firefox)"
       "group set, class:(firefox)"
+      "workspace name:terminal, class:(kitty)"
+      "workspace name:vault, class:(1Password)"
     ];
     bind = [
       "SUPER, Q, killactive"
       "SUPER, F, fullscreen"
       "SUPER, M, exit"
-      "SUPER, T, exec, kitty"
-      "SUPER, B, workspace, 2"
+      "SUPER, T, focusworkspaceoncurrentmonitor, name:terminal"
+      "SUPER, T, exec, pidof kitty || kitty"
+      "SUPER, B, focusworkspaceoncurrentmonitor, name:browser"
       "SUPER_ALT, 1, exec, firefox -P ${username}"
       "SUPER_ALT, 2, exec, firefox -P boyawave"
       "SUPER_ALT, 3, exec, firefox -P vintus"
       "SUPER_ALT, 4, exec, firefox -P ns"
       "SUPER_ALT, 5, exec, firefox -P bakker"
-      "SUPER, P, exec, 1password"
+      "SUPER, P, focusworkspaceoncurrentmonitor, name:vault"
+      "SUPER, P, exec, pidof 1password || 1password"
       "SUPER, ESCAPE, exec, pidof hyprlock || hyprlock --immediate"
       "SUPER, H, movefocus, l"
       "SUPER, L, movefocus, r"
       "SUPER, J, movefocus, d"
       "SUPER, K, movefocus, u"
-      "SUPER, 1, workspace, 1"
-      "SHIFT_SUPER, 1, movetoworkspace, 1"
-      "SUPER, 2, workspace, 2"
-      "SHIFT_SUPER, 2, movetoworkspace, 2"
-      "SUPER, 3, workspace, 3"
-      "SHIFT_SUPER, 3, movetoworkspace, 3"
-      "SUPER, 4, workspace, 4"
-      "SHIFT_SUPER, 4, movetoworkspace, 4"
-      "SUPER, 5, workspace, 5"
-      "SHIFT_SUPER, 5, movetoworkspace, 5"
     ];
     bindm = [ "SUPER, mouse:272, movewindow" ];
     bindle = [
