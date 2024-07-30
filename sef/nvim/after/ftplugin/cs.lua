@@ -1,0 +1,5 @@
+local omnisharp = require('omnisharp_extended')
+vim.keymap.set('n', 'gd', omnisharp.telescope_lsp_definition)
+vim.keymap.set('n', 'gr', omnisharp.telescope_lsp_references)
+vim.keymap.set('n', 'gT', omnisharp.telescope_lsp_type_definition)
+vim.keymap.set('n', 'gi', omnisharp.telescope_lsp_implementation)

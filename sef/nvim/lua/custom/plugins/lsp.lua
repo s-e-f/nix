@@ -3,6 +3,7 @@ return {
   dependencies = {
     'stevearc/conform.nvim',
     'b0o/SchemaStore.nvim',
+    'Hoffs/omnisharp-extended-lsp.nvim'
   },
   config = function()
     local capabilities = nil
@@ -63,7 +64,27 @@ return {
       },
       gleam = {},
       zls = {},
-      omnisharp = {},
+      omnisharp = {
+        cmd = { "OmniSharp" },
+        settings = {
+          FormattingOptions = {
+            EnableEditorConfigSupport = true,
+            OrganizeImports = true,
+          },
+          MsBuild = {
+            LoadProjectsOnDemand = true,
+          },
+          RoslynExtensionsOptions = {
+            EnableAnalyzersSupport = true,
+            EnableDecompilationSupport = true,
+            EnableImportCompletion = true,
+            AnalyzeOpenDocumentsOnly = true,
+          },
+          Sdk = {
+            IncludePrereleases = true,
+          }
+        },
+      },
       nil_ls = {
         cmd = { vim.env.NIL_PATH or 'nil' },
         settings = {
