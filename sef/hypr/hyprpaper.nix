@@ -2,7 +2,7 @@
 {
   services.hyprpaper.enable = true;
   services.hyprpaper.settings = {
-    preload = "${./wallpapers/kanagawa-dark.jpeg}";
-    wallpaper = ",${./wallpapers/kanagawa-dark.jpeg}";
+    preload = "${./wallpapers/koi.jpg}";
+    wallpaper = ",${./wallpapers/koi.jpg}";
   };
 }

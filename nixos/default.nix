@@ -6,7 +6,10 @@
 }:
 
 {
-  imports = [ /etc/nixos/hardware-configuration.nix ];
+  imports = [
+    /etc/nixos/hardware-configuration.nix
+    ./sddm.nix
+  ];
 
   nixpkgs = {
     overlays = [ inputs.nur.overlay ];
@@ -64,6 +67,7 @@
       win-virtio
       win-spice
       pavucontrol
+      noto-fonts
     ];
   };
 
@@ -74,10 +78,6 @@
 
   services.gnome.gnome-keyring.enable = true;
   services.gnome.gnome-browser-connector.enable = true;
-
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  services.displayManager.sddm.theme = "${pkgs.sddm-astronaut}";
 
   boot = {
     loader = {

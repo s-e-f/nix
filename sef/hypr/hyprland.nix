@@ -11,7 +11,7 @@
     general = {
       border_size = 0;
       gaps_in = 5;
-      gaps_out = "7, 10, 10, 10";
+      gaps_out = 10;
     };
 
     group = {
@@ -27,9 +27,10 @@
     decoration = {
       rounding = 4;
       inactive_opacity = 0.7;
+      drop_shadow = false;
       blur = {
         enabled = true;
-        size = 8;
+        size = 10;
         ignore_opacity = false;
         new_optimizations = true;
         xray = true;
@@ -48,6 +49,7 @@
     };
 
     misc = {
+      font_family = "Noto Sans";
       disable_hyprland_logo = true;
       disable_splash_rendering = true;
     };
@@ -69,6 +71,9 @@
         "workspaces, 1, 3, default"
       ];
     };
+
+    layerrule = [ "blur,waybar" ];
+
     input = {
       sensitivity = -0.1;
       accel_profile = "flat";

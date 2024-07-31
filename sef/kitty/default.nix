@@ -3,7 +3,7 @@
   home.packages = with pkgs; [ kitty ];
   home.file.".config/kitty/kitty.conf".text = ''
     include ${inputs.kanagawa}/extras/kanagawa_dragon.conf
-    background_opacity 0.9
+    background_opacity 0.8
     background_blur 1
     font_family FiraCode Nerd Font Mono
     bold_font auto

@@ -37,6 +37,7 @@ in
       surrealdb
       usql
       obsidian
+      noto-fonts
     ];
   };
 

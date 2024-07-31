@@ -124,8 +124,9 @@
     * {
         border: none;
         border-radius: 0;
-        font-family: Roboto, Helvetica, Arial, sans-serif;
-        font-size: 13px;
+        font-family: 'Noto Sans', Roboto, Helvetica, Arial, sans-serif;
+        font-weight: bold;
+        font-size: 14px;
         min-height: 0;
     }
 
@@ -134,11 +135,9 @@
         color: #c5c9c5;
     }
     window#waybar>box {
-        background: rgba(24, 22, 22, 0.9);
+        background: rgba(24, 22, 22, 0.8);
         border-radius: 0px;
-        padding: 6px;
-        margin: 0px 0px 6px 0px;
-        box-shadow: 0px 0px 2px 1px rgba(26, 26, 26, 238);
+        padding: 10px;
     }
 
     tooltip {
@@ -157,7 +156,6 @@
 
     #workspaces button.focused {
         background: #64727D;
-        border-bottom: 3px solid white;
     }
 
     #workspaces button.active {
