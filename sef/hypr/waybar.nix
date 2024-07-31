@@ -124,7 +124,7 @@
     * {
         border: none;
         border-radius: 0;
-        font-family: 'Fira Sans', Roboto, Helvetica, Arial, sans-serif;
+        font-family: Roboto, Helvetica, Arial, sans-serif;
         font-size: 13px;
         min-height: 0;
     }

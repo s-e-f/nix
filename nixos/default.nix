@@ -58,7 +58,6 @@
       wl-clipboard
       inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
       rose-pine-cursor
-      lxqt.lxqt-policykit
       spice
       spice-gtk
       spice-protocol
@@ -181,7 +180,6 @@
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
     font-awesome
-    fira-sans
     roboto
   ];
 

@@ -48,7 +48,6 @@
     };
 
     misc = {
-      font_family = "Fira Sans";
       disable_hyprland_logo = true;
       disable_splash_rendering = true;
     };
@@ -71,7 +70,7 @@
       ];
     };
     input = {
-      sensitivity = -0.3;
+      sensitivity = -0.1;
       accel_profile = "flat";
     };
     cursor = {
@@ -133,7 +132,7 @@
       "hyprpaper"
       "wl-paste --type text --watch cliphist store"
       "wl-paste --type image --watch cliphis store"
-      "lxqt-policykit-agent"
+      "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
     ];
   };

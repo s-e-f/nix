@@ -3,7 +3,6 @@ return {
   dependencies = {
     'stevearc/conform.nvim',
     'b0o/SchemaStore.nvim',
-    'Hoffs/omnisharp-extended-lsp.nvim'
   },
   config = function()
     local capabilities = nil
@@ -64,26 +63,7 @@ return {
       },
       gleam = {},
       zls = {},
-      omnisharp = {
-        cmd = { "OmniSharp" },
-        settings = {
-          FormattingOptions = {
-            EnableEditorConfigSupport = true,
-            OrganizeImports = true,
-          },
-          MsBuild = {
-            LoadProjectsOnDemand = true,
-          },
-          RoslynExtensionsOptions = {
-            EnableAnalyzersSupport = true,
-            EnableDecompilationSupport = true,
-            EnableImportCompletion = true,
-            AnalyzeOpenDocumentsOnly = true,
-          },
-          Sdk = {
-            IncludePrereleases = true,
-          }
-        },
+      csharp_ls = {
       },
       nil_ls = {
         cmd = { vim.env.NIL_PATH or 'nil' },
@@ -120,6 +100,7 @@ return {
         vim.keymap.set('n', 'gd', builtin.lsp_definitions, { buffer = 0 })
         vim.keymap.set('n', 'gr', builtin.lsp_references, { buffer = 0 })
         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = 0 })
+        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { buffer = 0 })
         vim.keymap.set('n', 'gT', vim.lsp.buf.type_definition, { buffer = 0 })
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = 0 })
         vim.keymap.set('n', '<leader>le', vim.diagnostic.open_float, { buffer = 0 })

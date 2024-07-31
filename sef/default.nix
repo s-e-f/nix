@@ -36,6 +36,7 @@ in
       tlrc
       surrealdb
       usql
+      obsidian
     ];
   };
 
