@@ -1,17 +1,19 @@
 { pkgs, inputs, ... }:
 {
   programs.waybar.enable = true;
+  programs.waybar.systemd.enable = true; # nh switch fails to properly restart waybar
   programs.waybar.settings.mainBar = {
     reload_style_on_change = true;
     layer = "top";
     position = "top";
-    spacing = 15;
+    spacing = 20;
     modules-left = [
       "hyprland/workspaces"
       "hyprland/window"
     ];
     modules-center = [ ];
     modules-right = [
+      "tray"
       "bluetooth"
       "pulseaudio"
       "network"
@@ -20,25 +22,27 @@
       "temperature"
       "battery"
       "clock"
-      "tray"
     ];
     "hyprland/workspaces" = {
       format = "{icon}";
       move-to-monitor = true;
       format-icons = {
-        "terminal" = "<span face=\"Font Awesome 6 Free Solid\"> </span>";
-        "browser" = "<span face=\"Font Awesome 6 Free Solid\"> </span>";
-        "vault" = "<span face=\"Font Awesome 6 Free Solid\"> </span>";
-        "default" = "<span face=\"Font Awesome 6 Free Solid\"> </span>";
+        terminal = " ";
+        browser = " ";
+        vault = " ";
+        obsidian = " ";
+        default = " ";
       };
       persistent-workspaces = {
-        "*" = 3;
+        "*" = 4;
       };
     };
     "hyprland/window" = {
-      "format" = "{}";
-      "rewrite" = { };
-      "separate-outputs" = true;
+      format = "{}";
+      rewrite = {
+        "(.*) — Mozilla Firefox" = "  $1";
+      };
+      separate-outputs = true;
     };
     bluetooth = {
       format = " {status}";
@@ -51,8 +55,8 @@
       tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_address}\t{device_battery_percentage}%";
     };
     pulseaudio = {
-      format = "{volume}% {icon}";
-      format-bluetooth = "{volume}% {icon}";
+      format = "{icon} {volume}%";
+      format-bluetooth = "{icon} {volume}%";
       format-muted = "";
       format-icons = {
         "alsa_output.pci-0000_00_1f.3.analog-stereo" = "";
@@ -81,11 +85,11 @@
       format-alt = "{:%Y-%m-%d}";
     };
     cpu = {
-      format = "{usage}% <span face=\"Font Awesome 6 Free\"> </span>";
+      format = "<span face=\"Font Awesome 6 Free\"> </span> {usage}%";
       tooltip = false;
     };
     memory = {
-      format = "{}%  ";
+      format = "  {}%";
     };
     temperature = {
       critical-threshold = 80;
@@ -97,11 +101,11 @@
         warning = 30;
         critical = 15;
       };
-      format = "{capacity}% {icon}";
-      format-full = "{capacity}% {icon}";
-      format-charging = "{capacity}%  ";
-      format-plugged = "{capacity}%  ";
-      format-alt = "{time} {icon}";
+      format = "{icon} {capacity}%";
+      format-full = "{icon} {capacity}%";
+      format-charging = " {capacity}%";
+      format-plugged = " {capacity}%";
+      format-alt = "{icon} {time}";
       format-icons = [
         " "
         " "
@@ -111,12 +115,11 @@
       ];
     };
     network = {
-      #// "interface": "wlp2*", // (Optional) To force the use of this interface
-      format-wifi = "{essid} ({signalStrength}%)  ";
-      format-ethernet = "{ipaddr}/{cidr}  ";
-      tooltip-format = "{ifname} via {gwaddr}  ";
-      format-linked = "{ifname} (No IP)  ";
-      format-disconnected = "Disconnected  ";
+      format-wifi = " {essid} ({signalStrength}%)";
+      format-ethernet = "  {ipaddr}/{cidr}";
+      tooltip-format = "  {ifname} via {gwaddr}";
+      format-linked = "  {ifname} (No IP)";
+      format-disconnected = " Disconnected";
       format-alt = "{ifname}: {ipaddr}/{cidr}";
     };
   };
@@ -124,7 +127,7 @@
     * {
         border: none;
         border-radius: 0;
-        font-family: 'Noto Sans', Roboto, Helvetica, Arial, sans-serif;
+        font-family: 'Noto Sans', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', Roboto, Helvetica, Arial, sans-serif;
         font-weight: bold;
         font-size: 14px;
         min-height: 0;

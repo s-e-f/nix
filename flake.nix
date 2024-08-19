@@ -21,6 +21,7 @@
     flake-utils.url = "github:numtide/flake-utils";
     nur.url = "github:nix-community/nur";
     zjstatus.url = "github:dj95/zjstatus";
+    ags.url = "github:Aylur/ags";
   };
 
   outputs =
@@ -70,6 +71,8 @@
             vscode-langservers-extracted
             nil
             nixfmt-rfc-style
+            typescript-language-server
+            biome
           ];
         };
       }

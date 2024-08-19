@@ -4,13 +4,14 @@ let
   email = "39380372+s-e-f@users.noreply.github.com";
 in
 {
+  home.packages = with pkgs; [ git-credential-manager ];
   programs.git = {
     enable = true;
     lfs.enable = true;
     userEmail = email;
     userName = "Sef";
     delta = {
-      enable = true;
+      enable = false;
       options = {
         features = "kanagawa";
         "side-by-side" = true;
@@ -25,6 +26,10 @@ in
         ssh.allowedSignersFile = "~/.ssh/allowed_signers";
         ssh.program = "${pkgs._1password-gui}/bin/op-ssh-sign";
       };
+      credential.credentialStore = "secretservice";
+      credential.cacheOptions = "--timeout 21600";
+      credential.useHttpPath = true;
+      credential.helper = "${pkgs.git-credential-manager}/bin/git-credential-manager";
       init.defaultBranch = "main";
       log.showSignature = true;
       merge.conflictstyle = "diff3";

@@ -27,6 +27,7 @@ in
     ./zellij
     ./starship
     ./zsh
+    ./ags
   ];
 
   home = {
@@ -34,7 +35,7 @@ in
       flyctl
       zip
       tlrc
-      surrealdb
+      # surrealdb
       usql
       obsidian
       noto-fonts

@@ -1,0 +1,9 @@
+{
+  "name": "sef-ags",
+  "author": "sef",
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.3",
+    "@girs/accountsservice-1.0": "^1.0.0-3.2.7",
+    "typescript": "^5.3.3"
+  }
+}

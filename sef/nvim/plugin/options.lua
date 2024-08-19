@@ -45,3 +45,11 @@ vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
 
 vim.o.background = ""
+
+vim.filetype.add({
+  filename = {
+    ["Directory.Build.props"] = "xml",
+    ["Directory.Packages.props"] = "xml",
+    ["Directory.Build.targets"] = "xml",
+  }
+})

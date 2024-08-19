@@ -31,6 +31,7 @@
       blur = {
         enabled = true;
         size = 10;
+        passes = 3;
         ignore_opacity = false;
         new_optimizations = true;
         xray = true;
@@ -90,6 +91,7 @@
       "1, defaultName:terminal"
       "2, defaultName:browser"
       "3, defaultName:vault"
+      "4, defaultName:obsidian"
     ];
     monitor = [
       "desc:Huawei Technologies Co. Inc. MateView, highres@highrr, auto, 1.6"
@@ -100,9 +102,9 @@
     ];
     windowrulev2 = [
       "workspace name:browser, class:(firefox)"
-      "group set, class:(firefox)"
       "workspace name:terminal, class:(kitty)"
       "workspace name:vault, class:(1Password)"
+      "workspace name:obsidian, class:(obsidian)"
     ];
     bind = [
       "SUPER, Q, killactive"
@@ -111,11 +113,9 @@
       "SUPER, T, focusworkspaceoncurrentmonitor, name:terminal"
       "SUPER, T, exec, pidof kitty || kitty"
       "SUPER, B, focusworkspaceoncurrentmonitor, name:browser"
-      "SUPER_ALT, 1, exec, firefox -P ${username}"
-      "SUPER_ALT, 2, exec, firefox -P boyawave"
-      "SUPER_ALT, 3, exec, firefox -P vintus"
-      "SUPER_ALT, 4, exec, firefox -P ns"
-      "SUPER_ALT, 5, exec, firefox -P bakker"
+      "SUPER, B, exec, pidof firefox || firefox"
+      "SUPER, O, focusworkspaceoncurrentmonitor, name:obsidian"
+      "SUPER, O, exec, pidof obsidian || obsidian"
       "SUPER, P, focusworkspaceoncurrentmonitor, name:vault"
       "SUPER, P, exec, pidof 1password || 1password"
       "SUPER, ESCAPE, exec, pidof hyprlock || hyprlock --immediate"
@@ -132,6 +132,7 @@
       ",XF86MonBrightnessUp, exec, brightnessctl set 1%+"
       ",XF86MonBrightnessDown, exec, brightnessctl set 1%-"
     ];
+    exec = [ "export HYPRLAND_INSTANCE_SIGNATURE=$(hyprctl instances -j | jq '.[0].instance' -r)" ];
     exec-once = [
       "hypridle"
       "hyprpaper"
