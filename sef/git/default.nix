@@ -11,7 +11,7 @@ in
     userEmail = email;
     userName = "Sef";
     delta = {
-      enable = false;
+      enable = true;
       options = {
         features = "kanagawa";
         "side-by-side" = true;
