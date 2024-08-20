@@ -28,6 +28,7 @@ in
     ./starship
     ./zsh
     ./ags
+    ./rofi
   ];
 
   home = {

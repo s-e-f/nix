@@ -119,6 +119,7 @@
       "SUPER, P, focusworkspaceoncurrentmonitor, name:vault"
       "SUPER, P, exec, pidof 1password || 1password"
       "SUPER, ESCAPE, exec, pidof hyprlock || hyprlock --immediate"
+      "SUPER, code:60, exec, rofi -modes emoji -show emoji"
       "SUPER, H, movefocus, l"
       "SUPER, L, movefocus, r"
       "SUPER, J, movefocus, d"
