@@ -94,6 +94,8 @@
       "4, defaultName:obsidian"
     ];
     monitor = [
+      "desc:HP Inc. HP E24mv G4 CNC21806N9, highres@highrr, 0x0, 1"
+      "desc:HP Inc. HP E24 G4 CN42290TQG, highres@highrr, 1920x0, 1"
       "desc:Huawei Technologies Co. Inc. MateView, highres@highrr, auto, 1.6"
       "desc:LG Electronics LG HDR WQHD 111NTTQA0897, 3440x1440@84.98, auto, 1"
       "desc:Lenovo Group Limited L32p-30 U511L2F2, highres@highrr, auto, 1.5"
@@ -101,7 +103,7 @@
       ", highres@highrr, auto, 1"
     ];
     windowrulev2 = [
-      "workspace name:browser, class:(firefox)"
+      "workspace name:browser, class:(vivaldi-stable)"
       "workspace name:terminal, class:(kitty)"
       "workspace name:vault, class:(1Password)"
       "workspace name:obsidian, class:(obsidian)"
@@ -113,7 +115,7 @@
       "SUPER, T, focusworkspaceoncurrentmonitor, name:terminal"
       "SUPER, T, exec, pidof kitty || kitty"
       "SUPER, B, focusworkspaceoncurrentmonitor, name:browser"
-      "SUPER, B, exec, pidof firefox || firefox"
+      "SUPER, B, exec, pidof vivaldi-bin || vivaldi"
       "SUPER, O, focusworkspaceoncurrentmonitor, name:obsidian"
       "SUPER, O, exec, pidof obsidian || obsidian"
       "SUPER, P, focusworkspaceoncurrentmonitor, name:vault"

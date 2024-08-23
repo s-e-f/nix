@@ -9,6 +9,7 @@
   imports = [
     /etc/nixos/hardware-configuration.nix
     ./sddm.nix
+    ./docker
   ];
 
   nixpkgs = {
@@ -165,6 +166,7 @@
       "wheel"
       "input"
       "libvirtd"
+      "docker"
     ];
   };
 

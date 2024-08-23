@@ -40,6 +40,7 @@ in
       usql
       obsidian
       noto-fonts
+      vivaldi
     ];
   };
 

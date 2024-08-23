@@ -6,7 +6,7 @@
 }:
 {
   programs.firefox = {
-    enable = true;
+    enable = false;
     package = pkgs.firefox.override { nativeMessagingHosts = [ pkgs.gnome-browser-connector ]; };
     profiles =
       with pkgs.nur.repos.rycee.firefox-addons;
@@ -14,6 +14,7 @@
         default-extensions = [
           onepassword-password-manager
           ublock-origin
+          multi-account-containers
         ];
         default-settings = { };
       in
@@ -26,6 +27,6 @@
       };
   };
   home.sessionVariables = {
-    BROWSER = "firefox";
+    BROWSER = "vivaldi";
   };
 }

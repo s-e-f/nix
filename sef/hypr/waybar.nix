@@ -28,13 +28,12 @@
       move-to-monitor = true;
       format-icons = {
         terminal = " ";
-        browser = " ";
+        browser = " ";
         vault = " ";
         obsidian = " ";
         default = " ";
       };
       persistent-workspaces = {
-        "*" = 4;
       };
     };
     "hyprland/window" = {
