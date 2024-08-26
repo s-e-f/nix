@@ -41,6 +41,7 @@ in
       obsidian
       noto-fonts
       vivaldi
+      turso-cli
     ];
   };
 
