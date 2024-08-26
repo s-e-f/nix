@@ -7,7 +7,7 @@
 
 {
   imports = [
-    /etc/nixos/hardware-configuration.nix
+    ../hardware/vintus-laptop.nix
     ./sddm.nix
     ./docker
   ];
