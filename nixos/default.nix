@@ -18,6 +18,10 @@
     config.allowUnfreePredicate = (_: true);
   };
 
+  security.pki.certificateFiles = [
+    ../certs/leiden.crt
+  ];
+
   nix = {
     settings = {
       experimental-features = [
@@ -105,6 +109,7 @@
 
   networking = {
     hostName = "nixos";
+    # wireless.enable = true;
     networkmanager.enable = true;
   };
 
