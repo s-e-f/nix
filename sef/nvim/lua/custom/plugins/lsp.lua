@@ -72,7 +72,8 @@ return {
             formatting = { command = { "nixfmt" } }
           }
         }
-      }
+      },
+      rust_analyzer = {}
     }
 
     for name, config in pairs(servers) do
