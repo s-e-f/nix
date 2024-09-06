@@ -28,6 +28,7 @@ in
     ./kitty
     (import ./firefox { inherit pkgs inputs username; })
     (import ./hypr { inherit pkgs inputs username; })
+    ./gnome
     ./zellij
     ./starship
     ./zsh

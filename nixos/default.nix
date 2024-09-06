@@ -8,8 +8,9 @@
 {
   imports = [
     ../hardware/vintus-laptop.nix
-    ./sddm.nix
-    ./docker
+    ./docker.nix
+    ./intune.nix
+    ./gnome.nix
   ];
 
   nixpkgs = {
@@ -44,6 +45,7 @@
   programs.nix-ld.libraries = with pkgs; [
     stdenv.cc.cc
     openssl
+    curl
   ];
 
   console = {
@@ -88,6 +90,7 @@
       win-spice
       pavucontrol
       noto-fonts
+      microsoft-edge
     ];
   };
 
