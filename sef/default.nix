@@ -47,6 +47,7 @@ in
       noto-fonts
       vivaldi
       turso-cli
+      httpie
     ];
   };
 
