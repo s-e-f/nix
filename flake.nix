@@ -17,11 +17,26 @@
       repo = "kanagawa.nvim";
       flake = false;
     };
-    rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
-    flake-utils.url = "github:numtide/flake-utils";
-    nur.url = "github:nix-community/nur";
-    zjstatus.url = "github:dj95/zjstatus";
-    ags.url = "github:Aylur/ags";
+    rose-pine-hyprcursor = {
+      url = "github:ndom91/rose-pine-hyprcursor";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nur = {
+      url = "github:nix-community/nur";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    zjstatus = {
+      url = "github:dj95/zjstatus";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    ags = {
+      url = "github:Aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
