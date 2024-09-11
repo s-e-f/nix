@@ -63,7 +63,11 @@ return {
       },
       gleam = {},
       zls = {},
-      csharp_ls = {
+      omnisharp = {
+        cmd = { "OmniSharp", "-lsp", "--hostPID", "tostring(vim.fn.getpid())" },
+        settings = {
+
+        },
       },
       nil_ls = {
         cmd = { vim.env.NIL_PATH or 'nil' },
