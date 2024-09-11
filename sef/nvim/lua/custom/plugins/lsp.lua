@@ -39,7 +39,7 @@ return {
           semanticTokensProvider = vim.NIL,
         },
       },
-      tsserver = {
+      ts_ls = {
         server_capabilities = {
           documentFormattingProvider = false,
         },

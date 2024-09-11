@@ -14,7 +14,17 @@
   ];
 
   nixpkgs = {
-    overlays = [ inputs.nur.overlay ];
+    overlays = [
+      inputs.nur.overlay
+      (final: prev: {
+        microsoft-identity-broker = prev.microsoft-identity-broker.overrideAttrs {
+          src = pkgs.fetchurl {
+            url = "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/microsoft-identity-broker/microsoft-identity-broker_2.0.1_amd64.deb";
+            hash = "sha256-I4Q6ucT6ps8/QGiQTNbMXcKxq6UMcuwJ0Prcqvov56M=";
+          };
+        };
+      })
+    ];
     config.allowUnfree = true;
     config.allowUnfreePredicate = (_: true);
   };

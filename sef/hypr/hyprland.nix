@@ -123,6 +123,7 @@
       "SUPER, ESCAPE, exec, pidof hyprlock || hyprlock --immediate"
       "SUPER, code:60, exec, rofi -modes emoji -show emoji"
       "SUPER, C, exec, rofi -show calc -modi calc -no-show-match -no-sort -no-history -calc-command '${pkgs.wtype}/bin/wtype \"{result}\"'"
+      "SUPER, R, exec, rofi -show drun"
       "SUPER, H, movefocus, l"
       "SUPER, L, movefocus, r"
       "SUPER, J, movefocus, d"

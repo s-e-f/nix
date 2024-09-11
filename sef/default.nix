@@ -18,6 +18,14 @@ in
   nixpkgs.overlays = [
     inputs.nur.overlay
     (final: prev: { zjstatus = inputs.zjstatus.packages.${prev.system}.default; })
+    (final: prev: {
+      microsoft-identity-broker = prev.microsoft-identity-broker.overrideAttrs {
+        src = pkgs.fetchurl {
+          url = "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/microsoft-identity-broker/microsoft-identity-broker_2.0.1_amd64.deb";
+          hash = "sha256-I4Q6ucT6ps8/QGiQTNbMXcKxq6UMcuwJ0Prcqvov56M=";
+        };
+      };
+    })
   ];
   nixpkgs.config.allowUnfree = true;
 
@@ -27,8 +35,7 @@ in
     ./nvim
     ./kitty
     (import ./firefox { inherit pkgs inputs username; })
-    (import ./hypr { inherit pkgs inputs username; })
-    ./gnome
+    # (import ./hypr { inherit pkgs inputs username; })
     ./zellij
     ./starship
     ./zsh
