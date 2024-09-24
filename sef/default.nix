@@ -18,16 +18,14 @@ in
   nixpkgs.overlays = [
     inputs.nur.overlay
     (final: prev: { zjstatus = inputs.zjstatus.packages.${prev.system}.default; })
-    (final: prev: {
-      microsoft-identity-broker = prev.microsoft-identity-broker.overrideAttrs {
-        src = pkgs.fetchurl {
-          url = "https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/microsoft-identity-broker/microsoft-identity-broker_2.0.1_amd64.deb";
-          hash = "sha256-I4Q6ucT6ps8/QGiQTNbMXcKxq6UMcuwJ0Prcqvov56M=";
-        };
-      };
-    })
   ];
   nixpkgs.config.allowUnfree = true;
+
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
+  };
 
   imports = [
     ./git
@@ -39,7 +37,7 @@ in
     ./zellij
     ./starship
     ./zsh
-    ./ags
+    # ./ags
     ./rofi
   ];
 
@@ -48,14 +46,23 @@ in
       flyctl
       zip
       tlrc
-      # surrealdb
       usql
       obsidian
       noto-fonts
-      vivaldi
       turso-cli
-      httpie
+      nh
+      nil
+      nixfmt-rfc-style
+      vscode-langservers-extracted
+      jdt-language-server
+      google-java-format
+      lombok
+      nodejs_22
+      sqlcmd
     ];
+    sessionVariables = {
+      JDTLS_JVM_ARGS = "-javaagent:${pkgs.lombok}/share/java/lombok.jar";
+    };
   };
 
   programs = {

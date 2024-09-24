@@ -24,7 +24,7 @@ in
       gpg = {
         format = "ssh";
         ssh.allowedSignersFile = "~/.ssh/allowed_signers";
-        ssh.program = "${pkgs._1password-gui}/bin/op-ssh-sign";
+        ssh.program = "/opt/1Password/op-ssh-sign";
       };
       credential.credentialStore = "secretservice";
       credential.cacheOptions = "--timeout 21600";
