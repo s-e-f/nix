@@ -7,9 +7,9 @@
 
 {
   imports = [
-    ../hardware/vintus-laptop.nix
+    ../hardware/crypt.nix
     ./docker.nix
-    ./gnome.nix
+    ./steam.nix
   ];
 
   nixpkgs = {
@@ -91,7 +91,7 @@
       win-spice
       pavucontrol
       noto-fonts
-      microsoft-edge
+      gparted
     ];
   };
 
@@ -108,11 +108,10 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    initrd.luks.devices."luks-5b3969d7-403a-429d-86d3-0c05a948b453".device = "/dev/disk/by-uuid/5b3969d7-403a-429d-86d3-0c05a948b453";
   };
 
   networking = {
-    hostName = "nixos";
+    hostName = "crypt";
     # wireless.enable = true;
     networkmanager.enable = true;
   };
@@ -176,6 +175,19 @@
   hardware.pulseaudio.enable = false;
   hardware.bluetooth.enable = true;
 
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware = {
+    graphics.enable = true;
+    nvidia = {
+      modesetting.enable = true;
+      powerManagement.enable = false;
+      powerManagement.finegrained = false;
+      open = false;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
+  };
+
   users.users.sef = {
     isNormalUser = true;
     description = "Sef";
@@ -216,5 +228,4 @@
   users.defaultUserShell = pkgs.zsh;
 
   system.stateVersion = "24.05";
-
 }

@@ -33,12 +33,13 @@ in
     ./nvim
     ./kitty
     (import ./firefox { inherit pkgs inputs username; })
-    # (import ./hypr { inherit pkgs inputs username; })
+    (import ./hypr { inherit pkgs inputs username; })
     ./zellij
     ./starship
     ./zsh
     # ./ags
     ./rofi
+    ./discord
   ];
 
   home = {

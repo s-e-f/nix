@@ -1,8 +1,5 @@
 { pkgs, inputs, ... }:
 {
-  home.packages = with pkgs; [
-    _1password
-  ];
   programs = {
     ssh = {
       enable = true;

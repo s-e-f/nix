@@ -14,7 +14,6 @@
     modules-center = [ ];
     modules-right = [
       "tray"
-      "bluetooth"
       "pulseaudio"
       "network"
       "cpu"
@@ -33,8 +32,9 @@
         obsidian = " ";
         default = " ";
       };
-      persistent-workspaces = {
-      };
+      persistent-workspaces =
+        {
+        };
     };
     "hyprland/window" = {
       format = "{}";

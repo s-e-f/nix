@@ -80,12 +80,17 @@
       accel_profile = "flat";
     };
     cursor = {
+      no_hardware_cursors = true;
       inactive_timeout = 5;
     };
     env = [
       "HYPRCURSOR_THEME,rose-pine-hyprcursor"
       "HYPRCURSOR_SIZE,26"
       "MOZ_ENABLE_WAYLAND,1"
+      "LIBVA_DRIVER_NAME,nvidia"
+      "XDG_SESSION_TYPE,wayland"
+      "GBM_BACKEND,nvidia-drm"
+      "__GLX_VENDOR_LIBRARY_NAME,nvidia"
     ];
     workspace = [
       "1, defaultName:terminal"
@@ -103,10 +108,12 @@
       ", highres@highrr, auto, 1"
     ];
     windowrulev2 = [
-      "workspace name:browser, class:(vivaldi-stable)"
+      "workspace name:browser, class:(firefox)"
       "workspace name:terminal, class:(kitty)"
       "workspace name:vault, class:(1Password)"
       "workspace name:obsidian, class:(obsidian)"
+      "workspace name:discord, class:(discord)"
+      "workspace name:steam, class:(steam)"
     ];
     bind = [
       "SUPER, Q, killactive"
@@ -115,11 +122,13 @@
       "SUPER, T, focusworkspaceoncurrentmonitor, name:terminal"
       "SUPER, T, exec, pidof kitty || kitty"
       "SUPER, B, focusworkspaceoncurrentmonitor, name:browser"
-      "SUPER, B, exec, pidof vivaldi-bin || vivaldi"
+      "SUPER, B, exec, pidof firefox || firefix"
       "SUPER, O, focusworkspaceoncurrentmonitor, name:obsidian"
       "SUPER, O, exec, pidof obsidian || obsidian"
       "SUPER, P, focusworkspaceoncurrentmonitor, name:vault"
       "SUPER, P, exec, pidof 1password || 1password"
+      "SUPER, D, focusworkspaceoncurrentmonitor, name:discord"
+      "SUPER, S, focusworkspaceoncurrentmonitor, name:steam"
       "SUPER, ESCAPE, exec, pidof hyprlock || hyprlock --immediate"
       "SUPER, code:60, exec, rofi -modes emoji -show emoji"
       "SUPER, C, exec, rofi -show calc -modi calc -no-show-match -no-sort -no-history -calc-command '${pkgs.wtype}/bin/wtype \"{result}\"'"
