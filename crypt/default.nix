@@ -9,6 +9,7 @@
   imports = [
     ../hardware/crypt.nix
     ./docker.nix
+    ./nvidia.nix
     ./steam.nix
   ];
 
@@ -174,19 +175,6 @@
 
   hardware.pulseaudio.enable = false;
   hardware.bluetooth.enable = true;
-
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware = {
-    graphics.enable = true;
-    nvidia = {
-      modesetting.enable = true;
-      powerManagement.enable = false;
-      powerManagement.finegrained = false;
-      open = false;
-      nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-    };
-  };
 
   users.users.sef = {
     isNormalUser = true;

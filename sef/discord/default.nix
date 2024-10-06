@@ -1,4 +1,6 @@
 { pkgs, config, ... }:
 {
-  home.packages = [ pkgs.discord ];
+  home.packages = [
+    pkgs.vesktop
+  ];
 }

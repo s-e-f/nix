@@ -112,7 +112,7 @@
       "workspace name:terminal, class:(kitty)"
       "workspace name:vault, class:(1Password)"
       "workspace name:obsidian, class:(obsidian)"
-      "workspace name:discord, class:(discord)"
+      "workspace name:discord, class:(vesktop)"
       "workspace name:steam, class:(steam)"
     ];
     bind = [
@@ -122,7 +122,7 @@
       "SUPER, T, focusworkspaceoncurrentmonitor, name:terminal"
       "SUPER, T, exec, pidof kitty || kitty"
       "SUPER, B, focusworkspaceoncurrentmonitor, name:browser"
-      "SUPER, B, exec, pidof firefox || firefix"
+      "SUPER, B, exec, pidof firefox || firefox"
       "SUPER, O, focusworkspaceoncurrentmonitor, name:obsidian"
       "SUPER, O, exec, pidof obsidian || obsidian"
       "SUPER, P, focusworkspaceoncurrentmonitor, name:vault"
