@@ -30,6 +30,8 @@
         browser = " ";
         vault = " ";
         obsidian = " ";
+        discord = " ";
+        steam = " ";
         default = " ";
       };
       persistent-workspaces =
