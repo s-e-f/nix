@@ -11,7 +11,7 @@
     ./docker.nix
     ./nvidia.nix
     ./steam.nix
-    ./theme.nix
+    ./stylix.nix
   ];
 
   nixpkgs = {
@@ -32,6 +32,8 @@
         "nix-command"
         "flakes"
       ];
+      substituters = [ "https://hyprland.cachix.org" ];
+      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
   };
 
@@ -167,7 +169,12 @@
 
   programs = {
     ssh.startAgent = true;
-    hyprland.enable = true;
+    hyprland = {
+      enable = true;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      portalPackage =
+        inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    };
     hyprlock.enable = true;
     waybar.enable = true;
     zsh.enable = true;

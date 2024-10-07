@@ -10,7 +10,7 @@
       powerManagement.finegrained = false;
       open = true;
       nvidiaSettings = false;
-      package = config.boot.kernelPackages.nvidiaPackages.production;
+      package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
       nvidiaPersistenced = true;
     };
   };
