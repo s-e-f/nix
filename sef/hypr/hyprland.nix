@@ -148,12 +148,14 @@
     ];
     exec = [ "export HYPRLAND_INSTANCE_SIGNATURE=$(hyprctl instances -j | jq '.[0].instance' -r)" ];
     exec-once = [
+      "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       "hypridle"
       "hyprpaper"
       "wl-paste --type text --watch cliphist store"
       "wl-paste --type image --watch cliphis store"
       "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
-      "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+      "[workspace name:vault silent] 1password"
+      "[workspace name:discord silent] vesktop"
     ];
   };
 }
