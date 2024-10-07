@@ -70,7 +70,6 @@
       win-virtio
       win-spice
       pavucontrol
-      noto-fonts
       gparted
     ];
   };
@@ -190,12 +189,6 @@
       flake = "/home/sef/.config/nix";
     };
   };
-
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
-    font-awesome
-    roboto
-  ];
 
   users.defaultUserShell = pkgs.zsh;
 

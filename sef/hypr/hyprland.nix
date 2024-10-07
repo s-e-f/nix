@@ -51,7 +51,6 @@
       };
 
       misc = {
-        font_family = "Noto Sans";
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
       };
