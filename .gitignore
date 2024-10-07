@@ -1,1 +1,6 @@
+# direnv cache folder
 .direnv/
+
+# nix build result folder
+result/
+result

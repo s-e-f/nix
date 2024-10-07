@@ -201,4 +201,3 @@ plugins {
 }
 
 pane_frames false
-theme "kanagawa"

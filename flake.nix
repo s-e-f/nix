@@ -3,15 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    stylix.url = "github:danth/stylix";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    kanagawa = {
-      type = "github";
-      owner = "s-e-f";
-      repo = "kanagawa.nvim";
-      flake = false;
     };
     rose-pine-hyprcursor = {
       url = "github:ndom91/rose-pine-hyprcursor";
@@ -37,8 +32,8 @@
     {
       self,
       nixpkgs,
+      stylix,
       home-manager,
-      kanagawa,
       flake-utils,
       nur,
       ...
@@ -56,13 +51,16 @@
           modules = [
             ./crypt
             nur.nixosModules.nur
+            stylix.nixosModules.stylix
           ];
         };
       };
 
       homeConfigurations.sef = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
-        modules = [ ./sef ];
+        modules = [
+          ./sef
+        ];
         extraSpecialArgs = {
           inherit inputs;
         };

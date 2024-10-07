@@ -13,7 +13,6 @@ in
     delta = {
       enable = true;
       options = {
-        features = "kanagawa";
         "side-by-side" = true;
       };
     };
@@ -39,7 +38,6 @@ in
         showUntrackedFiles = "all";
         relativePaths = false;
       };
-      delta.syntax-theme = "kanagawa";
     };
     aliases = {
       st = "status -sb";

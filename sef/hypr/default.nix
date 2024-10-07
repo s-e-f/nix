@@ -30,14 +30,6 @@ in
   gtk = {
     enable = true;
     cursorTheme = { } // cursor;
-    theme = {
-      package = pkgs.kanagawa-gtk-theme;
-      name = "Kanagawa-BL";
-    };
-    iconTheme = {
-      package = pkgs.kanagawa-icon-theme;
-      name = "Kanagawa";
-    };
   };
 
   qt = {

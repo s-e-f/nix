@@ -72,19 +72,7 @@ in
       enableZshIntegration = true;
       nix-direnv.enable = true;
     };
-    bat = {
-      enable = true;
-      themes.kanagawa = {
-        src = pkgs.fetchFromGitHub {
-          owner = "rebelot";
-          repo = "kanagawa.nvim";
-          rev = "e5f7b8a804360f0a48e40d0083a97193ee4fcc87";
-          hash = "sha256-FnwqqF/jtCgfmjIIR70xx8kL5oAqonrbDEGNw0sixoA=";
-        };
-        file = "extras/kanagawa.tmTheme";
-      };
-      config.theme = "kanagawa";
-    };
+    bat.enable = true;
     fzf = {
       enable = true;
       enableZshIntegration = true;
