@@ -30,7 +30,8 @@ in
   imports = [
     ./git
     ./1password
-    ./nvim
+    #./nvim
+    ./nixvim
     ./kitty
     (import ./firefox { inherit pkgs inputs username; })
     (import ./hypr { inherit pkgs inputs username; })

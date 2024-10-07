@@ -5,6 +5,10 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     stylix.url = "github:danth/stylix";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,6 +38,7 @@
       self,
       nixpkgs,
       stylix,
+      nixvim,
       home-manager,
       flake-utils,
       nur,
@@ -61,6 +66,7 @@
         pkgs = nixpkgs.legacyPackages.${system};
         modules = [
           ./sef
+          nixvim.homeManagerModules.nixvim
         ];
         extraSpecialArgs = {
           inherit inputs;
