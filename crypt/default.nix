@@ -10,7 +10,7 @@
     ../hardware/crypt.nix
     ./docker.nix
     ./nvidia.nix
-    ./steam.nix
+    ./gaming.nix
     ./stylix.nix
   ];
 
