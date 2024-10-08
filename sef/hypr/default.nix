@@ -3,13 +3,6 @@
   inputs,
   ...
 }:
-let
-  cursor = {
-    package = pkgs.rose-pine-cursor;
-    name = "BreezeX-RosePine-Linux";
-    size = 26;
-  };
-in
 {
   imports = [
     ./hyprland.nix
@@ -24,21 +17,5 @@ in
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
     };
-  };
-
-  gtk = {
-    enable = true;
-    cursorTheme = { } // cursor;
-  };
-
-  qt = {
-    enable = true;
-    platformTheme.name = "gtk";
-  };
-
-  home = {
-    pointerCursor = {
-      gtk.enable = true;
-    } // cursor;
   };
 }

@@ -17,8 +17,8 @@
 
       group = {
         groupbar = {
-          "col.active" = "0xff2d4f67";
-          "col.inactive" = "0xff181618";
+          #"col.active" = "0xff2d4f67";
+          #"col.inactive" = "0xff181618";
           font_size = 13;
           height = 20;
           render_titles = false;

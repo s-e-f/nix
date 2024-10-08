@@ -10,6 +10,5 @@
       })
     ];
     location = "center";
-    theme = ./theme.rasi;
   };
 }

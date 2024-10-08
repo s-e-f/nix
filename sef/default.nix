@@ -42,6 +42,7 @@ in
     # ./ags
     ./rofi
     ./discord
+    ./stylix
   ];
 
   home = {
@@ -69,7 +70,7 @@ in
   };
 
   programs = {
-    git.extraConfig.gpg.ssh.program = lib.getExe pkgs._1password "op-ssh-sign";
+    git.extraConfig.gpg.ssh.program = lib.getExe' pkgs._1password-gui "op-ssh-sign";
     direnv = {
       enable = true;
       enableZshIntegration = true;
