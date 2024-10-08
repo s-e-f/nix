@@ -7,11 +7,15 @@
       ts-ls.enable = true;
       biome.enable = true;
       jsonls.enable = true;
-      jdtls.enable = true;
+      jdt-language-server.enable = true;
       gleam.enable = true;
       zls.enable = true;
       nil-ls.enable = true;
-      rust-analyzer.enable = true;
+      rust-analyzer = {
+        enable = true;
+        installCargo = false;
+        installRustc = false;
+      };
     };
     keymaps = {
       silent = true;

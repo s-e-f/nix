@@ -16,9 +16,9 @@
         end
       '';
       sources = [
-        "nvim_lsp"
-        "path"
-        "buffer"
+        { name = "nvim_lsp"; }
+        { name = "path"; }
+        { name = "buffer"; }
       ];
     };
     luaConfig.post = ''

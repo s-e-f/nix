@@ -1,9 +1,4 @@
-{
-  pkgs,
-  inputs,
-  lib,
-  ...
-}:
+{ pkgs, inputs, ... }:
 let
   username = "sef";
 in
@@ -29,20 +24,57 @@ in
   };
 
   imports = [
-    ./git
-    ./1password
+    ../sef/git
+    ../sef/1password
     #./nvim
-    ./nixvim
-    ./kitty
-    (import ./firefox { inherit pkgs inputs username; })
-    ./hypr
-    ./zellij
-    ./starship
-    ./zsh
+    ../sef/nixvim
+    ../sef/kitty
+    (import ../sef/firefox { inherit pkgs inputs username; })
+    #./hypr
+    ../sef/zellij
+    ../sef/starship
+    ../sef/zsh
     # ./ags
-    ./rofi
-    ./discord
+    #./rofi
+    #./discord
   ];
+
+  stylix = {
+    enable = true;
+    autoEnable = false;
+    targets = {
+      bat.enable = true;
+      fzf.enable = true;
+      kitty.enable = true;
+      nixvim.enable = true;
+      nixvim.transparentBackground.main = true;
+      nixvim.transparentBackground.signColumn = true;
+    };
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/solarflare.yaml";
+    polarity = "dark";
+    image = ../sef/hypr/wallpapers/koi.jpeg;
+    fonts = {
+      serif = {
+        package = pkgs.noto-fonts;
+        name = "Noto Serif";
+      };
+
+      sansSerif = {
+        package = pkgs.noto-fonts;
+        name = "Noto Sans";
+      };
+
+      monospace = {
+        package = (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; });
+        name = "FiraCode Nerd Font Mono";
+      };
+
+      emoji = {
+        package = pkgs.noto-fonts-emoji;
+        name = "Noto Color Emoji";
+      };
+    };
+  };
 
   home = {
     packages = with pkgs; [
@@ -69,7 +101,7 @@ in
   };
 
   programs = {
-    git.extraConfig.gpg.ssh.program = lib.getExe pkgs._1password "op-ssh-sign";
+    git.extraConfig.gpg.ssh.program = "/opt/1Password/op-ssh-sign";
     direnv = {
       enable = true;
       enableZshIntegration = true;
@@ -103,5 +135,4 @@ in
     };
     fd.enable = true;
   };
-
 }

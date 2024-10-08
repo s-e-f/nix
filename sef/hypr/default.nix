@@ -1,7 +1,6 @@
 {
   pkgs,
   inputs,
-  username,
   ...
 }:
 let
@@ -13,7 +12,7 @@ let
 in
 {
   imports = [
-    (import ./hyprland.nix { inherit pkgs inputs username; })
+    ./hyprland.nix
     ./hypridle.nix
     ./hyprlock.nix
     ./hyprpaper.nix

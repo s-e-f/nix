@@ -62,14 +62,28 @@
         };
       };
 
-      homeConfigurations.sef = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
-        modules = [
-          ./sef
-          nixvim.homeManagerModules.nixvim
-        ];
-        extraSpecialArgs = {
-          inherit inputs;
+      homeConfigurations = {
+        sef = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          modules = [
+            ./sef
+            nixvim.homeManagerModules.nixvim
+            stylix.homeManagerModules.stylix
+          ];
+          extraSpecialArgs = {
+            inherit inputs;
+          };
+        };
+        vintus-sef = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          modules = [
+            ./vintus-sef
+            nixvim.homeManagerModules.nixvim
+            stylix.homeManagerModules.stylix
+          ];
+          extraSpecialArgs = {
+            inherit inputs;
+          };
         };
       };
     }
@@ -82,8 +96,6 @@
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             vscode-langservers-extracted
-            nil
-            nixfmt-rfc-style
             typescript-language-server
             biome
           ];
