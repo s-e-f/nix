@@ -9,6 +9,9 @@ let
   email = "39380372+s-e-f@users.noreply.github.com";
 in
 {
+  home.sessionVariables = {
+    BAT_THEME = "base16";
+  };
   programs.git = {
     enable = true;
     lfs.enable = true;
@@ -17,7 +20,8 @@ in
     delta = {
       enable = true;
       options = {
-        "side-by-side" = true;
+        side-by-side = true;
+        navigate = true;
       };
     };
     extraConfig = {
