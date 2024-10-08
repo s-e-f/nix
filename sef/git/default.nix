@@ -9,9 +9,6 @@ let
   email = "39380372+s-e-f@users.noreply.github.com";
 in
 {
-  home.sessionVariables = {
-    BAT_THEME = "base16";
-  };
   programs.git = {
     enable = true;
     lfs.enable = true;

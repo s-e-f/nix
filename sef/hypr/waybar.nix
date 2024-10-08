@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  config,
+  inputs,
+  ...
+}:
 {
   programs.waybar.enable = true;
   programs.waybar.systemd.enable = true; # nh switch fails to properly restart waybar
@@ -163,7 +168,7 @@
     }
 
     #workspaces button.active {
-        color: #87a987;
+        color: @accent_color;
     }
 
     @keyframes blink {
