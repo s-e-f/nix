@@ -52,6 +52,7 @@ in
     };
     base16Scheme = "${pkgs.base16-schemes}/share/themes/solarflare.yaml";
     polarity = "dark";
+    # image must be set even if base16Scheme is set
     image = ../sef/hypr/wallpapers/koi.jpeg;
     fonts = {
       serif = {
