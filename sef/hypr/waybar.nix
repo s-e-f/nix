@@ -139,22 +139,9 @@
         min-height: 0;
     }
 
-    window#waybar {
-        background-color: transparent;
-        color: #c5c9c5;
-    }
     window#waybar>box {
-        background: rgba(24, 22, 22, 0.8);
         border-radius: 0px;
         padding: 10px;
-    }
-
-    tooltip {
-        background: rgba(43, 48, 59, 0.5);
-        border: 1px solid rgba(100, 114, 125, 0.5);
-    }
-    tooltip label {
-        color: #c5c9c5;
     }
 
     #workspaces button {
@@ -163,24 +150,20 @@
         color: inherit;
     }
 
-    #workspaces button.focused {
-        background: #64727D;
-    }
-
     #workspaces button.active {
         color: @accent_color;
     }
 
     @keyframes blink {
         to {
-            background-color: #c5c9c5;
-            color: #181616;
+            background-color: @base06;
+            color: @base01;
         }
     }
 
     #battery.warning:not(.charging) {
-        background: #c4746e;
-        color: #c5c9c5;
+        background: @base08;
+        color: @base06;
         animation-name: blink;
         animation-duration: 0.5s;
         animation-timing-function: steps(12);

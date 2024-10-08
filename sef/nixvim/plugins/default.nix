@@ -11,6 +11,10 @@
     ./lsp.nix
     ./cmp.nix
     ./conform.nix
+    ./colorizer.nix
   ];
-  programs.nixvim.plugins.web-devicons.enable = true;
+  programs.nixvim.plugins = {
+    web-devicons.enable = true;
+    nvim-colorizer.enable = true;
+  };
 }

@@ -30,6 +30,7 @@
         standalonePlugins = [
           "nvim-treesitter"
           "oil.nvim"
+          "telescope-media-files.nvim"
         ];
       };
     };

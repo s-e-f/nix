@@ -2,7 +2,7 @@
 {
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/solarflare.yaml";
+    base16Scheme = import ../sef/stylix/colors.nix;
     polarity = "dark";
     fonts = {
       serif = {

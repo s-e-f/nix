@@ -7,7 +7,7 @@
 {
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/solarflare.yaml";
+    base16Scheme = import ./colors.nix;
     polarity = "dark";
     image = ../hypr/wallpapers/koi.jpg;
     cursor = {
@@ -35,6 +35,10 @@
         package = pkgs.noto-fonts-emoji;
         name = "Noto Color Emoji";
       };
+    };
+    opacity = {
+      terminal = 0.8;
+      desktop = 0.8;
     };
   };
 }

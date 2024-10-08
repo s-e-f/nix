@@ -10,5 +10,7 @@
       })
     ];
     location = "center";
+    theme = ./theme.rasi;
   };
+  stylix.targets.rofi.enable = false;
 }

@@ -50,7 +50,7 @@ in
       nixvim.transparentBackground.main = true;
       nixvim.transparentBackground.signColumn = true;
     };
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/solarflare.yaml";
+    base16Scheme = import ../sef/stylix/colors.nix;
     polarity = "dark";
     # image must be set even if base16Scheme is set
     image = ../sef/hypr/wallpapers/koi.jpg;
