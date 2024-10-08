@@ -4,6 +4,33 @@
     enable = true;
     defaultEditor = true;
     plugins.web-devicons.enable = true;
+    autoGroups = {
+      "kickstart-highlight-yank" = {
+        clear = true;
+      };
+    };
+    keymaps = [
+      {
+        action = "<cmd>nohlsearch<cr>";
+        mode = "n";
+        key = "<esc>";
+      }
+      {
+        action = "<cmd>bd<cr>";
+        mode = "n";
+        key = "<leader>x";
+      }
+    ];
+    autoCmd = [
+      {
+        callback = {
+          __raw = "function() vim.highlight.on_yank() end";
+        };
+        desc = "Highlight when yanking text";
+        group = "kickstart-highlight-yank";
+        event = [ "TextYankPost" ];
+      }
+    ];
     globals = {
       mapleader = " ";
       maplocalleader = " ";

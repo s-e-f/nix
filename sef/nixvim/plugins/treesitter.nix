@@ -4,7 +4,15 @@
     enable = true;
     settings = {
       auto_install = true;
-      ensure_installed = "all";
+      ensure_installed = [
+        "lua"
+        "html"
+        "markdown"
+        "bash"
+        "c"
+        "vim"
+        "vimdoc"
+      ];
       highlight.enable = true;
       indent.enable = true;
     };

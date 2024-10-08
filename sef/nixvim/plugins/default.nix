@@ -1,6 +1,7 @@
 { pkgs, config, ... }:
 {
   imports = [
+    ./autopairs.nix
     ./oil.nix
     ./telescope.nix
     ./treesitter.nix

@@ -22,33 +22,38 @@
       extra = [
         {
           action = {
-            __raw = "require('telescope.builtin').lsp_references()";
+            __raw = "require('telescope.builtin').lsp_references";
           };
           key = "gr";
+          mode = "n";
         }
         {
           action = {
-            __raw = "require('telescope.builtin').lsp_definitions()";
+            __raw = "require('telescope.builtin').lsp_definitions";
           };
           key = "gd";
+          mode = "n";
         }
         {
           action = {
-            __raw = "require('telescope.builtin').lsp_implementations()";
+            __raw = "require('telescope.builtin').lsp_implementations";
           };
           key = "gi";
+          mode = "n";
         }
         {
           action = {
-            __raw = "require('telescope.builtin').lsp_type_definitions()";
+            __raw = "require('telescope.builtin').lsp_type_definitions";
           };
           key = "gT";
+          mode = "n";
         }
         {
           action = {
-            __raw = "require('telescope.builtin').lsp_workspace_symbols()";
+            __raw = "require('telescope.builtin').lsp_workspace_symbols";
           };
           key = "gs";
+          mode = "n";
         }
       ];
       diagnostic = {
