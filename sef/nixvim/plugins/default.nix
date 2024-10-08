@@ -12,4 +12,5 @@
     ./cmp.nix
     ./conform.nix
   ];
+  programs.nixvim.plugins.web-devicons.enable = true;
 }

@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   programs.nixvim.plugins = {
-    nvim-autopairs.enable = true;
+    ts-autotag.enable = true;
     autoclose.enable = true;
   };
 }

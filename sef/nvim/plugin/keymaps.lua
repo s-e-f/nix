@@ -1,5 +1,0 @@
-vim.keymap.set('n', '<esc>', '<cmd>nohlsearch<cr>')
-vim.keymap.set('n', '<leader>x', '<cmd>bd<cr>')
-vim.keymap.set('n', '<leader>db', '<cmd>DBUIToggle<cr>')
-vim.keymap.set('n', 'Y', '"+y')
-vim.keymap.set('n', 'P', '"+p')

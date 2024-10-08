@@ -38,7 +38,6 @@
       self,
       nixpkgs,
       stylix,
-      nixvim,
       home-manager,
       flake-utils,
       nur,
@@ -67,7 +66,6 @@
           pkgs = nixpkgs.legacyPackages.${system};
           modules = [
             ./sef
-            nixvim.homeManagerModules.nixvim
             stylix.homeManagerModules.stylix
           ];
           extraSpecialArgs = {
@@ -78,7 +76,6 @@
           pkgs = nixpkgs.legacyPackages.${system};
           modules = [
             ./vintus-sef
-            nixvim.homeManagerModules.nixvim
             stylix.homeManagerModules.stylix
           ];
           extraSpecialArgs = {
