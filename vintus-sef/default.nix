@@ -96,9 +96,6 @@ in
       nodejs_22
       sqlcmd
     ];
-    sessionVariables = {
-      JDTLS_JVM_ARGS = "-javaagent:${pkgs.lombok}/share/java/lombok.jar";
-    };
   };
 
   programs = {
