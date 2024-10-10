@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   programs.nixvim.plugins.lsp = {
     enable = true;
@@ -7,7 +12,6 @@
       ts-ls.enable = true;
       biome.enable = true;
       jsonls.enable = true;
-      jdt-language-server.enable = true;
       gleam.enable = true;
       zls.enable = true;
       nil-ls.enable = true;
@@ -66,5 +70,14 @@
         "<leader>lc" = "code_action";
       };
     };
+  };
+  programs.nixvim.plugins.nvim-jdtls = {
+    enable = true;
+    cmd = [
+      (lib.getExe pkgs.jdt-language-server)
+      "-data"
+      "/home/sef/.cache/jdtls/workspace"
+      "--jvm-arg=-javaagent:${pkgs.lombok}/share/java/lombok.jar"
+    ];
   };
 }
