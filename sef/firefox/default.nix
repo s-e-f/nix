@@ -15,6 +15,9 @@
           onepassword-password-manager
           ublock-origin
           multi-account-containers
+          simple-tab-groups
+          github-file-icons
+          # FaviconSwitcher - no NUR entry yet
         ];
         default-settings = { };
       in
