@@ -39,7 +39,6 @@ in
     ./zellij
     ./starship
     ./zsh
-    # ./ags
     ./rofi
     ./discord
     ../modules/stylix.nix

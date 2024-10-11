@@ -35,7 +35,6 @@ in
     ../sef/zellij
     ../sef/starship
     ../sef/zsh
-    # ./ags
     #./rofi
     #./discord
   ];

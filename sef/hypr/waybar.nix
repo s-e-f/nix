@@ -152,6 +152,7 @@
 
     #workspaces button.active {
         color: @accent_color;
+        border-bottom: 0px solid transparent;
     }
 
     @keyframes blink {

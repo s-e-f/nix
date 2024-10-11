@@ -27,10 +27,6 @@
       url = "github:dj95/zjstatus";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ags = {
-      url = "github:Aylur/ags";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -95,6 +91,7 @@
             vscode-langservers-extracted
             typescript-language-server
             biome
+            bun
           ];
         };
       }
