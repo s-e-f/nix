@@ -31,13 +31,13 @@
       format = "{icon}";
       move-to-monitor = true;
       format-icons = {
-        terminal = " ";
-        browser = " ";
-        vault = " ";
-        obsidian = " ";
-        discord = " ";
-        steam = " ";
-        default = " ";
+        terminal = "";
+        browser = "";
+        vault = "";
+        obsidian = "";
+        discord = "";
+        steam = "";
+        default = "";
       };
       persistent-workspaces =
         {

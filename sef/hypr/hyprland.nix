@@ -124,7 +124,6 @@
         "SUPER, B, focusworkspaceoncurrentmonitor, name:browser"
         "SUPER, B, exec, pidof firefox || firefox"
         "SUPER, O, focusworkspaceoncurrentmonitor, name:obsidian"
-        "SUPER, O, exec, pidof obsidian || obsidian"
         "SUPER, P, focusworkspaceoncurrentmonitor, name:vault"
         "SUPER, P, exec, pidof 1password || 1password"
         "SUPER, D, focusworkspaceoncurrentmonitor, name:discord"
