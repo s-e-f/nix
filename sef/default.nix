@@ -42,29 +42,27 @@ in
     # ./ags
     ./rofi
     ./discord
-    ./stylix
+    ../modules/stylix.nix
   ];
 
-  home = {
-    packages = with pkgs; [
-      flyctl
-      zip
-      tlrc
-      usql
-      obsidian
-      noto-fonts
-      turso-cli
-      nh
-      nil
-      nixfmt-rfc-style
-      vscode-langservers-extracted
-      jdt-language-server
-      google-java-format
-      lombok
-      nodejs_22
-      sqlcmd
-    ];
-  };
+  home.packages = with pkgs; [
+    flyctl
+    zip
+    tlrc
+    usql
+    obsidian
+    noto-fonts
+    turso-cli
+    nh
+    nil
+    nixfmt-rfc-style
+    vscode-langservers-extracted
+    jdt-language-server
+    google-java-format
+    lombok
+    nodejs_22
+    sqlcmd
+  ];
 
   programs = {
     git.extraConfig.gpg.ssh.program = lib.getExe' pkgs._1password-gui "op-ssh-sign";

@@ -11,7 +11,7 @@
     ./docker.nix
     ./nvidia.nix
     ./gaming.nix
-    ./stylix.nix
+    ../modules/stylix.nix
   ];
 
   nixpkgs = {
@@ -73,6 +73,12 @@
       gparted
     ];
   };
+
+  fonts.packages = with pkgs; [
+    font-awesome # for waybar
+    noto-fonts
+    noto-fonts-emoji
+  ];
 
   security.polkit.enable = true;
   programs.gnupg.agent.enable = true;

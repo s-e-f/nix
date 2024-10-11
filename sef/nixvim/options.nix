@@ -20,7 +20,7 @@
       number = true;
       relativenumber = true;
       showmode = false;
-      breakindent = true;
+      breakindent = false;
       undofile = true;
       ignorecase = true;
       smartcase = true;
@@ -31,8 +31,8 @@
       shiftwidth = 4;
       softtabstop = 4;
       expandtab = true;
-      smartindent = true;
-      autoindent = true;
+      smartindent = false;
+      autoindent = false;
       smarttab = true;
       wrap = false;
       termguicolors = true;
