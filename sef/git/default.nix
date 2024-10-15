@@ -5,7 +5,7 @@
   ...
 }:
 let
-  public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEWzfajaOsrjRi9VBZ1eZHndHr/8HoIZT6szzySUVHAF";
+  public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHdwEkINsn9b0Uyct8TMobD1959B3jzxyVZ0+QPPFdyQ";
   email = "39380372+s-e-f@users.noreply.github.com";
 in
 {
