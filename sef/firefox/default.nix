@@ -7,7 +7,14 @@
 {
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox.override { nativeMessagingHosts = [ pkgs.gnome-browser-connector ]; };
+    package =
+      (pkgs.wrapFirefox.override { libpulseaudio = pkgs.libpressureaudio; })
+        (pkgs.firefox-unwrapped.override {
+          pipewireSupport = true;
+        })
+        {
+        };
+    nativeMessagingHosts = [ pkgs.gnome-browser-connector ];
     profiles =
       with pkgs.nur.repos.rycee.firefox-addons;
       let

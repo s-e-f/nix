@@ -172,6 +172,14 @@
     ];
   };
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk
+    ];
+  };
+
   programs = {
     ssh.startAgent = true;
     hyprland = {
