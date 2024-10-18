@@ -89,7 +89,13 @@
 
   boot = {
     loader = {
-      systemd-boot.enable = true;
+      grub = {
+        enable = true;
+        efiSupport = true;
+        devices = [ "nodev" ];
+        enableCryptodisk = true;
+        efiInstallAsRemovable = false;
+      };
       efi.canTouchEfiVariables = true;
     };
   };
