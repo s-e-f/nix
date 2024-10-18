@@ -60,7 +60,6 @@
     systemPackages = with pkgs; [
       mako
       hyprcursor
-      cliphist
       wl-clipboard
       inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
       rose-pine-cursor

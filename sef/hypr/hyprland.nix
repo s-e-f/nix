@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   inputs,
   ...
 }:
@@ -150,8 +151,7 @@
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "hypridle"
         "hyprpaper"
-        "wl-paste --type text --watch cliphist store"
-        "wl-paste --type image --watch cliphis store"
+        (lib.getExe pkgs.clipboard-jh)
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
         "[workspace name:vault silent] 1password"
         "[workspace name:discord silent] vesktop"
