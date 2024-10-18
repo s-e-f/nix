@@ -151,7 +151,7 @@
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "hypridle"
         "hyprpaper"
-        (lib.getExe pkgs.clipboard-jh)
+        # (lib.getExe pkgs.clipboard-jh)
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
         "[workspace name:vault silent] 1password"
         "[workspace name:discord silent] vesktop"
