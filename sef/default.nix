@@ -31,7 +31,7 @@ in
   imports = [
     ./git
     ./1password
-    #./nvim
+    ./mako
     ./nixvim
     ./kitty
     (import ./firefox { inherit pkgs inputs username; })

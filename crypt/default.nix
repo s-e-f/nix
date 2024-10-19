@@ -58,7 +58,6 @@
       NIXOS_OZONE_WL = "1";
     };
     systemPackages = with pkgs; [
-      mako
       hyprcursor
       wl-clipboard
       inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
