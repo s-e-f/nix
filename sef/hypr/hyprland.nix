@@ -108,25 +108,14 @@
         "desc:Lenovo Group Limited L32p-30 U512058T, highres@highrr, auto, 1.5"
         ", highres@highrr, auto, 1"
       ];
-      windowrulev2 = [
-        "workspace name:browser, class:(firefox)"
-        "workspace name:terminal, class:(kitty)"
-        "workspace name:vault, class:(1Password)"
-        "workspace name:obsidian, class:(obsidian)"
-        "workspace name:discord, class:(vesktop)"
-        "workspace name:steam, class:(steam)"
-      ];
       bind = [
         "SUPER, Q, killactive"
         "SUPER, F, fullscreen"
         "SUPER, M, exit"
         "SUPER, T, focusworkspaceoncurrentmonitor, name:terminal"
-        "SUPER, T, exec, pidof kitty || kitty"
         "SUPER, B, focusworkspaceoncurrentmonitor, name:browser"
-        "SUPER, B, exec, pidof firefox || firefox"
         "SUPER, O, focusworkspaceoncurrentmonitor, name:obsidian"
         "SUPER, P, focusworkspaceoncurrentmonitor, name:vault"
-        "SUPER, P, exec, pidof 1password || 1password"
         "SUPER, D, focusworkspaceoncurrentmonitor, name:discord"
         "SUPER, S, focusworkspaceoncurrentmonitor, name:steam"
         "SUPER, ESCAPE, exec, pidof hyprlock || hyprlock --immediate"
