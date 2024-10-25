@@ -8,7 +8,12 @@
   programs.nixvim.plugins.lsp = {
     enable = true;
     servers = {
-      ts_ls.enable = true;
+      ts_ls = {
+        enable = true;
+        settings = {
+          completions.completeFunctionCalls = true;
+        };
+      };
       biome.enable = true;
       jsonls.enable = true;
       gleam.enable = true;
