@@ -8,13 +8,22 @@
   programs.nixvim.plugins.lsp = {
     enable = true;
     servers = {
-      # TODO(ts_ls): server_capabilities.documentFormattingProvider = false
       ts_ls.enable = true;
       biome.enable = true;
       jsonls.enable = true;
       gleam.enable = true;
       zls.enable = true;
-      nil_ls.enable = true;
+      nixd = {
+        enable = true;
+        settings = {
+          nixpkgs.expr = "import <nixpkgs> { }";
+          options = {
+            crypt.expr = "(builtins.getFlake \"/home/sef/.config/nix/flake.nix\").nixosConfigurations.crypt.options";
+            hm_sef.expr = "(builtins.getFlake \"/home/sef/.config/nix/flake.nix\").homeConfigurations.sef.options";
+            hm_vintus_sef.expr = "(builtins.getFlake \"/home/sef/.config/nix/flake.nix\").homeConfigurations.vintus-sef.options";
+          };
+        };
+      };
       rust_analyzer = {
         enable = true;
         installCargo = false;

@@ -87,12 +87,9 @@
       in
       {
         devShells.default = pkgs.mkShell {
-          packages = with pkgs; [
-            vscode-langservers-extracted
-            typescript-language-server
-            biome
-            bun
-          ];
+          packages =
+            [
+            ];
         };
       }
     );
