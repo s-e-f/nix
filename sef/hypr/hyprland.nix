@@ -93,12 +93,6 @@
         "GBM_BACKEND,nvidia-drm"
         "__GLX_VENDOR_LIBRARY_NAME,nvidia"
       ];
-      workspace = [
-        "1, defaultName:terminal"
-        "2, defaultName:browser"
-        "3, defaultName:vault"
-        "4, defaultName:obsidian"
-      ];
       monitor = [
         "desc:HP Inc. HP E24mv G4 CNC21806N9, highres@highrr, 0x0, 1"
         "desc:HP Inc. HP E24 G4 CN42290TQG, highres@highrr, 1920x0, 1"
@@ -108,25 +102,48 @@
         "desc:Lenovo Group Limited L32p-30 U512058T, highres@highrr, auto, 1.5"
         ", highres@highrr, auto, 1"
       ];
-      bind = [
-        "SUPER, Q, killactive"
-        "SUPER, F, fullscreen"
-        "SUPER, M, exit"
-        "SUPER, T, focusworkspaceoncurrentmonitor, name:terminal"
-        "SUPER, B, focusworkspaceoncurrentmonitor, name:browser"
-        "SUPER, O, focusworkspaceoncurrentmonitor, name:obsidian"
-        "SUPER, P, focusworkspaceoncurrentmonitor, name:vault"
-        "SUPER, D, focusworkspaceoncurrentmonitor, name:discord"
-        "SUPER, S, focusworkspaceoncurrentmonitor, name:steam"
-        "SUPER, ESCAPE, exec, pidof hyprlock || hyprlock --immediate"
-        "SUPER, code:60, exec, rofi -modes emoji -show emoji"
-        "SUPER, C, exec, rofi -show calc -modi calc -no-show-match -no-sort -no-history -calc-command '${pkgs.wtype}/bin/wtype \"{result}\"'"
-        "SUPER, R, exec, rofi -show drun"
-        "SUPER, H, movefocus, l"
-        "SUPER, L, movefocus, r"
-        "SUPER, J, movefocus, d"
-        "SUPER, K, movefocus, u"
+      workspace = [
+        "1, defaultName:terminal"
+        "2, defaultName:browser"
+        "3, defaultName:obsidian"
+        "4, defaultName:vault"
+        "5, defaultName:discord"
+        "6, defaultName:steam"
       ];
+      bind =
+        let
+          ensure = pkgs.writeShellApplication {
+            name = "ensure_and_focus";
+            text = ''
+              hyprctl clients -j | jq -c -e ".[] | select(.class==\"$1\") | .pid" || $2
+            '';
+          };
+        in
+        [
+          "SUPER, Q, killactive"
+          "SUPER, F, fullscreen"
+          "SUPER, M, exit"
+          "SUPER, T, focusworkspaceoncurrentmonitor, name:terminal"
+          "SUPER, T, exec, [workspace name:terminal], ${lib.getExe ensure} kitty kitty"
+          "SUPER, B, focusworkspaceoncurrentmonitor, name:browser"
+          "SUPER, B, exec, [workspace name:browser], ${lib.getExe ensure} firefox firefox"
+          "SUPER, O, focusworkspaceoncurrentmonitor, name:obsidian"
+          "SUPER, O, exec, [workspace name:obsidian], ${lib.getExe ensure} obsidian obsidian"
+          "SUPER, P, focusworkspaceoncurrentmonitor, name:vault"
+          "SUPER, P, exec, [workspace name:vault], ${lib.getExe ensure} 1Password 1password"
+          "SUPER, D, focusworkspaceoncurrentmonitor, name:discord"
+          "SUPER, D, exec, [workspace name:discord], ${lib.getExe ensure} vesktop vesktop"
+          "SUPER, S, focusworkspaceoncurrentmonitor, name:steam"
+          "SUPER, S, exec, [workspace name:steam], ${lib.getExe ensure} steam steam"
+          "SUPER, ESCAPE, exec, pidof hyprlock || hyprlock --immediate"
+          "SUPER, code:60, exec, rofi -modes emoji -show emoji"
+          "SUPER, C, exec, rofi -show calc -modi calc -no-show-match -no-sort -no-history -calc-command '${pkgs.wtype}/bin/wtype \"{result}\"'"
+          "SUPER, R, exec, rofi -show drun"
+          "SUPER, H, movefocus, l"
+          "SUPER, L, movefocus, r"
+          "SUPER, J, movefocus, d"
+          "SUPER, K, movefocus, u"
+        ];
       bindm = [ "SUPER, mouse:272, movewindow" ];
       bindle = [
         ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 0.01+"
@@ -143,7 +160,6 @@
         # (lib.getExe pkgs.clipboard-jh)
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
         "[workspace name:vault silent] 1password"
-        "[workspace name:discord silent] vesktop"
       ];
     };
   };
