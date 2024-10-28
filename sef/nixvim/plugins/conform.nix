@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   programs.nixvim.plugins.conform-nvim = {
     enable = true;
@@ -12,6 +17,7 @@
         java = [ "google-java-format" ];
         nix = [ "nixfmt" ];
         cs = [ "csharpier" ];
+        hcl = [ "hcl" ];
       };
     };
   };
