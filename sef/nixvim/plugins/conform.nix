@@ -19,6 +19,11 @@
         cs = [ "csharpier" ];
         hcl = [ "hcl" ];
       };
+      formatters = {
+        hcl = {
+          command = (lib.getExe pkgs.hclfmt);
+        };
+      };
     };
   };
 }
