@@ -18,6 +18,7 @@
       jsonls.enable = true;
       gleam.enable = true;
       zls.enable = true;
+      pylsp.enable = true;
       nixd = {
         enable = true;
         settings = {
