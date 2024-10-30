@@ -490,11 +490,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1730143527,
-        "narHash": "sha256-3uRuQHxAd/+8PptDpIZZlC588O0eTV1mTa+z8v4cWPU=",
+        "lastModified": 1730315536,
+        "narHash": "sha256-xrbYGDWda7bxllv50wcxpv3sBL/b1LZayeQr5NDGCpo=",
         "ref": "refs/heads/main",
-        "rev": "d679d200299ed4670f0d0f138c793d5f507b7cec",
-        "revCount": 5390,
+        "rev": "ee91df62f0be6ac65eae0eb3ed74383a3671aef7",
+        "revCount": 5393,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -774,11 +774,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1730240607,
-        "narHash": "sha256-DGDI+iQlPZKfocBab9BY4R/pN2PGIOvHgEEwfxQsh6M=",
+        "lastModified": 1730314180,
+        "narHash": "sha256-0JseDGwMizqbZXLYEG3W31TuIWYUtZ9wAvTH0g1PpoU=",
         "owner": "nix-community",
         "repo": "nur",
-        "rev": "142092eb842a145ed21ea07425d52e73d72fe856",
+        "rev": "97783c993aed99c0914c81be65777d0e81c07b77",
         "type": "github"
       },
       "original": {
@@ -844,6 +844,7 @@
         "nur": "nur",
         "rose-pine-hyprcursor": "rose-pine-hyprcursor",
         "stylix": "stylix",
+        "zen": "zen",
         "zjstatus": "zjstatus"
       }
     },
@@ -1151,6 +1152,26 @@
       "original": {
         "owner": "hyprwm",
         "repo": "xdg-desktop-portal-hyprland",
+        "type": "github"
+      }
+    },
+    "zen": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1730078579,
+        "narHash": "sha256-4h6PF9HYAfrOn1tY70mxauwBTWM6JLTs2AfzaBqFUrg=",
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
+        "rev": "d0d8b3ee1b1740e4ecfe1a4f11dbcde1cdb782aa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
         "type": "github"
       }
     },
