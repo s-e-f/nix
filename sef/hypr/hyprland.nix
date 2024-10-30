@@ -126,7 +126,7 @@
           "SUPER, T, focusworkspaceoncurrentmonitor, name:terminal"
           "SUPER, T, exec, [workspace name:terminal] ${lib.getExe ensure} kitty kitty"
           "SUPER, B, focusworkspaceoncurrentmonitor, name:browser"
-          "SUPER, B, exec, [workspace name:browser] ${lib.getExe ensure} firefox firefox"
+          "SUPER, B, exec, [workspace name:browser] ${lib.getExe ensure} zen-alpha zen"
           "SUPER, O, focusworkspaceoncurrentmonitor, name:obsidian"
           "SUPER, O, exec, [workspace name:obsidian] ${lib.getExe ensure} obsidian obsidian"
           "SUPER, P, focusworkspaceoncurrentmonitor, name:vault"
