@@ -55,6 +55,7 @@ in
     google-java-format
     nodejs_22
     sqlcmd
+    inputs.zen.packages."${pkgs.system}".specific
   ];
 
   programs = {
