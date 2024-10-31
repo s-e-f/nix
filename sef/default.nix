@@ -61,6 +61,7 @@ in
     lombok
     nodejs_22
     sqlcmd
+    inputs.zen.packages."${pkgs.system}".specific
   ];
 
   programs = {

@@ -71,7 +71,6 @@
       win-spice
       pavucontrol
       gparted
-      inputs.zen.packages."${pkgs.system}".specific
     ];
   };
 
