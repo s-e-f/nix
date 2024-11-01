@@ -71,6 +71,7 @@
       win-spice
       pavucontrol
       gparted
+      libnotify
     ];
   };
 

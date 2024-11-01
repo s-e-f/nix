@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  inputs,
   ...
 }:
 {
@@ -239,9 +238,9 @@
       default_tab_template {
         pane size=1 borderless=true {
           plugin location="file:${pkgs.zjstatus}/bin/zjstatus.wasm" {
-            format_left " #[fg=green]{session} {mode} {swap_layout}"
+            format_left "{mode} {swap_layout}"
             format_center "{tabs}"
-            format_right "{command_git_branch} "
+            format_right "#[fg=green]{session} "
             format_space ""
 
             border_enabled "false"
@@ -269,11 +268,6 @@
             tab_normal "#[fg=white]{name}"
             tab_active "#[fg=blue,bold]{name}"
             tab_separator "  "
-
-            command_git_branch_command "git rev-parse --abbrev-ref HEAD"
-            command_git_branch_format "#[fg=blue] {stdout} "
-            command_git_branch_interval "5"
-            command_git_branch_rendermode "static"
 
             datetime "#[fg=blue,bold] {format} "
             datetime_format "%A, %d %b %Y %H:%M"

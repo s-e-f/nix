@@ -62,6 +62,8 @@ in
     nodejs_22
     sqlcmd
     inputs.zen.packages."${pkgs.system}".specific
+    texlive.combined.scheme-full
+    pandoc
   ];
 
   programs = {
