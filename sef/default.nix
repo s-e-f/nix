@@ -28,13 +28,20 @@ in
     };
   };
 
+  xdg = {
+    enable = true;
+    mime.enable = true;
+    mimeApps.enable = true;
+  };
+
   imports = [
     ./git
     ./1password
     ./mako
     ./nixvim
     ./kitty
-    (import ./firefox { inherit pkgs inputs username; })
+    #(import ./firefox { inherit pkgs inputs username; })
+    ./zen
     ./hypr
     ./zellij
     ./starship
@@ -61,7 +68,6 @@ in
     lombok
     nodejs_22
     sqlcmd
-    inputs.zen.packages."${pkgs.system}".specific
     texlive.combined.scheme-full
     pandoc
   ];
