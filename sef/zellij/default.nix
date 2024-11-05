@@ -276,6 +276,11 @@
         }
         children
       }
+      swap_floating_layout {
+        floating_panes max_panes=1 {
+          pane x="5%" width="90%" y="5%" height="90%"
+        }
+      }
     }
   '';
 }
