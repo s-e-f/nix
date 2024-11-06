@@ -5,7 +5,8 @@
   ...
 }:
 {
-
+  # shadow options have changed and stylix has not yet caught up
+  stylix.targets.hyprland.enable = false;
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
@@ -18,8 +19,6 @@
 
       group = {
         groupbar = {
-          #"col.active" = "0xff2d4f67";
-          #"col.inactive" = "0xff181618";
           font_size = 13;
           height = 20;
           render_titles = false;
@@ -29,7 +28,9 @@
       decoration = {
         rounding = 4;
         inactive_opacity = 0.7;
-        drop_shadow = false;
+        shadow = {
+          enabled = false;
+        };
         blur = {
           enabled = true;
           size = 10;
