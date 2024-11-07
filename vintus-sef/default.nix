@@ -23,6 +23,12 @@ in
     };
   };
 
+  xdg = {
+    enable = true;
+    mime.enable = true;
+    mimeApps.enable = true;
+  };
+
   imports = [
     ../modules/stylix.nix
     ../sef/git
@@ -30,7 +36,8 @@ in
     #./nvim
     ../sef/nixvim
     ../sef/kitty
-    (import ../sef/firefox { inherit pkgs inputs username; })
+    #(import ../sef/firefox { inherit pkgs inputs username; })
+    ../sef/zen
     #./hypr
     ../sef/zellij
     ../sef/starship
