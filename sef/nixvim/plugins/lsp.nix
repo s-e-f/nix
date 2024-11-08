@@ -15,6 +15,15 @@
         };
       };
       biome.enable = true;
+      cssls.enable = true;
+      css_variables = {
+        enable = true;
+        package = null; # Installed globally with Bun
+      };
+      cssmodules_ls = {
+        enable = true;
+        package = null; # Installed globally with Bun
+      };
       jsonls.enable = true;
       gleam.enable = true;
       zls.enable = true;
