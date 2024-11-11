@@ -23,11 +23,11 @@ in
     };
   };
 
-  xdg = {
-    enable = true;
-    mime.enable = true;
-    mimeApps.enable = true;
-  };
+  # xdg = {
+  #   enable = true;
+  #   mime.enable = true;
+  #   mimeApps.enable = true;
+  # };
 
   imports = [
     ../modules/stylix.nix
