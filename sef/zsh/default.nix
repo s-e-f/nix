@@ -16,6 +16,7 @@
       ZELLIJ_AUTO_ATTACH="true";
       PATH="$PATH:/usr/share/dotnet";
       PATH="$PATH:$HOME/.dotnet/tools";
+      PATH="$PATH:$HOME/.cache/.bun/bin";
       DOTNET_ROOT="/usr/share/dotnet";
     '';
   };
