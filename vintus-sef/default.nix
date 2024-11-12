@@ -63,6 +63,7 @@ in
     nodejs_22
     sqlcmd
     inputs.zen.packages."${pkgs.system}".specific
+    azure-cli
   ];
 
   programs = {
