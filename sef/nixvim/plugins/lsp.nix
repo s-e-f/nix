@@ -15,6 +15,7 @@
         };
       };
       biome.enable = true;
+      csharp_ls.enable = true;
       cssls.enable = true;
       css_variables = {
         enable = true;
