@@ -64,6 +64,8 @@ in
     sqlcmd
     inputs.zen.packages."${pkgs.system}".specific
     azure-cli
+    texlive.combined.scheme-full
+    pandoc
   ];
 
   programs = {

@@ -24,29 +24,33 @@ in
     extraConfig = {
       core.sshCommand = "ssh";
       commit.gpgsign = true;
+      credential = {
+        cacheOptions = "--timeout 21600";
+        credentialStore = "secretservice";
+        helper = "${pkgs.git-credential-manager}/bin/git-credential-manager";
+        useHttpPath = true;
+      };
       diff.colorMoved = "default";
       gpg = {
         format = "ssh";
         ssh.allowedSignersFile = "~/.ssh/allowed_signers";
       };
-      credential.credentialStore = "secretservice";
-      credential.cacheOptions = "--timeout 21600";
-      credential.useHttpPath = true;
-      credential.helper = "${pkgs.git-credential-manager}/bin/git-credential-manager";
       init.defaultBranch = "main";
       merge.conflictstyle = "diff3";
+      pull.rebase = true;
       tag.gpgsign = true;
-      user.signingkey = public_key;
+      rerere = {
+        enabled = true;
+      };
       status = {
         showUntrackedFiles = "all";
         relativePaths = false;
       };
+      user.signingkey = public_key;
     };
     aliases = {
       st = "status -sb";
       lg = "log --color --graph --pretty=tformat:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --abbrev-commit";
-      prbi = "pull --rebase=interactive";
-      prb = "pull --rebase";
     };
   };
 }
