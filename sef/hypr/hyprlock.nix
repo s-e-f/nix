@@ -9,7 +9,6 @@
 
     background = {
       monitor = "";
-      color = "rgba(25, 20, 20, 1.0)";
       blur_passes = 3;
       blur_size = 10;
     };
@@ -17,7 +16,6 @@
       {
         monitor = "";
         text = "$TIME";
-        color = "rgba(200, 200, 200, 1.0)";
         font_size = 100;
         position = "0, 150";
         halign = "center";
@@ -26,7 +24,6 @@
       {
         monitor = "";
         text = "$PROMPT";
-        color = "rgba(200, 200, 200, 1.0)";
         font_size = 25;
         position = "0, 30";
         halign = "center";
@@ -36,7 +33,6 @@
         monitor = "";
         text = "";
         font_family = "Font Awesome 6 Free";
-        color = "rgba(200, 200, 200, 1.0)";
         font_size = 50;
         position = "0, -100";
         halign = "center";
@@ -51,9 +47,6 @@
       dots_size = 0.25;
       dots_spacing = 0.25;
       dots_center = true;
-      outer_color = "transparent";
-      inner_color = "transparent";
-      font_color = "rgb(255, 255, 255)";
       fade_on_empty = true;
       placeholder_text = "<i>password...</i>";
       hide_input = false;
