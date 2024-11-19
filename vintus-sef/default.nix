@@ -33,6 +33,7 @@ in
     ../modules/stylix.nix
     ../sef/git
     ../sef/1password
+    ../sef/ssh
     #./nvim
     ../sef/nixvim
     ../sef/kitty

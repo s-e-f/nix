@@ -36,6 +36,7 @@ in
 
   imports = [
     ./git
+    ./ssh
     ./1password
     ./mako
     ./nixvim
