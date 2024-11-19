@@ -41,12 +41,12 @@ in
     ./mako
     ./nixvim
     ./kitty
-    #(import ./firefox { inherit pkgs inputs username; })
     ./zen
     ./hypr
     ./zellij
     ./starship
     ./zsh
+    ./nushell
     ./rofi
     ./discord
     ../modules/stylix.nix

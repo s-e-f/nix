@@ -171,6 +171,7 @@
   users.users.sef = {
     isNormalUser = true;
     description = "Sef";
+    shell = pkgs.nushell;
     extraGroups = [
       "networkmanager"
       "wheel"
