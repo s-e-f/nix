@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   programs.nushell = {
-    enable = true;
+    enable = false;
     package = pkgs.nushell;
     configFile.text = ''
       $env.config = {
