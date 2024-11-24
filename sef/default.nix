@@ -71,6 +71,7 @@ in
     sqlcmd
     texlive.combined.scheme-full
     pandoc
+    surrealdb
   ];
 
   programs = {
