@@ -8,6 +8,7 @@
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware = {
     graphics.enable = true;
+    graphics.extraPackages = [ pkgs.libGL ];
     graphics.enable32Bit = true;
     nvidia = {
       modesetting.enable = true;
