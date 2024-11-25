@@ -67,6 +67,8 @@ in
     azure-cli
     texlive.combined.scheme-full
     pandoc
+    surrealdb
+    surrealist
   ];
 
   programs = {
