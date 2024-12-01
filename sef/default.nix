@@ -72,6 +72,8 @@ in
     texlive.combined.scheme-full
     pandoc
     surrealdb
+    surrealist
+    inotify-tools
   ];
 
   programs = {
