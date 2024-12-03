@@ -27,7 +27,10 @@
       };
       jsonls.enable = true;
       gleam.enable = true;
-      zls.enable = true;
+      zls = {
+        enable = true;
+        cmd = [ "zls" ];
+      };
       pylsp.enable = true;
       nixd = {
         enable = true;

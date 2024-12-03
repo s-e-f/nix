@@ -17,6 +17,7 @@
       PATH="$PATH:/usr/share/dotnet";
       PATH="$PATH:$HOME/.dotnet/tools";
       PATH="$PATH:$HOME/.cache/.bun/bin";
+      PATH="$PATH:$HOME/bin";
       DOTNET_ROOT="/usr/share/dotnet";
       LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/run/opengl-driver/lib:/run/opengl-driver-32/lib"
     '';
