@@ -19,6 +19,7 @@
       PATH="$PATH:$HOME/.cache/.bun/bin";
       PATH="$PATH:$HOME/bin";
       DOTNET_ROOT="$HOME/bin/dotnet-sdks";
+      DOTNET_CLI_TELEMETRY_OPTOUT="1"
       LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/run/opengl-driver/lib:/run/opengl-driver-32/lib"
     '';
   };
