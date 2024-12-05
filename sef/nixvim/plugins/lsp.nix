@@ -29,6 +29,7 @@
       gleam.enable = true;
       zls = {
         enable = true;
+        package = null;
         cmd = [ "zls" ];
       };
       pylsp.enable = true;
