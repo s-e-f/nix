@@ -44,6 +44,7 @@
       text = ''
         vivaldi-bin
         .zen-wrapped
+        zen
       '';
       mode = "0755";
     };

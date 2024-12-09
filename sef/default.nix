@@ -61,6 +61,12 @@ in
     ../modules/stylix.nix
   ];
 
+  home.file.".config/electron-flags.conf".text = ''
+    --ozone-platform-hint=auto
+    --ozone-platform=wayland
+    --enable-features=UseOzonePlatform,WaylandWindowDecorations
+  '';
+
   home.packages = with pkgs; [
     flyctl
     zip
