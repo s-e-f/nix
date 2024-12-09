@@ -136,6 +136,7 @@
           "SUPER, D, exec, [workspace name:discord] ${lib.getExe ensure} vesktop vesktop"
           "SUPER, S, focusworkspaceoncurrentmonitor, name:steam"
           "SUPER, S, exec, [workspace name:steam] ${lib.getExe ensure} steam steam"
+          "SUPER, E, exec, thunar"
           "SUPER, ESCAPE, exec, pidof hyprlock || hyprlock --immediate"
           "SUPER, code:60, exec, rofi -modes emoji -show emoji"
           "SUPER, C, exec, rofi -show calc -modi calc -no-show-match -no-sort -no-history -calc-command '${pkgs.wtype}/bin/wtype \"{result}\"'"

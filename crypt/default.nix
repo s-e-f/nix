@@ -11,6 +11,7 @@
     ./docker.nix
     ./nvidia.nix
     ./gaming.nix
+    ./thunar.nix
     ../modules/stylix.nix
   ];
 
@@ -72,6 +73,13 @@
       pavucontrol
       gparted
       libnotify
+      (
+        with dotnetCorePackages;
+        combinePackages [
+          sdk_8_0
+          sdk_9_0
+        ]
+      )
     ];
   };
 
