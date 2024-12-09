@@ -144,6 +144,7 @@
           "SUPER, L, movefocus, r"
           "SUPER, J, movefocus, d"
           "SUPER, K, movefocus, u"
+          "CONTROL_L SUPER, C, exec, ${pkgs.lib.getExe pkgs.hyprpicker} -a --format=hsl"
         ];
       bindm = [ "SUPER, mouse:272, movewindow" ];
       bindle = [

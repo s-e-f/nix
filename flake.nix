@@ -55,7 +55,7 @@
           };
           modules = [
             ./crypt
-            nur.nixosModules.nur
+            nur.modules.nixos.default
             stylix.nixosModules.stylix
           ];
         };
@@ -91,9 +91,8 @@
       in
       {
         devShells.default = pkgs.mkShell {
-          packages =
-            [
-            ];
+          packages = [
+          ];
         };
       }
     );
