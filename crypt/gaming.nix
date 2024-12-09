@@ -10,6 +10,11 @@
   environment.systemPackages = with pkgs; [
     mangohud
     protonup
+    (lutris.override {
+      extraLibraries = pkgs: [
+        # List library dependencies here
+      ];
+    })
   ];
   environment.sessionVariables = {
     STEAM_EXTRA_COMPAT_TOOLS_PATH = "/home/sef/.steam/root/compatibilitytools.d";

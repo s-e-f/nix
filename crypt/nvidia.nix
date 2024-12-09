@@ -17,13 +17,13 @@
       open = false;
       nvidiaSettings = false;
       package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-        version = "565.57.01";
+        version = "565.77";
         sha256_32bit = lib.fakeHash;
-        sha256_64bit = "sha256-buvpTlheOF6IBPWnQVLfQUiHv4GcwhvZW3Ks0PsYLHo=";
-        settingsSha256 = "sha256-kQsvDgnxis9ANFmwIwB7HX5MkIAcpEEAHc8IBOLdXvk=";
+        sha256_64bit = "sha256-CnqnQsRrzzTXZpgkAtF7PbH9s7wbiTRNcM0SPByzFHw=";
+        settingsSha256 = "sha256-CnqnQsRrzzTXZpgkAtF7PbH9s7wbiTRNcM0SPByzFHw=";
         sha256_aarch64 = lib.fakeHash;
         openSha256 = lib.fakeHash;
-        persistencedSha256 = "sha256-hdszsACWNqkCh8G4VBNitDT85gk9gJe1BlQ8LdrYIkg=";
+        persistencedSha256 = "sha256-wnDjC099D8d9NJSp9D0CbsL+vfHXyJFYYgU3CwcqKww=";
       };
       nvidiaPersistenced = true;
     };
