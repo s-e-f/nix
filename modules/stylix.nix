@@ -2,22 +2,38 @@
 let
   # Based on solarflare
   colorSet = {
-    base00 = "#18262F";
-    base01 = "#222E38";
-    base02 = "#586875";
-    base03 = "#667581";
-    base04 = "#85939E";
-    base05 = "#A6AFB8";
-    base06 = "#E8E9ED";
-    base07 = "#F5F7FA";
-    base08 = "#EF5253";
-    base09 = "#E66B2B";
-    base0A = "#E4B51C";
-    base0B = "#7CC844";
-    base0C = "#52CBB0";
-    base0D = "#33B5E1";
-    base0E = "#A363D5";
-    base0F = "#D73C9A";
+    base00 = "#1A2329";
+    # 210 10% 13% (background)
+    base01 = "#22292E";
+    # 210 10% 17% (lighter background)
+    base02 = "#3A4A54";
+    # 210 15% 28% (selection background)
+    base03 = "#4A5A63";
+    # 210 14% 35% (comments/secondary content)
+    base04 = "#74828C";
+    # 210 15% 51% (dark foreground)
+    base05 = "#A0A9B3";
+    # 210 15% 69% (default foreground)
+    base06 = "#CDD3D8";
+    # 210 15% 82% (lighter foreground)
+    base07 = "#E5E8EB";
+    # 210 15% 91% (lightest foreground)
+    base08 = "#E06A6B";
+    # 0 65% 65%
+    base09 = "#DC7A4A";
+    # 30 60% 65%
+    base0A = "#ffcc66";
+    # 40 100% 70%
+    base0B = "#bcc75c";
+    # 66 49% 57%
+    base0C = "#7bc1b8";
+    # 172 36% 62%
+    base0D = "#4599D8";
+    # 210 60% 60%
+    base0E = "#A675C8";
+    # 285 50% 63%
+    base0F = "#be97c4";
+    # 292 28% 68%
   };
   removeHash = s: builtins.substring 1 (builtins.stringLength s - 1) s;
   theme = builtins.mapAttrs (_: v: removeHash v) colorSet;
@@ -27,7 +43,7 @@ in
     enable = true;
     base16Scheme = theme;
     polarity = "dark";
-    image = ../wallpapers/koi.jpg;
+    image = ../wallpapers/galaxy.jpg;
     cursor = {
       package = pkgs.rose-pine-cursor;
       name = "BreezeX-RosePine-Linux";
