@@ -1,6 +1,10 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 {
-  home.packages = [
-    pkgs.vesktop
+  home.packages = with pkgs; [
+    vesktop
+    (discord.override {
+      withVencord = true;
+      withOpenASAR = true;
+    })
   ];
 }
