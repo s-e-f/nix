@@ -5,20 +5,22 @@
   ...
 }:
 {
-  programs.nixvim.plugins.nvim-colorizer = {
+  programs.nixvim.plugins.colorizer = {
     enable = true;
-    fileTypes = [
-      {
-        language = "css";
-        css = true;
-      }
-    ];
-    userDefaultOptions = {
-      AARRGGBB = true;
-      RGB = true;
-      RRGGBB = true;
-      RRGGBBAA = true;
-      mode = "background";
+    settings = {
+      fileTypes = [
+        {
+          language = "css";
+          css = true;
+        }
+      ];
+      userDefaultOptions = {
+        AARRGGBB = true;
+        RGB = true;
+        RRGGBB = true;
+        RRGGBBAA = true;
+        mode = "background";
+      };
     };
   };
   programs.nixvim.keymaps = [
