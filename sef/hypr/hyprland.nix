@@ -66,12 +66,12 @@
         first_launch_animation = false;
         bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
         animation = [
-          "windows, 1, 3.5, myBezier"
-          "windowsOut, 1, 3.5, default, popin 80%"
-          "border, 1, 5, default"
-          "borderangle, 1, 4, default"
-          "fade, 1, 3.5, default"
-          "workspaces, 1, 3, default"
+          "windows, 1, 1.75, myBezier"
+          "windowsOut, 1, 1.75, myBezier, popin 80%"
+          "border, 1, 1.75, myBezier"
+          "borderangle, 1, 1.75, myBezier"
+          "fade, 1, 3.5, myBezier"
+          "workspaces, 1, 1.75, myBezier"
         ];
       };
 
@@ -89,8 +89,6 @@
         "HYPRCURSOR_THEME,rose-pine-hyprcursor"
         "HYPRCURSOR_SIZE,26"
         "MOZ_ENABLE_WAYLAND,1"
-        "NIXOS_OZONE_WL,1"
-        "ELECTRON_OZONE_PLATFORM_HINT,1"
         "LIBVA_DRIVER_NAME,nvidia"
         "XDG_SESSION_TYPE,wayland"
         "GBM_BACKEND,nvidia-drm"
@@ -129,13 +127,13 @@
           "SUPER, T, focusworkspaceoncurrentmonitor, name:terminal"
           "SUPER, T, exec, [workspace name:terminal] ${lib.getExe ensure} kitty kitty"
           "SUPER, B, focusworkspaceoncurrentmonitor, name:browser"
-          "SUPER, B, exec, [workspace name:browser] ${lib.getExe ensure} zen-alpha zen"
+          "SUPER, B, exec, [workspace name:browser] ${lib.getExe ensure} zen-beta zen"
           "SUPER, O, focusworkspaceoncurrentmonitor, name:obsidian"
           "SUPER, O, exec, [workspace name:obsidian] ${lib.getExe ensure} obsidian obsidian"
           "SUPER, P, focusworkspaceoncurrentmonitor, name:vault"
           "SUPER, P, exec, [workspace name:vault] ${lib.getExe ensure} 1Password 1password"
           "SUPER, D, focusworkspaceoncurrentmonitor, name:discord"
-          "SUPER, D, exec, [workspace name:discord] ${lib.getExe ensure} vesktop vesktop"
+          "SUPER, D, exec, [workspace name:discord] ${lib.getExe ensure} discord discord"
           "SUPER, S, focusworkspaceoncurrentmonitor, name:steam"
           "SUPER, S, exec, [workspace name:steam] ${lib.getExe ensure} steam steam"
           "SUPER, E, exec, thunar"
