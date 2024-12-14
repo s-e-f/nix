@@ -88,6 +88,7 @@ in
     surrealdb
     surrealist
     inotify-tools
+    hyprshot
   ];
 
   programs = {
