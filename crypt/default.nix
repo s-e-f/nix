@@ -63,11 +63,6 @@
       wl-clipboard
       inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
       rose-pine-cursor
-      spice
-      spice-gtk
-      spice-protocol
-      win-virtio
-      win-spice
       pavucontrol
       gparted
       libnotify
@@ -132,20 +127,7 @@
     };
   };
 
-  virtualisation = {
-    libvirtd = {
-      enable = true;
-      qemu = {
-        package = pkgs.qemu_kvm;
-        ovmf.enable = true;
-        swtpm.enable = true;
-      };
-    };
-    spiceUSBRedirection.enable = true;
-  };
-
   services = {
-    spice-vdagentd.enable = true;
     printing.enable = true;
     hypridle.enable = true;
     openssh.enable = true;
@@ -182,7 +164,6 @@
       "networkmanager"
       "wheel"
       "input"
-      "libvirtd"
       "docker"
     ];
   };

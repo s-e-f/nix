@@ -1,20 +1,21 @@
-{ pkgs, config, ... }:
+{ ... }:
 {
   imports = [
     ./autopairs.nix
-    ./oil.nix
-    ./telescope.nix
-    ./treesitter.nix
-    ./lualine.nix
-    ./surround.nix
+    ./cmp.nix
+    ./colorizer.nix
+    ./conform.nix
     ./git.nix
     ./lsp.nix
-    ./cmp.nix
-    ./conform.nix
-    ./colorizer.nix
+    ./lualine.nix
+    ./oil.nix
+    ./snacks.nix
+    ./surround.nix
+    ./telescope.nix
+    ./treesitter.nix
   ];
   programs.nixvim.plugins = {
     web-devicons.enable = true;
-    nvim-colorizer.enable = true;
+    mini.enable = true;
   };
 }

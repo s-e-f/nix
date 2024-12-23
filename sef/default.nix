@@ -73,18 +73,13 @@ in
     usql
     obsidian
     noto-fonts
-    turso-cli
     nh
     nil
     nixfmt-rfc-style
     vscode-langservers-extracted
-    jdt-language-server
     google-java-format
-    lombok
     nodejs_22
     sqlcmd
-    texlive.combined.scheme-full
-    pandoc
     surrealdb
     surrealist
     inotify-tools
