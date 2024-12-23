@@ -1,9 +1,4 @@
-{
-  pkgs,
-  config,
-  inputs,
-  ...
-}:
+{ ... }:
 {
   programs.nixvim = {
     globals = {
@@ -24,7 +19,6 @@
       undofile = true;
       ignorecase = true;
       smartcase = true;
-      signcolumn = "yes";
       updatetime = 100;
       fileencoding = "utf-8";
       tabstop = 4;

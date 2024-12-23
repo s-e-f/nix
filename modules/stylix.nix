@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 let
   # Based on solarflare
   colorSet = {
@@ -54,17 +54,14 @@ in
         package = pkgs.noto-fonts;
         name = "Noto Serif";
       };
-
       sansSerif = {
         package = pkgs.noto-fonts;
         name = "Noto Sans";
       };
-
       monospace = {
         package = pkgs.nerd-fonts.fira-code;
         name = "FiraCode Nerd Font Mono";
       };
-
       emoji = {
         package = pkgs.noto-fonts-emoji;
         name = "Noto Color Emoji";
