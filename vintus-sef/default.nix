@@ -63,7 +63,7 @@ in
     google-java-format
     nodejs_22
     sqlcmd
-    inputs.zen.packages."${pkgs.system}".specific
+    inputs.zen.packages."${pkgs.system}".default
     azure-cli
     texlive.combined.scheme-full
     pandoc

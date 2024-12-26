@@ -1,7 +1,7 @@
 { pkgs, inputs, ... }:
 {
   home.packages = [
-    inputs.zen.packages."${pkgs.system}".specific
+    inputs.zen.packages."${pkgs.system}".default
   ];
 
   home.sessionVariables = {
