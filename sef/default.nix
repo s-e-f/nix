@@ -50,6 +50,7 @@ in
     ./mako
     ./nixvim
     ./kitty
+    ./ghostty
     ./zen
     ./hypr
     ./zellij
