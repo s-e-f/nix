@@ -125,7 +125,7 @@
           "SUPER, F, fullscreen"
           "SUPER, M, exit"
           "SUPER, T, focusworkspaceoncurrentmonitor, name:terminal"
-          "SUPER, T, exec, [workspace name:terminal] ${lib.getExe ensure} kitty kitty"
+          "SUPER, T, exec, [workspace name:terminal] ${lib.getExe ensure} com.mitchellh.ghostty ghostty"
           "SUPER, B, focusworkspaceoncurrentmonitor, name:browser"
           "SUPER, B, exec, [workspace name:browser] ${lib.getExe ensure} zen-beta zen"
           "SUPER, O, focusworkspaceoncurrentmonitor, name:obsidian"
