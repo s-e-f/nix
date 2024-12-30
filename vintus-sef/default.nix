@@ -37,6 +37,7 @@ in
     #./nvim
     ../sef/nixvim
     ../sef/kitty
+    ../sef/ghostty
     #(import ../sef/firefox { inherit pkgs inputs username; })
     ../sef/zen
     #./hypr
@@ -55,7 +56,6 @@ in
     obsidian
     noto-fonts
     noto-fonts-emoji
-    turso-cli
     nh
     nil
     nixfmt-rfc-style
