@@ -14,6 +14,6 @@
 
     adjust-cell-height = 35%
     adjust-cursor-height = 35%
-    font-size = 16pt
+    font-size = 11
   '';
 }
