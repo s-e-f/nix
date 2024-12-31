@@ -34,6 +34,9 @@
     ghostty = {
       url = "github:ghostty-org/ghostty";
     };
+    surrealdb = {
+      url = "github:surrealdb/surrealdb";
+    };
   };
 
   outputs =

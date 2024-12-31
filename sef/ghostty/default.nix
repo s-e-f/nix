@@ -11,5 +11,9 @@
     font-family = FiraCode Nerd Font Mono
     window-decoration = false
     confirm-close-surface = false
+
+    adjust-cell-height = 35%
+    adjust-cursor-height = 35%
+    font-size = 16pt
   '';
 }

@@ -81,7 +81,7 @@ in
     google-java-format
     nodejs_22
     sqlcmd
-    surrealdb
+    inputs.surrealdb.packages."${pkgs.system}".default
     surrealist
     inotify-tools
     hyprshot
