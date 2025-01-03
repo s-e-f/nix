@@ -1,6 +1,7 @@
 { pkgs, inputs, ... }:
 {
   programs.hyprlock.enable = true;
+  programs.hyprlock.package = inputs.hyprlock.packages.${pkgs.system}.hyprlock;
   programs.hyprlock.settings = {
 
     general = {
