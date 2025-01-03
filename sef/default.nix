@@ -85,6 +85,7 @@ in
     surrealist
     inotify-tools
     hyprshot
+    gleam
   ];
 
   programs = {
