@@ -69,6 +69,13 @@ in
     pandoc
     inputs.surrealdb.packages."${pkgs.system}".default
     surrealist
+    (
+      with dotnetCorePackages;
+      combinePackages [
+        sdk_8_0
+        sdk_9_0
+      ]
+    )
   ];
 
   programs = {
