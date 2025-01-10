@@ -1,6 +1,5 @@
 {
   pkgs,
-  config,
   lib,
   ...
 }:
@@ -22,6 +21,18 @@
       formatters = {
         hcl = {
           command = (lib.getExe pkgs.hclfmt);
+        };
+        csharpier = {
+          command = (
+            lib.getExe (
+              pkgs.writeShellApplication {
+                name = "csharpier";
+                text = ''
+                  dotnet csharpier "$@"
+                '';
+              }
+            )
+          );
         };
       };
     };
