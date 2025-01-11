@@ -133,7 +133,7 @@
           "SUPER, P, focusworkspaceoncurrentmonitor, name:vault"
           "SUPER, P, exec, [workspace name:vault] ${lib.getExe ensure} 1Password 1password"
           "SUPER, D, focusworkspaceoncurrentmonitor, name:discord"
-          "SUPER, D, exec, [workspace name:discord] ${lib.getExe ensure} discord discord"
+          "SUPER, D, exec, [workspace name:discord] ${lib.getExe ensure} discord discordcanary"
           "SUPER, S, focusworkspaceoncurrentmonitor, name:steam"
           "SUPER, S, exec, [workspace name:steam] ${lib.getExe ensure} steam steam"
           "SUPER, E, exec, thunar"
