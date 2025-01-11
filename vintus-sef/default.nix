@@ -48,6 +48,15 @@ in
     #./discord
   ];
 
+  home.sessionVariables = {
+    MSBUILDTERMINALLOGGER = "true";
+  };
+
+  programs.zsh.envExtra = ''
+    export DOTNET_ROOT="/home/sef/.dotnet";
+    export PATH="$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools";
+  '';
+
   home.packages = with pkgs; [
     flyctl
     zip
@@ -69,13 +78,6 @@ in
     pandoc
     inputs.surrealdb.packages."${pkgs.system}".default
     surrealist
-    (
-      with dotnetCorePackages;
-      combinePackages [
-        sdk_8_0
-        sdk_9_0
-      ]
-    )
   ];
 
   programs = {
