@@ -82,7 +82,7 @@ in
     nodejs_22
     sqlcmd
     inputs.surrealdb.packages."${pkgs.system}".default
-    surrealist
+    # surrealist
     inotify-tools
     hyprshot
     gleam
