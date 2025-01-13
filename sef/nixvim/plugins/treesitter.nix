@@ -12,6 +12,8 @@
         "c"
         "vim"
         "vimdoc"
+        "typescript"
+        "tsx"
       ];
       highlight.enable = true;
       indent.enable = true;

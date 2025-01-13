@@ -19,12 +19,12 @@
     vimAlias = true;
     performance = {
       byteCompileLua = {
-        enable = true;
+        enable = false;
         nvimRuntime = true;
         plugins = true;
       };
       combinePlugins = {
-        enable = true;
+        enable = false;
         standalonePlugins = [
           "nvim-treesitter"
           "oil.nvim"
