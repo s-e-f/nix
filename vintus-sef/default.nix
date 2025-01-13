@@ -76,8 +76,8 @@ in
     azure-cli
     texlive.combined.scheme-full
     pandoc
-    inputs.surrealdb.packages."${pkgs.system}".default
-    surrealist
+    # inputs.surrealdb.packages."${pkgs.system}".default
+    # surrealist
   ];
 
   programs = {
