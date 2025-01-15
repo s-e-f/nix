@@ -47,6 +47,7 @@ in
     ./git
     ./ssh
     ./1password
+    ./dotnet
     ./mako
     ./nixvim
     ./kitty
