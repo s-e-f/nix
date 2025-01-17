@@ -44,6 +44,7 @@ in
     ../sef/zellij
     ../sef/starship
     ../sef/zsh
+    ../sef/dotnet
     #./rofi
     #./discord
   ];
