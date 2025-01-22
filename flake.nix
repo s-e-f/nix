@@ -44,9 +44,6 @@
       url = "github:ndom91/rose-pine-hyprcursor";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-    };
     nur = {
       url = "github:nix-community/nur";
     };
@@ -68,11 +65,9 @@
 
   outputs =
     {
-      self,
       nixpkgs,
       stylix,
       home-manager,
-      flake-utils,
       nur,
       ...
     }@inputs:
@@ -116,17 +111,5 @@
           };
         };
       };
-    }
-    // flake-utils.lib.eachDefaultSystem (
-      system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in
-      {
-        devShells.default = pkgs.mkShell {
-          packages = [
-          ];
-        };
-      }
-    );
+    };
 }
