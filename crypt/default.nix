@@ -23,10 +23,6 @@
     config.allowUnfreePredicate = (_: true);
   };
 
-  security.pki.certificateFiles = [
-    ../certs/leiden.crt
-  ];
-
   nix = {
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
     settings = {
