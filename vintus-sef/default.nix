@@ -79,6 +79,9 @@ in
     pandoc
     # inputs.surrealdb.packages."${pkgs.system}".default
     # surrealist
+    gleam
+    erlang
+    rebar3
   ];
 
   programs = {

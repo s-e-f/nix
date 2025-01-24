@@ -14,6 +14,7 @@
         "vimdoc"
         "typescript"
         "tsx"
+        "gleam"
       ];
       highlight.enable = true;
       indent.enable = true;

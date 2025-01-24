@@ -15,7 +15,26 @@
         };
       };
       biome.enable = true;
-      csharp_ls.enable = true;
+      csharp_ls = {
+        enable = true;
+        package = null;
+        cmd = [ "csharp-ls" ];
+        settings = {
+          csharp.solution = {
+            __raw = ''
+              (function()
+                local cwd = vim.fn.getcwd()
+                local sln_files = vim.fn.glob(cwd .. '/*.sln', false, true)
+                if #sln_files > 0 then
+                  return vim.fn.fnamemodify(sln_files[1], ':p')
+                else
+                  return ""
+                end
+              end)()
+            '';
+          };
+        };
+      };
       cssls.enable = true;
       css_variables = {
         enable = true;
@@ -31,6 +50,10 @@
         enable = true;
         package = null;
         cmd = [ "zls" ];
+        settings = {
+          enable_build_on_save = true;
+          build_on_save_step = "check";
+        };
       };
       pylsp.enable = true;
       nixd = {

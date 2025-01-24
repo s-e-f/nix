@@ -17,6 +17,7 @@
         nix = [ "nixfmt" ];
         cs = [ "csharpier" ];
         hcl = [ "hcl" ];
+        gleam = [ "gleam" ];
       };
       formatters = {
         hcl = {
