@@ -9,6 +9,7 @@
       bold_italic_font = "auto";
       confirm_os_window_close = "0";
       modify_font = "cell_height 135%";
+      cursor_trail = "1";
     };
   };
 }
