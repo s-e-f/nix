@@ -82,7 +82,10 @@ in
     gleam
     erlang
     rebar3
+    dbeaver-bin
   ];
+
+  programs.zsh.shellAliases.http = "/home/sef/vintus/vhttp/zig-out/bin/vhttp";
 
   programs = {
     git.extraConfig.gpg.ssh.program = "/opt/1Password/op-ssh-sign";
