@@ -63,7 +63,6 @@ in
     zip
     tlrc
     usql
-    obsidian
     noto-fonts
     noto-fonts-emoji
     nh
