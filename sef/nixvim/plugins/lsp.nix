@@ -55,7 +55,7 @@
           build_on_save_step = "check";
         };
       };
-      pylsp.enable = true;
+      pylsp.enable = false;
       nixd = {
         enable = true;
         settings = {
