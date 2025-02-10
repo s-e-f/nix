@@ -73,8 +73,8 @@ in
     nodejs_22
     sqlcmd
     inputs.zen.packages."${pkgs.system}".default
-    azure-cli
-    texlive.combined.scheme-full
+    # azure-cli
+    # texlive.combined.scheme-full
     pandoc
     # inputs.surrealdb.packages."${pkgs.system}".default
     # surrealist
