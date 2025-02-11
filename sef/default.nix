@@ -87,6 +87,8 @@ in
     inotify-tools
     hyprshot
     gleam
+    erlang
+    rebar3
   ];
 
   programs = {
