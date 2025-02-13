@@ -1,5 +1,6 @@
 {
   inputs,
+  config,
   ...
 }:
 {
@@ -33,6 +34,16 @@
       };
     };
     luaLoader.enable = true;
+    highlight = {
+      ColorColumn =
+        let
+          hexColor = "#${config.lib.stylix.colors.base00}";
+        in
+        {
+          bg = hexColor;
+          ctermbg = "Black";
+        };
+    };
   };
 
   stylix.targets.nixvim = {

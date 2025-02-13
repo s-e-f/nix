@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ ... }:
 {
   programs.nixvim = {
     extraFiles = {
@@ -7,6 +7,7 @@
       "after/ftplugin/json.lua".source = ./after/ftplugin/json.lua;
       "after/ftplugin/lua.lua".source = ./after/ftplugin/lua.lua;
       "after/ftplugin/java.lua".source = ./after/ftplugin/java.lua;
+      "after/ftplugin/markdown.lua".source = ./after/ftplugin/markdown.lua;
     };
     filetype = {
       filename = {

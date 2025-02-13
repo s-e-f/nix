@@ -4,11 +4,17 @@
   ...
 }:
 {
+  home.packages = with pkgs; [
+    hclfmt
+    python313Packages.mdformat
+    python313Packages.mdformat-frontmatter
+  ];
+
   programs.nixvim.plugins.conform-nvim = {
     enable = true;
     settings = {
       format_on_save = {
-        timeout_ms = 500;
+        timeout_ms = 1000;
         lsp_format = "fallback";
       };
       formatters_by_ft = {
@@ -18,11 +24,13 @@
         cs = [ "csharpier" ];
         hcl = [ "hcl" ];
         gleam = [ "gleam" ];
-        md = [ (lib.getExe pkgs.mdformat) ];
+        markdown = [ "mdformat" ];
       };
       formatters = {
-        hcl = {
-          command = (lib.getExe pkgs.hclfmt);
+        mdformat = {
+          command = "mdformat";
+          "inherit" = false;
+          args = [ "-" ];
         };
         csharpier = {
           command = (
