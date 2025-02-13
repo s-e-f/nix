@@ -18,6 +18,7 @@
         cs = [ "csharpier" ];
         hcl = [ "hcl" ];
         gleam = [ "gleam" ];
+        md = [ (lib.getExe pkgs.mdformat) ];
       };
       formatters = {
         hcl = {

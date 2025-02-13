@@ -81,6 +81,12 @@ in
     gleam
     erlang
     rebar3
+    (pkgs.writeShellApplication {
+      name = "ghostty";
+      text = ''
+        nixGL ${(lib.getExe inputs.ghostty.packages.x86_64-linux.default)}
+      '';
+    })
   ];
 
   programs.zsh.shellAliases.http = "/home/sef/vintus/vhttp/zig-out/bin/vhttp";
