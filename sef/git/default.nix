@@ -1,7 +1,6 @@
 {
   pkgs,
-  config,
-  inputs,
+  lib,
   ...
 }:
 let
@@ -21,9 +20,13 @@ in
         navigate = true;
       };
     };
+    signing = {
+      format = "ssh";
+      signByDefault = true;
+      signer = lib.getExe' pkgs._1password-gui "op-ssh-sign";
+    };
     extraConfig = {
       core.sshCommand = "ssh";
-      commit.gpgsign = true;
       credential = {
         cacheOptions = "--timeout 21600";
         credentialStore = "secretservice";
@@ -32,13 +35,11 @@ in
       };
       diff.colorMoved = "default";
       gpg = {
-        format = "ssh";
         ssh.allowedSignersFile = "~/.ssh/allowed_signers";
       };
       init.defaultBranch = "main";
       merge.conflictstyle = "diff3";
       pull.rebase = true;
-      tag.gpgsign = true;
       rerere = {
         enabled = true;
       };

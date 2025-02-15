@@ -95,7 +95,6 @@ in
   ];
 
   programs = {
-    git.extraConfig.gpg.ssh.program = lib.getExe' pkgs._1password-gui "op-ssh-sign";
     direnv = {
       enable = true;
       enableZshIntegration = true;

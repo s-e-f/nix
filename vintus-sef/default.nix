@@ -92,7 +92,7 @@ in
   programs.zsh.shellAliases.http = "/home/sef/vintus/vhttp/zig-out/bin/vhttp";
 
   programs = {
-    git.extraConfig.gpg.ssh.program = "/opt/1Password/op-ssh-sign";
+    git.signing.signer = "/opt/1Password/op-ssh-sign";
     direnv = {
       enable = true;
       enableZshIntegration = true;
