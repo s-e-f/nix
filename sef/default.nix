@@ -91,6 +91,7 @@ in
     rebar3
     inputs.ghostty.packages.x86_64-linux.default
     bun
+    prismlauncher
   ];
 
   programs = {
