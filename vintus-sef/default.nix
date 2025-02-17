@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
 let
   username = "sef";
 in
@@ -93,7 +98,7 @@ in
   programs.zsh.shellAliases.http = "/home/sef/vintus/vhttp/zig-out/bin/vhttp";
 
   programs = {
-    git.signing.signer = "/opt/1Password/op-ssh-sign";
+    git.signing.signer = lib.mkForce "/opt/1Password/op-ssh-sign";
     direnv = {
       enable = true;
       enableZshIntegration = true;
