@@ -14,6 +14,7 @@
           completions.completeFunctionCalls = true;
         };
       };
+      denols.enable = true;
       biome.enable = true;
       csharp_ls = {
         enable = true;
