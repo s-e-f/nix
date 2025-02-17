@@ -87,6 +87,7 @@ in
         nixGL ${(lib.getExe inputs.ghostty.packages.x86_64-linux.default)}
       '';
     })
+    deno
   ];
 
   programs.zsh.shellAliases.http = "/home/sef/vintus/vhttp/zig-out/bin/vhttp";
