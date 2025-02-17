@@ -1,8 +1,20 @@
 {
+  pkgs,
   inputs,
   config,
   ...
 }:
+let
+  zmpl-vim = pkgs.vimUtils.buildVimPlugin {
+    name = "zmpl.vim";
+    src = pkgs.fetchFromGitHub {
+      owner = "jetzig-framework";
+      repo = "zmpl.vim";
+      rev = "d995eb17adda923a4fcbdad34b5a369a6c9a078a";
+      hash = "sha256-PfPWtz4K3Fn5a6UjMiIkqKYzWuCbga67+4u/bj925fQ=";
+    };
+  };
+in
 {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
@@ -18,6 +30,9 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+    extraPlugins = [
+      zmpl-vim
+    ];
     performance = {
       byteCompileLua = {
         enable = false;
