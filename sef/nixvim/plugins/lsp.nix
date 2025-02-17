@@ -10,11 +10,19 @@
     servers = {
       ts_ls = {
         enable = true;
+        rootDir = ''
+          require 'lspconfig.util'.root_pattern('package.json')
+        '';
         settings = {
           completions.completeFunctionCalls = true;
         };
       };
-      denols.enable = true;
+      denols = {
+        enable = true;
+        rootDir = ''
+          require 'lspconfig.util'.root_pattern('deno.json', 'deno.jsonc')
+        '';
+      };
       biome.enable = true;
       csharp_ls = {
         enable = true;
