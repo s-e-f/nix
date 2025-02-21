@@ -61,6 +61,7 @@ in
   programs.zsh.envExtra = ''
     export DOTNET_ROOT="/home/sef/.dotnet";
     export PATH="$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools";
+    export PATH="$PATH:/usr/local/go/bin";
   '';
 
   home.packages = with pkgs; [
@@ -78,8 +79,6 @@ in
     nodejs_22
     sqlcmd
     inputs.zen.packages."${pkgs.system}".default
-    # azure-cli
-    # texlive.combined.scheme-full
     pandoc
     # inputs.surrealdb.packages."${pkgs.system}".default
     # surrealist
@@ -142,5 +141,17 @@ in
       nixvim.transparentBackground.main = true;
       nixvim.transparentBackground.signColumn = true;
     };
+  };
+
+  xdg.desktopEntries.ghostty = {
+    exec = "ghostty";
+    name = "Ghostty";
+    type = "Application";
+    categories = [
+      "System"
+      "TerminalEmulator"
+    ];
+    icon = "/home/sef/Pictures/ghostty.png";
+    terminal = false;
   };
 }

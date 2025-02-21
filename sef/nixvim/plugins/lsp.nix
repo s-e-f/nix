@@ -8,6 +8,7 @@
   programs.nixvim.plugins.lsp = {
     enable = true;
     servers = {
+      gopls.enable = true;
       ts_ls = {
         enable = true;
         rootDir = ''
