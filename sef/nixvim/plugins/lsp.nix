@@ -24,7 +24,7 @@
           require 'lspconfig.util'.root_pattern('deno.json', 'deno.jsonc')
         '';
       };
-      biome.enable = true;
+      #biome.enable = true;
       csharp_ls = {
         enable = true;
         package = null;
