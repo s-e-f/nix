@@ -1,5 +1,6 @@
 { pkgs, inputs, ... }:
 {
+  stylix.targets.hyprlock.enable = false;
   programs.hyprlock.enable = true;
   programs.hyprlock.package = inputs.hyprlock.packages.${pkgs.system}.hyprlock;
   programs.hyprlock.settings = {
@@ -9,6 +10,7 @@
     };
 
     background = {
+      path = pkgs.lib.mkForce null;
       monitor = "";
       blur_passes = 3;
       blur_size = 10;

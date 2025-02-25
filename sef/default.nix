@@ -49,7 +49,7 @@ in
     ./1password
     ./dotnet
     ./mako
-    ./nixvim
+    ./nvim
     ./kitty
     ./ghostty
     ./zen
