@@ -59,8 +59,8 @@ in
         name = "Noto Sans";
       };
       monospace = {
-        package = pkgs.nerd-fonts.fira-code;
-        name = "FiraCode Nerd Font Mono";
+        package = pkgs.nerd-fonts.fantasque-sans-mono;
+        name = "Fantasque Sans Mono";
       };
       emoji = {
         package = pkgs.noto-fonts-emoji;

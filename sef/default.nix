@@ -54,7 +54,6 @@ in
     ./ghostty
     ./zen
     ./hypr
-    ./zellij
     ./starship
     ./zsh
     ./nushell
@@ -92,6 +91,10 @@ in
     inputs.ghostty.packages.x86_64-linux.default
     bun
     prismlauncher
+    gnumake
+    cmake
+    gcc
+    gettext
   ];
 
   programs = {
