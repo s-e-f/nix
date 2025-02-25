@@ -26,7 +26,7 @@
       };
       #biome.enable = true;
       csharp_ls = {
-        enable = true;
+        enable = false;
         package = null;
         cmd = [ "csharp-ls" ];
         settings = {

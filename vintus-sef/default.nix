@@ -40,7 +40,8 @@ in
     ../sef/1password
     ../sef/ssh
     #./nvim
-    ../sef/nixvim
+    ../sef/nvim
+    #../sef/nixvim
     ../sef/kitty
     ../sef/ghostty
     #(import ../sef/firefox { inherit pkgs inputs username; })
@@ -83,8 +84,11 @@ in
     # inputs.surrealdb.packages."${pkgs.system}".default
     # surrealist
     gleam
+    roslyn-ls
+    lua-language-server
     erlang
     rebar3
+    stylua
     (pkgs.writeShellApplication {
       name = "ghostty";
       text = ''
