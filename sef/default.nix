@@ -91,6 +91,7 @@ in
     inputs.ghostty.packages.x86_64-linux.default
     bun
     prismlauncher
+    roslyn-ls
     gnumake
     cmake
     gcc

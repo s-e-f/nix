@@ -117,7 +117,7 @@ require('lazy').setup({
             }
         },
         {
-          "folke/snacks.nvim",
+          'folke/snacks.nvim',
           opts = {
             statuscolumn = {},
             words = {},
