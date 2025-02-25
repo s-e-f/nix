@@ -171,7 +171,8 @@ vim.lsp.config['luals'] = {
     },
 }
 vim.lsp.config['denols'] = {
-    cmd = { 'denols' },
+    cmd = { 'deno' },
+    args = { 'lsp' },
     filetypes = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' },
     root_markers = { 'deno.json' },
     settings = {},

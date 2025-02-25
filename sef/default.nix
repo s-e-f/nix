@@ -95,6 +95,7 @@ in
     cmake
     gcc
     gettext
+    deno
   ];
 
   programs = {
