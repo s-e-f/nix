@@ -39,20 +39,14 @@ in
     ../sef/git
     ../sef/1password
     ../sef/ssh
-    #./nvim
     ../sef/nvim
-    #../sef/nixvim
     ../sef/kitty
     ../sef/ghostty
-    #(import ../sef/firefox { inherit pkgs inputs username; })
     ../sef/zen
-    #./hypr
     ../sef/zellij
     ../sef/starship
     ../sef/zsh
     ../sef/dotnet
-    #./rofi
-    #./discord
   ];
 
   home.sessionVariables = {
@@ -60,8 +54,6 @@ in
   };
 
   programs.zsh.envExtra = ''
-    export DOTNET_ROOT="/home/sef/.dotnet";
-    export PATH="$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools";
     export PATH="$PATH:/usr/local/go/bin";
   '';
 

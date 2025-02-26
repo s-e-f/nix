@@ -72,24 +72,17 @@ in
     zip
     unzip
     tlrc
-    usql
     obsidian
     noto-fonts
+    
     nh
     nil
     nixfmt-rfc-style
     vscode-langservers-extracted
-    google-java-format
-    nodejs_22
-    sqlcmd
-    # inputs.surrealdb.packages."${pkgs.system}".default
-    # surrealist
     inotify-tools
     hyprshot
     inputs.ghostty.packages.x86_64-linux.default
-    bun
     prismlauncher
-    deno
   ];
 
   programs = {
