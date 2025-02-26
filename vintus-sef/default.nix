@@ -69,32 +69,11 @@ in
     flyctl
     zip
     tlrc
-    usql
     noto-fonts
     noto-fonts-emoji
     nh
-    nil
-    nixfmt-rfc-style
-    vscode-langservers-extracted
-    typescript-language-server
-    google-java-format
-    nodejs_22
-    sqlcmd
     inputs.zen.packages."${pkgs.system}".default
     pandoc
-    # inputs.surrealdb.packages."${pkgs.system}".default
-    # surrealist
-    gleam
-    lua-language-server
-    erlang
-    rebar3
-    stylua
-    # For nvim telescope previews
-    chafa
-    imagemagick
-    ffmpegthumbnailer
-    poppler_utils
-
     (pkgs.writeShellApplication {
       name = "ghostty";
       text = ''

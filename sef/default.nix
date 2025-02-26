@@ -81,21 +81,13 @@ in
     google-java-format
     nodejs_22
     sqlcmd
-    inputs.surrealdb.packages."${pkgs.system}".default
+    # inputs.surrealdb.packages."${pkgs.system}".default
     # surrealist
     inotify-tools
     hyprshot
-    gleam
-    erlang
-    rebar3
     inputs.ghostty.packages.x86_64-linux.default
     bun
     prismlauncher
-    roslyn-ls
-    gnumake
-    cmake
-    gcc
-    gettext
     deno
   ];
 
