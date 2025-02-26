@@ -167,6 +167,12 @@ require("lazy").setup({
 						"razor",
 						"gleam",
 						"zig",
+						"go",
+						"gomod",
+						"gosum",
+						"gowork",
+						"gotmpl",
+						"templ",
 
 						-- Web languages
 						"javascript",
