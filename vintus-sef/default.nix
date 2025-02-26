@@ -89,6 +89,12 @@ in
     erlang
     rebar3
     stylua
+    # For nvim telescope previews
+    chafa
+    imagemagick
+    ffmpegthumbnailer
+    poppler_utils
+
     (pkgs.writeShellApplication {
       name = "ghostty";
       text = ''

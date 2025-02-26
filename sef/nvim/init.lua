@@ -109,21 +109,35 @@ require("lazy").setup({
 			"nvim-telescope/telescope.nvim",
 			branch = "0.1.x",
 			config = function()
-				require("telescope").setup()
-				local telescope = require("telescope.builtin")
+				local telescope = require("telescope")
+				telescope.load_extension("media_files")
+				telescope.setup({
+					extensions = {
+						media_files = {
+							filetypes = { "png", "webp", "jpg", "jpeg", "gif", "pdf", "mp4", "webm" },
+							find_cmd = "rg",
+						},
+					},
+				})
+				local telescope_builtin = require("telescope.builtin")
 				vim.keymap.set("n", "<leader>ff", function()
-					telescope.find_files()
+					telescope_builtin.find_files()
 				end, { desc = "Fuzzy find files" })
 				vim.keymap.set("n", "<leader>fh", function()
-					telescope.help_tags()
+					telescope_builtin.help_tags()
 				end, { desc = "Fuzzy find help" })
 				vim.keymap.set("n", "<leader>fg", function()
-					telescope.live_grep()
+					telescope_builtin.live_grep()
 				end, { desc = "Live grep" })
+				local telescope_ext = telescope.extensions
+				vim.keymap.set("n", "<leader>fm", function()
+					telescope_ext.media_files.media_files()
+				end, { silent = true })
 			end,
 			dependencies = {
 				"nvim-lua/plenary.nvim",
 				"nvim-telescope/telescope-fzf-native.nvim",
+				"nvim-telescope/telescope-media-files.nvim",
 			},
 		},
 		{
