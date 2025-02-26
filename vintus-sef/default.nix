@@ -85,7 +85,6 @@ in
     # inputs.surrealdb.packages."${pkgs.system}".default
     # surrealist
     gleam
-    roslyn-ls
     lua-language-server
     erlang
     rebar3

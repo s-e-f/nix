@@ -138,9 +138,7 @@ require("lazy").setup({
 		{
 			"seblyng/roslyn.nvim",
 			ft = "cs",
-			opts = {
-				exe = "Microsoft.CodeAnalysis.LanguageServer",
-			},
+			opts = {},
 		},
 		{
 			"nvim-treesitter/nvim-treesitter",
@@ -261,11 +259,28 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		if client.name == "denols" and is_node_project then
 			client.stop()
+			return
+		elseif client.name == "ts_ls" and is_deno_project then
+			client.stop()
+			return
 		end
 
-		if client.name == "ts_ls" and is_deno_project then
-			client.stop()
-		end
+		local telescope = require("telescope.builtin")
+		vim.keymap.set("n", "gi", function()
+			telescope.lsp_implementations()
+		end, { silent = true })
+		vim.keymap.set("n", "gd", function()
+			telescope.lsp_definitions()
+		end, { silent = true })
+		vim.keymap.set("n", "gr", function()
+			telescope.lsp_references()
+		end, { silent = true })
+		vim.keymap.set("n", "gT", function()
+			telescope.lsp_type_definitions()
+		end, { silent = true })
+		vim.keymap.set("n", "gs", function()
+			telescope.lsp_workspace_symbols()
+		end, { silent = true })
 	end,
 })
 
