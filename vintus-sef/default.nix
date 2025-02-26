@@ -76,6 +76,7 @@ in
     nil
     nixfmt-rfc-style
     vscode-langservers-extracted
+    typescript-language-server
     google-java-format
     nodejs_22
     sqlcmd

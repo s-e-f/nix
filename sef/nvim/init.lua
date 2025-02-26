@@ -118,6 +118,7 @@ require('lazy').setup({
         },
         {
           'folke/snacks.nvim',
+          priority = 1000,
           opts = {
             statuscolumn = {},
             words = {},
@@ -129,6 +130,32 @@ require('lazy').setup({
             opts = {
                 exe = 'Microsoft.CodeAnalysis.LanguageServer'
             },
+        },
+        {
+            'nvim-treesitter/nvim-treesitter',
+            build = ':TSUpdate',
+            config = function()
+                local configs = require('nvim-treesitter.configs')
+                configs.setup({
+                    ensure_installed = {
+                        'lua',
+                        'javascript',
+                        'typescript',
+                        'html',
+                        'css',
+                        'c_sharp',
+                        'razor',
+                        'hyprlang',
+                        'gleam',
+                        'zig',
+                        'yaml',
+                        'tsx',
+                    },
+                    sync_install = false,
+                    highlight = { enable = true },
+                    indent = { enable = true },
+                })
+            end
         }
     },
     checker = { enabled = true },
@@ -147,8 +174,18 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.api.nvim_create_autocmd('LspAttach', {
     group = augroup,
     desc = 'Choose between ts_ls and denols',
-    callback = function()
+    callback = function(args)
+      local client = vim.lsp.get_client_by_id(args.data.client_id)
+      local is_node_project = vim.fn.filereadable("package.json") == 1
+      local is_deno_project = vim.fn.filereadable("deno.json") == 1
 
+      if client.name == "denols" and is_node_project then
+        client.stop()
+      end
+
+      if client.name == "ts_ls" and is_deno_project then
+        client.stop()
+      end
     end,
 })
 
@@ -171,13 +208,25 @@ vim.lsp.config['luals'] = {
     },
 }
 vim.lsp.config['denols'] = {
-    cmd = { 'deno' },
-    args = { 'lsp' },
+    cmd = { 'deno', 'lsp' },
     filetypes = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' },
     root_markers = { 'deno.json' },
     settings = {},
 }
+vim.lsp.config['ts_ls'] = {
+    cmd = { 'typescript-language-server' },
+    args = { '--stdio' },
+    filetypes = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' },
+    root_markers = { 'package.json' },
+    settings = {
+        completions = {
+            completeFunctionCalls = true
+        },
+    },
+}
 
 vim.lsp.enable('luals')
+vim.lsp.enable('denols')
+vim.lsp.enable('ts_ls')
 
 vim.cmd([[colorscheme vague]])
