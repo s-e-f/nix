@@ -370,9 +370,17 @@ vim.lsp.config["gopls"] = {
 		},
 	},
 }
+vim.lsp.config["templ"] = {
+	cmd = { "templ", "lsp" },
+	filetypes = { "templ" },
+	root_markers = { "go.mod" },
+	settings = {},
+}
 
 vim.lsp.enable("luals")
 vim.lsp.enable("denols")
 vim.lsp.enable("ts_ls")
 vim.lsp.enable("zls")
 vim.lsp.enable("gleam")
+vim.lsp.enable("gopls")
+vim.lsp.enable("templ")
