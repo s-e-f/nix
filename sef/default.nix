@@ -70,6 +70,7 @@ in
   home.packages = with pkgs; [
     flyctl
     zip
+    unzip
     tlrc
     usql
     obsidian

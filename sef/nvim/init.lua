@@ -350,8 +350,29 @@ vim.lsp.config["zls"] = {
 		build_on_save_step = "check",
 	},
 }
+vim.lsp.config["gleam"] = {
+	cmd = { "gleam", "lsp" },
+	filetypes = { "gleam" },
+	root_markers = { "gleam.toml" },
+	settings = {},
+}
+vim.lsp.config["gopls"] = {
+	cmd = { "gopls" },
+	filetypes = { "go", "gomod", "gowork", "gotmpl" },
+	root_markers = { "go.mod" },
+	settings = {
+		gopls = {
+			completeUnimported = true,
+			usePlaceholders = true,
+			analyses = {
+				unusedparams = true,
+			},
+		},
+	},
+}
 
 vim.lsp.enable("luals")
 vim.lsp.enable("denols")
 vim.lsp.enable("ts_ls")
 vim.lsp.enable("zls")
+vim.lsp.enable("gleam")

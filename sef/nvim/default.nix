@@ -36,5 +36,10 @@
         bun
         deno
         typescript-language-server
+
+        # go
+        go
+        gopls
+        templ
     ];
 }
