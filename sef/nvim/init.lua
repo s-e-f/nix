@@ -51,10 +51,12 @@ require("lazy").setup({
 	spec = {
 		{
 			"vague2k/vague.nvim",
+			priority = 1000,
 			config = function()
 				require("vague").setup({
 					transparent = true,
 				})
+				vim.cmd([[colorscheme vague]])
 			end,
 		},
 		{
@@ -70,11 +72,11 @@ require("lazy").setup({
 				-- Surround actions
 				require("mini.surround").setup()
 
+				-- Auto-pairs
+				require("mini.pairs").setup()
+
 				-- Icon provider
 				require("mini.icons").setup()
-
-				-- Completion and signature help
-				require("mini.completion").setup()
 
 				-- Statusline
 				require("mini.statusline").setup()
@@ -103,7 +105,6 @@ require("lazy").setup({
 				},
 			},
 		},
-		-- init.lua:
 		{
 			"nvim-telescope/telescope.nvim",
 			branch = "0.1.x",
@@ -130,7 +131,8 @@ require("lazy").setup({
 			priority = 1000,
 			opts = {
 				statuscolumn = {},
-				words = {},
+				quickfile = {},
+				indent = {},
 			},
 		},
 		{
@@ -172,6 +174,67 @@ require("lazy").setup({
 				})
 			end,
 		},
+		{
+			"hrsh7th/nvim-cmp",
+			dependencies = {
+				{
+					"L3MON4D3/LuaSnip",
+					version = "v2.*",
+					build = "make install_jsregexp",
+					config = function()
+						local luasnip = require("luasnip")
+						luasnip.setup({
+							history = false,
+							updateevents = "TextChanged,TextChangedI",
+						})
+						vim.keymap.set({ "i", "s" }, "<C-k>", function()
+							if luasnip.expand_or_jumpable() then
+								luasnip.expand_or_jump()
+							end
+						end, { silent = true })
+
+						vim.keymap.set({ "i", "s" }, "<C-j>", function()
+							if luasnip.jumpable(-1) then
+								luasnip.jump(-1)
+							end
+						end, { silent = true })
+					end,
+				},
+				"hrsh7th/cmp-nvim-lsp",
+				"onsails/lspkind.nvim",
+			},
+			config = function()
+				local cmp = require("cmp")
+				cmp.setup({
+					snippet = {
+						expand = function(args)
+							require("luasnip").lsp_expand(args.body)
+						end,
+					},
+					window = {
+						completion = cmp.config.window.bordered(),
+						documentation = cmp.config.window.bordered(),
+					},
+					mapping = cmp.mapping.preset.insert({
+						["<C-a>"] = cmp.mapping.abort(),
+						["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+						["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+						["<C-y>"] = cmp.mapping.confirm(
+							{ behavior = cmp.ConfirmBehavior.Insert, select = true },
+							{ "i", "c" }
+						),
+					}),
+					sources = cmp.config.sources({
+						{ name = "nvim_lsp" },
+						{ name = "path" },
+						{ name = "buffer" },
+					}),
+					formatting = {
+						format = require("lspkind").cmp_format(),
+					},
+				})
+			end,
+		},
 	},
 	checker = { enabled = true },
 })
@@ -206,6 +269,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
+vim.lsp.config["*"] = {
+	capabilities = require("cmp_nvim_lsp").default_capabilities(),
+}
+
 vim.lsp.config["luals"] = {
 	cmd = { "lua-language-server" },
 	filetypes = { "lua" },
@@ -221,6 +288,11 @@ vim.lsp.config["luals"] = {
 					vim.env.RUNTIME,
 				},
 			},
+			diagnostics = {
+				globals = {
+					"vim",
+				},
+			},
 		},
 	},
 }
@@ -231,8 +303,7 @@ vim.lsp.config["denols"] = {
 	settings = {},
 }
 vim.lsp.config["ts_ls"] = {
-	cmd = { "typescript-language-server" },
-	args = { "--stdio" },
+	cmd = { "typescript-language-server", "--stdio" },
 	filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
 	root_markers = { "package.json" },
 	settings = {
@@ -245,5 +316,3 @@ vim.lsp.config["ts_ls"] = {
 vim.lsp.enable("luals")
 vim.lsp.enable("denols")
 vim.lsp.enable("ts_ls")
-
-vim.cmd([[colorscheme vague]])
