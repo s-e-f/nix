@@ -341,7 +341,17 @@ vim.lsp.config["ts_ls"] = {
 		},
 	},
 }
+vim.lsp.config["zls"] = {
+	cmd = { "zls" },
+	filetypes = { "zig" },
+	root_markers = { "build.zig", ".git", "zls.json" },
+	settings = {
+		enable_build_on_save = true,
+		build_on_save_step = "check",
+	},
+}
 
 vim.lsp.enable("luals")
 vim.lsp.enable("denols")
 vim.lsp.enable("ts_ls")
+vim.lsp.enable("zls")
