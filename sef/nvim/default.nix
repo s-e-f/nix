@@ -35,6 +35,7 @@
         # typescript / deno
         bun
         deno
+        nodejs_23
         typescript-language-server
 
         # go
