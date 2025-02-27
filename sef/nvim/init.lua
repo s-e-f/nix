@@ -356,10 +356,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		if client.name == "denols" and is_node_project then
 			client.stop()
-			return
-		elseif client.name == "ts_ls" and is_deno_project then
+		end
+
+		if client.name == "ts_ls" and is_deno_project then
 			client.stop()
-			return
 		end
 
 		local telescope = require("telescope.builtin")
