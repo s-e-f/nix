@@ -146,7 +146,6 @@ require("lazy").setup({
 			opts = {
 				statuscolumn = {},
 				quickfile = {},
-				indent = {},
 			},
 		},
 		{
