@@ -43,7 +43,7 @@ in
     ../sef/kitty
     ../sef/ghostty
     ../sef/zen
-    ../sef/zellij
+    # ../sef/zellij
     ../sef/starship
     ../sef/zsh
     ../sef/dotnet
