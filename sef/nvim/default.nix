@@ -5,6 +5,7 @@
 {
 	home.file.".config/nvim/init.lua".source = ./init.lua;
     home.file.".config/nvim/after/ftplugin/lua.lua".source = ../nixvim/after/ftplugin/lua.lua;
+    home.file.".config/nvim/after/ftplugin/nix.lua".source = ../nixvim/after/ftplugin/nix.lua;
 
     home.packages = with pkgs; [
         # compiling nvim
