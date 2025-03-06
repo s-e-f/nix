@@ -329,6 +329,27 @@ require("lazy").setup({
 				})
 			end,
 		},
+		{
+			"neovim/nvim-lspconfig",
+			dependencies = {
+				{
+					"folke/lazydev.nvim",
+					ft = "lua", -- only load on lua files
+					opts = {
+						library = {
+							-- See the configuration section for more details
+							-- Load luvit types when the `vim.uv` word is found
+							{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+						},
+					},
+				},
+			},
+			config = function()
+				local lspconfig = require("lspconfig")
+				lspconfig.lua_ls.setup({})
+				lspconfig.zls.setup({})
+			end,
+		},
 	},
 	checker = { enabled = true },
 })
@@ -347,128 +368,24 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = augroup,
-	desc = "Choose between ts_ls and denols",
-	callback = function(args)
-		local client = vim.lsp.get_client_by_id(args.data.client_id)
-		local is_node_project = vim.fn.filereadable("package.json") == 1
-		local is_deno_project = vim.fn.filereadable("deno.json") == 1
-
-		if client.name == "denols" and is_node_project then
-			client.stop()
-		end
-
-		if client.name == "ts_ls" and is_deno_project then
-			client.stop()
-		end
-
+	desc = "LSP keymaps",
+	callback = function()
 		local telescope = require("telescope.builtin")
-		vim.keymap.set("n", "gi", function()
-			telescope.lsp_implementations()
-		end, { silent = true })
+		vim.api.nvim_set_hl(0, "NormalFloat", { link = "CursorLine" })
 		vim.keymap.set("n", "gd", function()
 			telescope.lsp_definitions()
 		end, { silent = true })
 		vim.keymap.set("n", "gr", function()
 			telescope.lsp_references()
 		end, { silent = true })
-		vim.keymap.set("n", "gT", function()
-			telescope.lsp_type_definitions()
+		vim.keymap.set("n", "gi", function()
+			telescope.lsp_implementations()
 		end, { silent = true })
-		vim.keymap.set("n", "gs", function()
-			telescope.lsp_workspace_symbols()
+		vim.keymap.set("n", "<space>le", function()
+			vim.diagnostic.open_float()
+		end, { silent = true })
+		vim.keymap.set("n", "<space>lc", function()
+			vim.lsp.buf.code_action()
 		end, { silent = true })
 	end,
 })
-
-vim.lsp.config["*"] = {
-	capabilities = require("cmp_nvim_lsp").default_capabilities(),
-}
-
-vim.lsp.config["luals"] = {
-	cmd = { "lua-language-server" },
-	filetypes = { "lua" },
-	root_markers = { ".luarc.json", ".luarc.jsonc" },
-	settings = {
-		Lua = {
-			runtime = {
-				version = "LuaJIT",
-			},
-			workspace = {
-				checkThirdParty = false,
-				library = {
-					vim.env.RUNTIME,
-				},
-			},
-			diagnostics = {
-				globals = {
-					"vim",
-				},
-			},
-		},
-	},
-}
-vim.lsp.config["denols"] = {
-	cmd = { "deno", "lsp" },
-	filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
-	root_markers = { "deno.json" },
-	settings = {},
-}
-vim.lsp.config["ts_ls"] = {
-	cmd = { "typescript-language-server", "--stdio" },
-	filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
-	root_markers = { "package.json" },
-	settings = {
-		completions = {
-			completeFunctionCalls = true,
-		},
-	},
-}
-vim.lsp.config["zls"] = {
-	cmd = { "zls" },
-	filetypes = { "zig" },
-	root_markers = { "build.zig", ".git", "zls.json" },
-	settings = {
-		enable_build_on_save = true,
-		build_on_save_step = "check",
-	},
-}
-vim.lsp.config["gleam"] = {
-	cmd = { "gleam", "lsp" },
-	filetypes = { "gleam" },
-	root_markers = { "gleam.toml" },
-	settings = {},
-}
-vim.lsp.config["gopls"] = {
-	cmd = { "gopls" },
-	filetypes = { "go", "gomod", "gowork", "gotmpl" },
-	root_markers = { "go.mod" },
-	settings = {
-		gopls = {
-			completeUnimported = true,
-			usePlaceholders = true,
-			analyses = {
-				unusedparams = true,
-			},
-		},
-	},
-}
-vim.lsp.config["templ"] = {
-	cmd = { "templ", "lsp" },
-	filetypes = { "templ" },
-	root_markers = { "go.mod" },
-	settings = {},
-}
-vim.lsp.config["html"] = {
-	cmd = { "vscode-html-language-server", "--stdio" },
-	filetypes = { "html", "templ" },
-	settings = {},
-}
-
-vim.lsp.enable("luals")
-vim.lsp.enable("denols")
-vim.lsp.enable("ts_ls")
-vim.lsp.enable("zls")
-vim.lsp.enable("gleam")
-vim.lsp.enable("gopls")
-vim.lsp.enable("templ")
-vim.lsp.enable("html")
