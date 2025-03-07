@@ -37,6 +37,7 @@
         bun
         deno
         nodejs_23
+        yarn
         typescript-language-server
 
         # go
