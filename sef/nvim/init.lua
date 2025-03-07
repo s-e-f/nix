@@ -18,8 +18,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 local opt = vim.opt
 opt.completeopt = "menu,menuone,noselect"
-opt.number = true
-opt.relativenumber = true
+opt.number = false
+opt.relativenumber = false
 opt.showmode = false
 opt.breakindent = false
 opt.undofile = true
@@ -349,6 +349,7 @@ require("lazy").setup({
 				lspconfig.lua_ls.setup({})
 				lspconfig.zls.setup({})
 				lspconfig.rust_analyzer.setup({})
+				lspconfig.ts_ls.setup({})
 			end,
 		},
 	},
