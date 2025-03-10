@@ -79,8 +79,6 @@ in
     })
   ];
 
-  programs.zsh.shellAliases.http = "/home/sef/vintus/vhttp/zig-out/bin/vhttp";
-
   programs = {
     git.signing.signer = lib.mkForce "/opt/1Password/op-ssh-sign";
     direnv = {
