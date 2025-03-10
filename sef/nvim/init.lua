@@ -47,6 +47,11 @@ opt.scrolloff = 10
 opt.hlsearch = true
 opt.signcolumn = "yes"
 
+-- Deno
+vim.g.markdown_fenced_languages = {
+	"ts=typescript",
+}
+
 require("lazy").setup({
 	spec = {
 		{
@@ -350,6 +355,7 @@ require("lazy").setup({
 				lspconfig.zls.setup({})
 				lspconfig.rust_analyzer.setup({})
 				lspconfig.ts_ls.setup({})
+				lspconfig.denols.setup({})
 			end,
 		},
 	},
@@ -371,7 +377,16 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = augroup,
 	desc = "LSP keymaps",
-	callback = function()
+	callback = function(args)
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		local is_node = vim.fn.filereadable("package.json") == 1
+		local is_deno = vim.fn.filereadable("deno.json") == 1
+		if client.name == "denols" and is_node then
+			client.stop()
+		end
+		if client.name == "ts_ls" and is_deno then
+			client.stop()
+		end
 		local telescope = require("telescope.builtin")
 		vim.api.nvim_set_hl(0, "NormalFloat", { link = "CursorLine" })
 		vim.keymap.set("n", "gd", function()
