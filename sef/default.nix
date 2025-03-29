@@ -74,7 +74,7 @@ in
     tlrc
     obsidian
     noto-fonts
-    
+    aseprite
     nh
     nil
     nixfmt-rfc-style
