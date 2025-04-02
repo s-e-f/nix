@@ -77,8 +77,6 @@ in
         nixGL ${(lib.getExe inputs.ghostty.packages.x86_64-linux.default)}
       '';
     })
-    proton-pass
-    protonmail-desktop
   ];
 
   programs = {
