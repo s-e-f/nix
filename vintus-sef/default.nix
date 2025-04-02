@@ -37,7 +37,7 @@ in
   imports = [
     ../modules/stylix.nix
     ../sef/git
-    ../sef/1password
+    # ../sef/1password
     ../sef/ssh
     ../sef/nvim
     ../sef/kitty
@@ -77,6 +77,8 @@ in
         nixGL ${(lib.getExe inputs.ghostty.packages.x86_64-linux.default)}
       '';
     })
+    proton-pass
+    protonmail-desktop
   ];
 
   programs = {
