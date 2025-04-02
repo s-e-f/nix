@@ -22,8 +22,8 @@ in
     };
     signing = {
       format = "ssh";
-      signByDefault = true;
-      signer = lib.getExe' pkgs._1password-gui "op-ssh-sign";
+      signByDefault = false;
+      # signer = lib.getExe' pkgs._1password-gui "op-ssh-sign";
     };
     extraConfig = {
       core.sshCommand = "ssh";

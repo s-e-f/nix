@@ -83,6 +83,8 @@ in
     hyprshot
     inputs.ghostty.packages.x86_64-linux.default
     prismlauncher
+    proton-pass
+    protonmail-desktop
   ];
 
   programs = {

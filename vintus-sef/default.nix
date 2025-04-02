@@ -82,7 +82,7 @@ in
   ];
 
   programs = {
-    git.signing.signer = lib.mkForce "/opt/1Password/op-ssh-sign";
+    # git.signing.signer = lib.mkForce "/opt/1Password/op-ssh-sign";
     direnv = {
       enable = true;
       enableZshIntegration = true;

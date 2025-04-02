@@ -41,16 +41,16 @@
     };
   };
 
-  environment.etc = {
-    "1password/custom_allowed_browsers" = {
-      text = ''
-        vivaldi-bin
-        .zen-wrapped
-        zen
-      '';
-      mode = "0755";
-    };
-  };
+  # environment.etc = {
+  #   "1password/custom_allowed_browsers" = {
+  #     text = ''
+  #       vivaldi-bin
+  #       .zen-wrapped
+  #       zen
+  #     '';
+  #     mode = "0755";
+  #   };
+  # };
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
@@ -79,7 +79,7 @@
 
   security.polkit.enable = true;
   programs.gnupg.agent.enable = true;
-  security.pam.services."1password".enableGnomeKeyring = true;
+  # security.pam.services."1password".enableGnomeKeyring = true;
   security.pam.services.login.enableGnomeKeyring = true;
 
   services.gnome.gnome-keyring.enable = true;
@@ -182,11 +182,11 @@
     hyprlock.enable = true;
     waybar.enable = true;
     zsh.enable = true;
-    _1password-gui = {
-      enable = true;
-      polkitPolicyOwners = [ "sef" ];
-    };
-    _1password.enable = true;
+    # _1password-gui = {
+    #   enable = true;
+    #   polkitPolicyOwners = [ "sef" ];
+    # };
+    # _1password.enable = true;
     nh = {
       enable = true;
       clean.enable = true;
