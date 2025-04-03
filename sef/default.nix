@@ -46,7 +46,7 @@ in
   imports = [
     ./git
     ./ssh
-    ./1password
+    # ./1password
     ./dotnet
     ./mako
     ./nvim
