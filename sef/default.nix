@@ -85,6 +85,7 @@ in
     prismlauncher
     proton-pass
     protonmail-desktop
+    brave
   ];
 
   programs = {
