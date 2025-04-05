@@ -38,19 +38,9 @@
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="
       ];
+      auto-optimise-store = true;
     };
   };
-
-  # environment.etc = {
-  #   "1password/custom_allowed_browsers" = {
-  #     text = ''
-  #       vivaldi-bin
-  #       .zen-wrapped
-  #       zen
-  #     '';
-  #     mode = "0755";
-  #   };
-  # };
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
@@ -79,7 +69,6 @@
 
   security.polkit.enable = true;
   programs.gnupg.agent.enable = true;
-  # security.pam.services."1password".enableGnomeKeyring = true;
   security.pam.services.login.enableGnomeKeyring = true;
 
   services.gnome.gnome-keyring.enable = true;
@@ -87,7 +76,6 @@
 
   boot = {
     loader = {
-      systemd-boot.enable = false;
       grub = {
         enable = true;
         efiSupport = true;
@@ -101,7 +89,6 @@
 
   networking = {
     hostName = "crypt";
-    # wireless.enable = true;
     networkmanager.enable = true;
   };
 
@@ -131,13 +118,6 @@
   security.rtkit.enable = true;
 
   services = {
-    fprintd = {
-      enable = false;
-      tod = {
-        enable = true;
-        driver = pkgs.libfprint-2-tod1-goodix-550a;
-      };
-    };
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -182,11 +162,6 @@
     hyprlock.enable = true;
     waybar.enable = true;
     zsh.enable = true;
-    # _1password-gui = {
-    #   enable = true;
-    #   polkitPolicyOwners = [ "sef" ];
-    # };
-    # _1password.enable = true;
     nh = {
       enable = true;
       clean.enable = true;
