@@ -149,6 +149,7 @@
           "SUPER, S, focusworkspaceoncurrentmonitor, name:steam"
           "SUPER, S, exec, [workspace name:steam] ${lib.getExe ensure} steam steam"
           "SHIFT_L SUPER, S, movetoworkspacesilent, name:steam"
+          "SUPER, M, focusworkspaceoncurrentmonitor, name:mail"
           "SUPER, M, exec, [workspace name:mail] ${lib.getExe ensure} 'Proton Mail' proton-mail"
           "SHIFT_L SUPER, M, movetoworkspacesilent, name:mail"
           "SUPER, E, exec, thunar"
