@@ -116,6 +116,7 @@
         "4, defaultName:vault"
         "5, defaultName:discord"
         "6, defaultName:steam"
+        "7, defaultName:mail"
       ];
       bind =
         let
@@ -140,7 +141,7 @@
           "SUPER, O, exec, [workspace name:obsidian] ${lib.getExe ensure} obsidian obsidian"
           "SHIFT_L SUPER, O, movetoworkspacesilent, name:obsidian"
           "SUPER, P, focusworkspaceoncurrentmonitor, name:vault"
-          "SUPER, P, exec, [workspace name:vault] ${lib.getExe ensure} 1Password 1password"
+          "SUPER, P, exec, [workspace name:vault] ${lib.getExe ensure} 'Proton Pass' proton-pass"
           "SHIFT_L SUPER, P, movetoworkspacesilent, name:vault"
           "SUPER, D, focusworkspaceoncurrentmonitor, name:discord"
           "SUPER, D, exec, [workspace name:discord] ${lib.getExe ensure} discord discordcanary"
@@ -148,6 +149,8 @@
           "SUPER, S, focusworkspaceoncurrentmonitor, name:steam"
           "SUPER, S, exec, [workspace name:steam] ${lib.getExe ensure} steam steam"
           "SHIFT_L SUPER, S, movetoworkspacesilent, name:steam"
+          "SUPER, M, exec, [workspace name:mail] ${lib.getExe ensure} 'Proton Mail' proton-mail"
+          "SHIFT_L SUPER, M, movetoworkspacesilent, name:mail"
           "SUPER, E, exec, thunar"
           "SUPER, ESCAPE, exec, pidof hyprlock || hyprlock --immediate"
           "SUPER, code:60, exec, rofi -modes emoji -show emoji"

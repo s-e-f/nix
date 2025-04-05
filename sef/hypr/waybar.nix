@@ -35,6 +35,7 @@
         obsidian = "";
         discord = "";
         steam = "";
+        mail = "";
         default = "";
       };
       persistent-workspaces =
