@@ -77,6 +77,12 @@
 
       layerrule = [ "blur,waybar" ];
 
+      windowrule = [
+        "opaque,class:(),title:()"
+        "noshadow,class:(),title:()"
+        "noblur,class:(),title:()"
+      ];
+
       input = {
         sensitivity = -0.1;
         accel_profile = "flat";
@@ -128,7 +134,7 @@
           "SUPER, T, exec, [workspace name:terminal] ${lib.getExe ensure} com.mitchellh.ghostty ghostty"
           "SHIFT_L SUPER, T, movetoworkspacesilent, name:terminal"
           "SUPER, B, focusworkspaceoncurrentmonitor, name:browser"
-          "SUPER, B, exec, [workspace name:browser] ${lib.getExe ensure} zen-beta zen-beta"
+          "SUPER, B, exec, [workspace name:browser] ${lib.getExe ensure} Brave-browser brave"
           "SHIFT_L SUPER, B, movetoworkspacesilent, name:browser"
           "SUPER, O, focusworkspaceoncurrentmonitor, name:obsidian"
           "SUPER, O, exec, [workspace name:obsidian] ${lib.getExe ensure} obsidian obsidian"

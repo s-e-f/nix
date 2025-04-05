@@ -5,20 +5,12 @@
   ];
 
   home.sessionVariables = {
-    BROWSER = "zen";
-    DEFAULT_BROWSER = "zen";
+    BROWSER = "brave";
+    DEFAULT_BROWSER = "brave";
   };
 
   xdg.mimeApps.defaultApplications = {
-    "x-scheme-handler/http" = "zen.desktop";
-    "x-scheme-handler/https" = "zen.desktop";
-  };
-
-  xdg.desktopEntries.zen = {
-    exec = "zen %U";
-    genericName = "Browser";
-    name = "Zen";
-    type = "Application";
-    terminal = false;
+    "x-scheme-handler/http" = "brave.desktop";
+    "x-scheme-handler/https" = "brave.desktop";
   };
 }
