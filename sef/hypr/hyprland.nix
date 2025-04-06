@@ -179,7 +179,6 @@
         "hyprpaper"
         # (lib.getExe pkgs.clipboard-jh)
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
-        "[workspace name:vault silent] 1password"
       ];
     };
   };
