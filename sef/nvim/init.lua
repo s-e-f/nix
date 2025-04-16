@@ -356,6 +356,7 @@ require("lazy").setup({
 				lspconfig.rust_analyzer.setup({})
 				lspconfig.ts_ls.setup({})
 				lspconfig.denols.setup({})
+				lspconfig.svelte.setup({})
 			end,
 		},
 	},

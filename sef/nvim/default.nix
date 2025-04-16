@@ -39,6 +39,7 @@
         nodejs_23
         yarn
         typescript-language-server
+        svelte-language-server
 
         # go
         go

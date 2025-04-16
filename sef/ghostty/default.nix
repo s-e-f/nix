@@ -5,7 +5,7 @@
     background-opacity = 0.9
     background-blur-radius = 20
 
-    font-family = Fantasque Sans Mono
+    font-family = FiraCode Nerd Font
     window-decoration = false
     confirm-close-surface = false
 
